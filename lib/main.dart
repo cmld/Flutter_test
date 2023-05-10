@@ -3,6 +3,7 @@ import 'package:clmd_flutter/components/marquee_ai.dart';
 import 'package:clmd_flutter/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:package_info/package_info.dart';
 
 void main() {
   runApp(ScreenUtilInit(
@@ -235,8 +236,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
-    print(DateTime.utc(2023, 1, 1).toIso8601String());
-    print(DateTime.utc(2023, 1, 7, 23, 59, 59).toIso8601String());
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -250,6 +249,20 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              TextButton(
+                onPressed: () async {
+                  var info = await PackageInfo.fromPlatform();
+                  print(
+                      'APP info: \n -name:${info.appName} \n -packageName:${info.packageName} \n -version:${info.version} \n -buildNumber:${info.buildNumber} \n ');
+                },
+                child: const Text(
+                  'APP Info',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
               Text(DateTime.utc(2023, 1, 1).toIso8601String()),
               TextButton(
                 onPressed: () {

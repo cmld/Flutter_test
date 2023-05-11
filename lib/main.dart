@@ -249,6 +249,17 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
+              buildBodyScore(77, true),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
               TextButton(
                 onPressed: () async {
                   var info = await PackageInfo.fromPlatform();
@@ -263,7 +274,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
               Text(DateTime.utc(2023, 1, 1).toIso8601String()),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
               TextButton(
                 onPressed: () {
                   Navigator.pushNamed(context, 'lrs');
@@ -276,6 +297,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
               TextButton(
                 onPressed: () {
                   Navigator.pushNamed(context, 'fds');
@@ -287,6 +313,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+              ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
               ),
               DecoratedBox(
                 decoration: BoxDecoration(
@@ -303,6 +334,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       speed: 3000),
                 ),
               ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
               ble_options,
             ],
           ),
@@ -314,5 +350,110 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  Widget buildBodyScore(int score, bool isMan) {
+    return Container(
+        padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
+        width: 150.5.w,
+        height: 150.h,
+        decoration: BoxDecoration(
+            color: Colors.lightBlue, borderRadius: BorderRadius.circular(10.5)),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Positioned(
+              top: 5.h,
+              left: 5.w,
+              child: Text(
+                '身体得分',
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Positioned(
+                bottom: -5.h,
+                left: -5.w,
+                child: Image.asset(
+                  'assets/home_good_man.png',
+                  width: 110.w,
+                )),
+            Positioned(
+              top: 10.h,
+              right: 35.w,
+              child: Text(
+                score.toString(),
+                style: TextStyle(
+                  fontSize: 30.sp,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            Positioned(
+              top: 40.h,
+              right: 35.w,
+              child: Text(
+                '分',
+                style: TextStyle(
+                  fontSize: 12.sp,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Positioned(
+              right: 0,
+              top: 5.h,
+              child: SizedBox(
+                width: 21.w,
+                child: Text(
+                  '100',
+                  style: TextStyle(fontSize: 12.sp, color: Colors.white),
+                ),
+              ),
+            ),
+            Positioned(
+              right: 0,
+              bottom: 5.h,
+              child: SizedBox(
+                width: 21.w,
+                child: Text(
+                  '0',
+                  style: TextStyle(fontSize: 12.sp, color: Colors.white),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 5.h,
+              right: 23.w,
+              child: Container(
+                height: 130.h,
+                width: 7.5.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  gradient: const LinearGradient(colors: [
+                    Color.fromRGBO(255, 255, 255, 0.2),
+                    Color.fromRGBO(255, 255, 255, 1),
+                  ], begin: Alignment.bottomLeft, end: Alignment.topRight),
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 130.h * score / 100 - 2.5.h,
+              right: 19.25.w,
+              child: Container(
+                height: 15.h,
+                width: 15.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(200),
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ));
   }
 }

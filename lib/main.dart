@@ -1,6 +1,7 @@
 import 'package:clmd_flutter/ble_manager.dart';
 import 'package:clmd_flutter/components/marquee_ai.dart';
 import 'package:clmd_flutter/routes.dart';
+import 'package:clmd_flutter/utils/thread_sync.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:package_info/package_info.dart';
@@ -249,6 +250,22 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              TextButton(
+                onPressed: () {
+                  SyncUtil.syncCall(() {
+                    print(DateTime.now().toString());
+
+                    return null;
+                  }, space: const Duration(seconds: 1));
+                },
+                child: const Text(
+                  '串行异步队列',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
               const Divider(
                 height: 10,
                 thickness: 2,

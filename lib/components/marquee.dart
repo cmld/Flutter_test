@@ -52,17 +52,19 @@ class _MarqueeState extends State<CMarquee>
     _scrollView = SingleChildScrollView(
       controller: _scrctrl,
       scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          SizedBox(
-            width: _space,
-          ),
-          widget.child,
-          SizedBox(
-            width: _space,
-          ),
-        ],
-      ),
+      child: _scrctrl.hasClients
+          ? Row(
+              children: [
+                SizedBox(
+                  width: _space,
+                ),
+                widget.child,
+                SizedBox(
+                  width: _space,
+                ),
+              ],
+            )
+          : const SizedBox(),
     );
     return _scrollView ?? Column();
   }

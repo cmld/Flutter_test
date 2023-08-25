@@ -1,10 +1,14 @@
+// import 'dart:html';
+
 import 'package:clmd_flutter/ble_manager.dart';
 import 'package:clmd_flutter/components/marquee_ai.dart';
 import 'package:clmd_flutter/routes.dart';
 import 'package:clmd_flutter/utils/thread_sync.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:package_info/package_info.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 void main() {
   runApp(ScreenUtilInit(
@@ -250,6 +254,31 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              TextButton(
+                onPressed: () async {
+                  String url = 'tel:17621761283';
+                  if (await canLaunchUrlString(url)) {
+                    await launchUrlString(url);
+                  }
+
+                  MethodChannel _channel = const MethodChannel('plugin_clmd');
+                  final result =
+                      await _channel.invokeMethod('callObs', '17621761283');
+                  print(result.toString());
+                },
+                child: const Text(
+                  '拨打电话 CallKit监听',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
               TextButton(
                 onPressed: () {
                   SyncUtil.syncCall(() {

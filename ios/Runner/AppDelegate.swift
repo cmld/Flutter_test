@@ -12,14 +12,14 @@ import Flutter
     let msger: FlutterBinaryMessenger  = window?.rootViewController as! FlutterBinaryMessenger
     pluginChannel(msg: msger)
       
-      // MARK: 走flutter
+      // MARK: 走Flutter - main
 //    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     
-      // MARK: 走native
+      // MARK: 走Native - main
       var nativeWindow = UIWindow(frame: UIScreen.main.bounds)
       nativeWindow.backgroundColor = .white
       
-      let nv = UINavigationController(rootViewController: MainViewController())
+      let nv = UINavigationController(rootViewController: AddWaterViewController())
       nativeWindow.rootViewController = nv
       self.window = nativeWindow
       self.window.makeKeyAndVisible()

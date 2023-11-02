@@ -8,7 +8,8 @@
 import UIKit
 
 class JTReturnModeView: UIView {
-
+    @IBOutlet weak var pointImgV: UIImageView!
+    
     @IBOutlet weak var firstCode: UILabel!
     @IBOutlet weak var scondCode: UILabel!
     @IBOutlet weak var barcodeImgV: UIImageView!

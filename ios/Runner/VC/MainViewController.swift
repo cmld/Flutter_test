@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JTLocation_iOS
 
 class MainViewController: UIViewController {
 

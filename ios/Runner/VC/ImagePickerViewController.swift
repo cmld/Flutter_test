@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import JTLocation_iOS
 
 class ImagePickerViewController: UIViewController, UINavigationControllerDelegate {
 
@@ -37,13 +36,13 @@ class ImagePickerViewController: UIViewController, UINavigationControllerDelegat
     }
     
     @objc func pushToImagePicker1()  {
-        JTLocationManager.shared.getLocation {[weak self] lon, lat in
-            print("获取到 {\(lon), \(lat)}")
-            
-            JTLocationManager.shared.getAddress(lon: lon, lat: lat) { address in
-                print("获取到 {\(address)}")
-            }
-        }
+//        JTLocationManager.shared.getLocation {[weak self] lon, lat in
+//            print("获取到 {\(lon), \(lat)}")
+//
+//            JTLocationManager.shared.getAddress(lon: lon, lat: lat) { address in
+//                print("获取到 {\(address)}")
+//            }
+//        }
     }
     
     /*

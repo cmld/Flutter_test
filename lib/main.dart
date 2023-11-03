@@ -1,5 +1,7 @@
 // import 'dart:html';
 
+// import 'dart:html';
+
 import 'package:clmd_flutter/ble_manager.dart';
 import 'package:clmd_flutter/components/marquee_ai.dart';
 import 'package:clmd_flutter/routes.dart';
@@ -7,6 +9,8 @@ import 'package:clmd_flutter/utils/thread_sync.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:location_plugin/entity/LocationInfo.dart';
+import 'package:location_plugin/location_plugin.dart';
 import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -59,6 +63,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  ValueNotifier<LocationInfo?> locationNf = ValueNotifier(null);
+  ValueNotifier<String?> addressNf = ValueNotifier(null);
 
   BLEManager manager = BLEManager();
 
@@ -75,7 +81,314 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var ble_options = DecoratedBox(
+    return Scaffold(
+      appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(widget.title),
+      ),
+      body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ValueListenableBuilder(valueListenable: addressNf, builder: (c,v,p)=>
+                Text('$v')
+              ),
+              TextButton(
+                onPressed: () async {
+                  var result = await LocationHelper().covertAddress(locationNf.value ?? LocationInfo());
+                  print(result.toString());
+                  addressNf.value = result;
+                },
+                child: const Text(
+                  '私有插件-covertAddress',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
+              ValueListenableBuilder(valueListenable: locationNf, builder: (c,v,p)=>
+                Text('${v?.latitude } , ${v?.longitude }')
+              ),
+              TextButton(
+                onPressed: () async {
+                  var result = await LocationHelper().getLocation();
+                  print(result.toString());
+                  locationNf.value = result;
+                },
+                child: const Text(
+                  '私有插件-location',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
+              TextButton(
+                onPressed: () async {
+                  String url = 'tel:17621761283';
+                  if (await canLaunchUrlString(url)) {
+                    await launchUrlString(url);
+                  }
+
+                  MethodChannel _channel = const MethodChannel('plugin_clmd');
+                  final result =
+                      await _channel.invokeMethod('callObs', '17621761283');
+                  print(result.toString());
+                },
+                child: const Text(
+                  '拨打电话 CallKit监听',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
+              TextButton(
+                onPressed: () {
+                  SyncUtil.syncCall(() {
+                    print(DateTime.now().toString());
+
+                    return null;
+                  }, space: const Duration(seconds: 1));
+                },
+                child: const Text(
+                  '串行异步队列',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
+              buildBodyScore(77, true),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
+              TextButton(
+                onPressed: () async {
+                  var info = await PackageInfo.fromPlatform();
+                  print(
+                      'APP info: \n -name:${info.appName} \n -packageName:${info.packageName} \n -version:${info.version} \n -buildNumber:${info.buildNumber} \n ');
+                },
+                child: const Text(
+                  'APP Info',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
+              Text(DateTime.utc(2023, 1, 1).toIso8601String()),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, 'lrs');
+                },
+                child: const Text(
+                  '制图',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, 'fds');
+                },
+                child: const Text(
+                  '三方蓝牙搜索页',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
+              DecoratedBox(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.blue),
+                ),
+                child: SizedBox(
+                  width: 200,
+                  child: MarqueeWidget(
+                      text:
+                          "Hello World! How are you today? This is a demo of a MarqueeWidget in Flutter.",
+                      width: 300.0,
+                      height: 30.0,
+                      style: TextStyle(fontSize: 18.0, color: Colors.blue),
+                      speed: 3000),
+                ),
+              ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
+              buildBlueWidget(),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  Widget buildBodyScore(int score, bool isMan) {
+    return Container(
+        padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
+        width: 150.5.w,
+        height: 150.h,
+        decoration: BoxDecoration(
+            color: Colors.lightBlue, borderRadius: BorderRadius.circular(10.5)),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Positioned(
+              top: 5.h,
+              left: 5.w,
+              child: Text(
+                '身体得分',
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Positioned(
+                bottom: -5.h,
+                left: -5.w,
+                child: Image.asset(
+                  'assets/home_good_man.png',
+                  width: 110.w,
+                )),
+            Positioned(
+              top: 10.h,
+              right: 35.w,
+              child: Text(
+                score.toString(),
+                style: TextStyle(
+                  fontSize: 30.sp,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            Positioned(
+              top: 40.h,
+              right: 35.w,
+              child: Text(
+                '分',
+                style: TextStyle(
+                  fontSize: 12.sp,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Positioned(
+              right: 0,
+              top: 5.h,
+              child: SizedBox(
+                width: 21.w,
+                child: Text(
+                  '100',
+                  style: TextStyle(fontSize: 12.sp, color: Colors.white),
+                ),
+              ),
+            ),
+            Positioned(
+              right: 0,
+              bottom: 5.h,
+              child: SizedBox(
+                width: 21.w,
+                child: Text(
+                  '0',
+                  style: TextStyle(fontSize: 12.sp, color: Colors.white),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 5.h,
+              right: 23.w,
+              child: Container(
+                height: 130.h,
+                width: 7.5.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  gradient: const LinearGradient(colors: [
+                    Color.fromRGBO(255, 255, 255, 0.2),
+                    Color.fromRGBO(255, 255, 255, 1),
+                  ], begin: Alignment.bottomLeft, end: Alignment.topRight),
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 130.h * score / 100 - 2.5.h,
+              right: 19.25.w,
+              child: Container(
+                height: 15.h,
+                width: 15.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(200),
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ));
+  }
+
+  Widget buildBlueWidget() {
+    return DecoratedBox(
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black38),
       ),
@@ -241,265 +554,5 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              TextButton(
-                onPressed: () async {
-                  String url = 'tel:17621761283';
-                  if (await canLaunchUrlString(url)) {
-                    await launchUrlString(url);
-                  }
-
-                  MethodChannel _channel = const MethodChannel('plugin_clmd');
-                  final result =
-                      await _channel.invokeMethod('callObs', '17621761283');
-                  print(result.toString());
-                },
-                child: const Text(
-                  '拨打电话 CallKit监听',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const Divider(
-                height: 10,
-                thickness: 2,
-                color: Colors.black,
-              ),
-              TextButton(
-                onPressed: () {
-                  SyncUtil.syncCall(() {
-                    print(DateTime.now().toString());
-
-                    return null;
-                  }, space: const Duration(seconds: 1));
-                },
-                child: const Text(
-                  '串行异步队列',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const Divider(
-                height: 10,
-                thickness: 2,
-                color: Colors.black,
-              ),
-              buildBodyScore(77, true),
-              const Divider(
-                height: 10,
-                thickness: 2,
-                color: Colors.black,
-              ),
-              TextButton(
-                onPressed: () async {
-                  var info = await PackageInfo.fromPlatform();
-                  print(
-                      'APP info: \n -name:${info.appName} \n -packageName:${info.packageName} \n -version:${info.version} \n -buildNumber:${info.buildNumber} \n ');
-                },
-                child: const Text(
-                  'APP Info',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const Divider(
-                height: 10,
-                thickness: 2,
-                color: Colors.black,
-              ),
-              Text(DateTime.utc(2023, 1, 1).toIso8601String()),
-              const Divider(
-                height: 10,
-                thickness: 2,
-                color: Colors.black,
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, 'lrs');
-                },
-                child: const Text(
-                  '制图',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const Divider(
-                height: 10,
-                thickness: 2,
-                color: Colors.black,
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, 'fds');
-                },
-                child: const Text(
-                  '三方蓝牙搜索页',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const Divider(
-                height: 10,
-                thickness: 2,
-                color: Colors.black,
-              ),
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.blue),
-                ),
-                child: SizedBox(
-                  width: 200,
-                  child: MarqueeWidget(
-                      text:
-                          "Hello World! How are you today? This is a demo of a MarqueeWidget in Flutter.",
-                      width: 300.0,
-                      height: 30.0,
-                      style: TextStyle(fontSize: 18.0, color: Colors.blue),
-                      speed: 3000),
-                ),
-              ),
-              const Divider(
-                height: 10,
-                thickness: 2,
-                color: Colors.black,
-              ),
-              ble_options,
-            ],
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-
-  Widget buildBodyScore(int score, bool isMan) {
-    return Container(
-        padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
-        width: 150.5.w,
-        height: 150.h,
-        decoration: BoxDecoration(
-            color: Colors.lightBlue, borderRadius: BorderRadius.circular(10.5)),
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            Positioned(
-              top: 5.h,
-              left: 5.w,
-              child: Text(
-                '身体得分',
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Positioned(
-                bottom: -5.h,
-                left: -5.w,
-                child: Image.asset(
-                  'assets/home_good_man.png',
-                  width: 110.w,
-                )),
-            Positioned(
-              top: 10.h,
-              right: 35.w,
-              child: Text(
-                score.toString(),
-                style: TextStyle(
-                  fontSize: 30.sp,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-            Positioned(
-              top: 40.h,
-              right: 35.w,
-              child: Text(
-                '分',
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Positioned(
-              right: 0,
-              top: 5.h,
-              child: SizedBox(
-                width: 21.w,
-                child: Text(
-                  '100',
-                  style: TextStyle(fontSize: 12.sp, color: Colors.white),
-                ),
-              ),
-            ),
-            Positioned(
-              right: 0,
-              bottom: 5.h,
-              child: SizedBox(
-                width: 21.w,
-                child: Text(
-                  '0',
-                  style: TextStyle(fontSize: 12.sp, color: Colors.white),
-                ),
-              ),
-            ),
-            Positioned(
-              top: 5.h,
-              right: 23.w,
-              child: Container(
-                height: 130.h,
-                width: 7.5.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  gradient: const LinearGradient(colors: [
-                    Color.fromRGBO(255, 255, 255, 0.2),
-                    Color.fromRGBO(255, 255, 255, 1),
-                  ], begin: Alignment.bottomLeft, end: Alignment.topRight),
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 130.h * score / 100 - 2.5.h,
-              right: 19.25.w,
-              child: Container(
-                height: 15.h,
-                width: 15.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(200),
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ],
-        ));
   }
 }

@@ -33,7 +33,7 @@ target 'Runner' do
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
   
-  pod 'JTLocation-iOS', :git =>'http://code.jms.com/mobile/module/ios/jtlocation-ios.git', :tag => '0.1.0'
+  pod 'JTLocation-iOS', :git =>'http://code.jms.com/mobile/module/ios/jtlocation-ios.git'
   
 end
 

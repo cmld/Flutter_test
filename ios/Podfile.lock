@@ -7,6 +7,9 @@ PODS:
     - Flutter
     - Protobuf (~> 3.11.4)
   - JTLocation-iOS (0.1.0)
+  - location_plugin (0.0.1):
+    - Flutter
+    - JTLocation-iOS
   - package_info (0.0.1):
     - Flutter
   - Protobuf (3.11.4)
@@ -16,7 +19,8 @@ PODS:
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_blue (from `.symlinks/plugins/flutter_blue/ios`)
-  - JTLocation-iOS (from `http://code.jms.com/mobile/module/ios/jtlocation-ios.git`, tag `0.1.0`)
+  - JTLocation-iOS (from `http://code.jms.com/mobile/module/ios/jtlocation-ios.git`)
+  - location_plugin (from `.symlinks/plugins/location_plugin/ios`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
@@ -31,7 +35,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_blue/ios"
   JTLocation-iOS:
     :git: http://code.jms.com/mobile/module/ios/jtlocation-ios.git
-    :tag: 0.1.0
+  location_plugin:
+    :path: ".symlinks/plugins/location_plugin/ios"
   package_info:
     :path: ".symlinks/plugins/package_info/ios"
   url_launcher_ios:
@@ -39,17 +44,18 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   JTLocation-iOS:
+    :commit: 71e81187385382bc281b48caa2dae1216cc62946
     :git: http://code.jms.com/mobile/module/ios/jtlocation-ios.git
-    :tag: 0.1.0
 
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_blue: eeb381dc4727a0954dede73515f683865494b370
   JTLocation-iOS: f16b4958a08b9e913ecaa07418f21d2b09998b8e
+  location_plugin: 3bab18e1da613deb0dfb26bc8278860d79a21c86
   package_info: 873975fc26034f0b863a300ad47e7f1ac6c7ec62
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
 
-PODFILE CHECKSUM: 3d86d9dba67beee9a0802f7b3f7ea4c3e1259274
+PODFILE CHECKSUM: 3e89adcd953ec0e812dc81a02e1423b05c7b7d48
 
 COCOAPODS: 1.13.0

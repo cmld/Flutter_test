@@ -9,8 +9,11 @@ import 'package:clmd_flutter/utils/thread_sync.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_pickers/image_pickers.dart';
 import 'package:location_plugin/entity/LocationInfo.dart';
 import 'package:location_plugin/location_plugin.dart';
+import 'package:oss_plugin/bean/OssRequest.dart';
+import 'package:oss_plugin/oss_plugin.dart';
 import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -68,6 +71,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   BLEManager manager = BLEManager();
 
+  final _ossPlugin = OssPlugin();
+  List<String> _filelist = [];
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -94,12 +100,90 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              ValueListenableBuilder(valueListenable: addressNf, builder: (c,v,p)=>
-                Text('$v')
+              TextButton(
+                onPressed: () async {
+                  var model = OssRequest.fromJson({
+                    "requestUrl":
+                        "https://demo-ylapp.jtexpress.my/bc/upload/file/getBatchUploadSignedUrl",
+                    "headers": {
+                      "app-version": "1.0.43",
+                      "app-platform": "iOS_com.jitu.express.malaysia.outfield",
+                      "device-id": "WCI3822FB18-D524-4ED5-9CF1-4014A762BEBF",
+                      "device-name": "iPhone 8 Plus",
+                      "device-version": "iOS-13.7",
+                      "user-agent": "ios/app_out",
+                      "app-channel": "Internal Deliver",
+                      "device": "WCI3822FB18-D524-4ED5-9CF1-4014A762BEBF",
+                      "devicefrom": "ios",
+                      "appid": "g0exxal082vu",
+                      "langType": "CN",
+                      "content-type": "application/json; charset=utf-8",
+                      "timestamp": "1699595284927",
+                      "signature":
+                          "MEM1NkNGQkMxRTQzNkFFODUxOEJGRDE2ODM2MDEwMUM=",
+                      "userCode": "NSN6100008",
+                      "authToken": "25ba35d5fd514ac2b4f1880ef294bf76",
+                      "X-SimplyPost-Id": "1699595284927",
+                      "X-SimplyPost-Signature":
+                          "99c32bf03113bcd39e4df00b5676d064",
+                      "contentType": "application/json; charset=utf-8",
+                      "responseType": "ResponseType.json",
+                      "followRedirects": "true",
+                      "connectTimeout": "10000",
+                      "receiveTimeout": "10000"
+                    },
+                    "fileList": _filelist,
+                    "moduleName": "scan_return_sign"
+                  });
+                  var result = await _ossPlugin.uploadWithOss(model);
+                  print('ossSdk 结果： $result');
+                },
+                child: const Text(
+                  '私有插件-oss 上传图片',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
               ),
               TextButton(
                 onPressed: () async {
-                  var result = await LocationHelper().covertAddress(locationNf.value ?? LocationInfo());
+                  List<Media> _listImagePaths = await ImagePickers.pickerPaths(
+                      galleryMode: GalleryMode.image,
+                      selectCount: 10,
+                      showGif: false,
+                      showCamera: true,
+                      compressSize: 500,
+                      uiConfig: UIConfig(uiThemeColor: Color(0xffff0f50)),
+                      cropConfig:
+                          CropConfig(enableCrop: false, width: 2, height: 1));
+                  _filelist = _listImagePaths.map((e) => e.path ?? '').toList();
+                  print('ossSdk fileList: $_filelist');
+                },
+                child: const Text(
+                  '私有插件-oss 选择图片',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
+              ValueListenableBuilder(
+                  valueListenable: addressNf, builder: (c, v, p) => Text('$v')),
+              TextButton(
+                onPressed: () async {
+                  var result = await LocationHelper()
+                      .covertAddress(locationNf.value ?? LocationInfo());
                   print(result.toString());
                   addressNf.value = result;
                 },
@@ -116,9 +200,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 thickness: 2,
                 color: Colors.black,
               ),
-              ValueListenableBuilder(valueListenable: locationNf, builder: (c,v,p)=>
-                Text('${v?.latitude } , ${v?.longitude }')
-              ),
+              ValueListenableBuilder(
+                  valueListenable: locationNf,
+                  builder: (c, v, p) =>
+                      Text('${v?.latitude} , ${v?.longitude}')),
               TextButton(
                 onPressed: () async {
                   var result = await LocationHelper().getLocation();

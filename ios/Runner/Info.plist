@@ -45,6 +45,10 @@
 	<string>Need Location permission</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+    <string>APP akan memanggil album untuk memilih atau menyimpan foto, bantu waybill dihantar, muat naik pendaftaran bermasalah, Collect or pick up.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>APP akan memanggil album untuk memilih atau menyimpan foto, bantu waybill dihantar, muat naik pendaftaran bermasalah, Collect or pick up.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>processing</string>

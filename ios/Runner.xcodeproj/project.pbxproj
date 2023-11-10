@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
+		5918638D2AFCDB1900612807 /* OSSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5918638C2AFCDB1900612807 /* OSSViewController.swift */; };
+		591863902AFCDB8F00612807 /* JTTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5918638E2AFCDB8F00612807 /* JTTableViewCell.xib */; };
+		591863912AFCDB8F00612807 /* JTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5918638F2AFCDB8F00612807 /* JTTableViewCell.swift */; };
 		599A20962ADD2EBC00AD51ED /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599A20952ADD2EBC00AD51ED /* MainViewController.swift */; };
 		599A20992ADD30A400AD51ED /* JTReturnModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599A20982ADD30A400AD51ED /* JTReturnModeView.swift */; };
 		599A209B2ADD30B900AD51ED /* JTReturnModeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599A209A2ADD30B900AD51ED /* JTReturnModeView.xib */; };
@@ -43,6 +46,9 @@
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		554E1C56F2CAB59D608A2D74 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
+		5918638C2AFCDB1900612807 /* OSSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSSViewController.swift; sourceTree = "<group>"; };
+		5918638E2AFCDB8F00612807 /* JTTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JTTableViewCell.xib; sourceTree = "<group>"; };
+		5918638F2AFCDB8F00612807 /* JTTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTTableViewCell.swift; sourceTree = "<group>"; };
 		599A20952ADD2EBC00AD51ED /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		599A20982ADD30A400AD51ED /* JTReturnModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTReturnModeView.swift; sourceTree = "<group>"; };
 		599A209A2ADD30B900AD51ED /* JTReturnModeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JTReturnModeView.xib; sourceTree = "<group>"; };
@@ -95,6 +101,8 @@
 		599A20972ADD307600AD51ED /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				5918638F2AFCDB8F00612807 /* JTTableViewCell.swift */,
+				5918638E2AFCDB8F00612807 /* JTTableViewCell.xib */,
 				599A20982ADD30A400AD51ED /* JTReturnModeView.swift */,
 				599A209A2ADD30B900AD51ED /* JTReturnModeView.xib */,
 			);
@@ -121,6 +129,7 @@
 		59AE35C22AE7C339000C349B /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				5918638C2AFCDB1900612807 /* OSSViewController.swift */,
 				599A20952ADD2EBC00AD51ED /* MainViewController.swift */,
 				59AE35CD2AEA60BD000C349B /* ImagePickerViewController.swift */,
 				59BE37F92AF2005A00998E5F /* AddWaterViewController.swift */,
@@ -262,6 +271,7 @@
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
+				591863902AFCDB8F00612807 /* JTTableViewCell.xib in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 				599A209B2ADD30B900AD51ED /* JTReturnModeView.xib in Resources */,
 			);
@@ -347,10 +357,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5918638D2AFCDB1900612807 /* OSSViewController.swift in Sources */,
 				59AE35C12AE7C2CA000C349B /* OrderDetailViewController.m in Sources */,
 				59BE37FA2AF2005A00998E5F /* AddWaterViewController.swift in Sources */,
 				59C2CD8A2A89DB4B004B3600 /* JTCallManager.swift in Sources */,
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
+				591863912AFCDB8F00612807 /* JTTableViewCell.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 				599A20962ADD2EBC00AD51ED /* MainViewController.swift in Sources */,
 				599A20992ADD30A400AD51ED /* JTReturnModeView.swift in Sources */,

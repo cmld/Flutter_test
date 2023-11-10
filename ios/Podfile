@@ -1,3 +1,6 @@
+
+source 'http://code.jms.com/mobile/module/ios/jtspec.git'
+source 'https://cdn.cocoapods.org/'
 # Uncomment this line to define a global platform for your project
  platform :ios, '11.0'
 
@@ -32,8 +35,6 @@ target 'Runner' do
   use_modular_headers!
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-  
-  pod 'JTLocation-iOS', :git =>'http://code.jms.com/mobile/module/ios/jtlocation-ios.git'
   
 end
 

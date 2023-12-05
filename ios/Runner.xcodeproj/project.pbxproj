@@ -16,6 +16,8 @@
 		599A20992ADD30A400AD51ED /* JTReturnModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599A20982ADD30A400AD51ED /* JTReturnModeView.swift */; };
 		599A209B2ADD30B900AD51ED /* JTReturnModeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599A209A2ADD30B900AD51ED /* JTReturnModeView.xib */; };
 		599FB81F2B1EF4FF00519B95 /* JTBaseDataTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FB81E2B1EF4FF00519B95 /* JTBaseDataTableView.swift */; };
+		599FB8212B1EF63B00519B95 /* JTBaseDataCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FB8202B1EF63B00519B95 /* JTBaseDataCollectionView.swift */; };
+		599FB8252B1EFB7800519B95 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FB8242B1EFB7800519B95 /* TestModel.swift */; };
 		59AE35C12AE7C2CA000C349B /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AE35C02AE7C2CA000C349B /* OrderDetailViewController.m */; };
 		59AE35CE2AEA60BD000C349B /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE35CD2AEA60BD000C349B /* ImagePickerViewController.swift */; };
 		59BE37F82AF1FD5A00998E5F /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE37F72AF1FD5A00998E5F /* Tools.swift */; };
@@ -54,6 +56,8 @@
 		599A20982ADD30A400AD51ED /* JTReturnModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTReturnModeView.swift; sourceTree = "<group>"; };
 		599A209A2ADD30B900AD51ED /* JTReturnModeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JTReturnModeView.xib; sourceTree = "<group>"; };
 		599FB81E2B1EF4FF00519B95 /* JTBaseDataTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTBaseDataTableView.swift; sourceTree = "<group>"; };
+		599FB8202B1EF63B00519B95 /* JTBaseDataCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTBaseDataCollectionView.swift; sourceTree = "<group>"; };
+		599FB8242B1EFB7800519B95 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		59AE35BF2AE7C2CA000C349B /* OrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
 		59AE35C02AE7C2CA000C349B /* OrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		59AE35C32AE7C6F2000C349B /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -104,12 +108,21 @@
 			isa = PBXGroup;
 			children = (
 				599FB81E2B1EF4FF00519B95 /* JTBaseDataTableView.swift */,
+				599FB8202B1EF63B00519B95 /* JTBaseDataCollectionView.swift */,
 				5918638F2AFCDB8F00612807 /* JTTableViewCell.swift */,
 				5918638E2AFCDB8F00612807 /* JTTableViewCell.xib */,
 				599A20982ADD30A400AD51ED /* JTReturnModeView.swift */,
 				599A209A2ADD30B900AD51ED /* JTReturnModeView.xib */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		599FB8232B1EFB3B00519B95 /* TestGroup */ = {
+			isa = PBXGroup;
+			children = (
+				599FB8242B1EFB7800519B95 /* TestModel.swift */,
+			);
+			path = TestGroup;
 			sourceTree = "<group>";
 		};
 		59AE35BD2AE7C26F000C349B /* OCComponents */ = {
@@ -202,6 +215,7 @@
 				59AE35C22AE7C339000C349B /* VC */,
 				59BE37F62AF1FD3B00998E5F /* Tools */,
 				599A20972ADD307600AD51ED /* Components */,
+				599FB8232B1EFB3B00519B95 /* TestGroup */,
 				59AE35BE2AE7C288000C349B /* OCVC */,
 				59AE35BD2AE7C26F000C349B /* OCComponents */,
 			);
@@ -363,7 +377,9 @@
 				5918638D2AFCDB1900612807 /* OSSViewController.swift in Sources */,
 				59AE35C12AE7C2CA000C349B /* OrderDetailViewController.m in Sources */,
 				599FB81F2B1EF4FF00519B95 /* JTBaseDataTableView.swift in Sources */,
+				599FB8252B1EFB7800519B95 /* TestModel.swift in Sources */,
 				59BE37FA2AF2005A00998E5F /* AddWaterViewController.swift in Sources */,
+				599FB8212B1EF63B00519B95 /* JTBaseDataCollectionView.swift in Sources */,
 				59C2CD8A2A89DB4B004B3600 /* JTCallManager.swift in Sources */,
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				591863912AFCDB8F00612807 /* JTTableViewCell.swift in Sources */,

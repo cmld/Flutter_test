@@ -13,18 +13,17 @@ import Flutter
     pluginChannel(msg: msger)
       
       // MARK: 走Flutter - main
-   return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+//   return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     
       // MARK: 走Native - main
-    //   var nativeWindow = UIWindow(frame: UIScreen.main.bounds)
-    //   nativeWindow.backgroundColor = .white
+    let nativeWindow = UIWindow(frame: UIScreen.main.bounds)
+    nativeWindow.backgroundColor = .white
 
-    //   let nv = UINavigationController(rootViewController: OSSViewController())
-    //   nativeWindow.rootViewController = nv
-    //   self.window = nativeWindow
-    //   self.window.makeKeyAndVisible()
-
-      return true
+    let nv = UINavigationController(rootViewController: OSSViewController())
+    nativeWindow.rootViewController = nv
+    self.window = nativeWindow
+    self.window.makeKeyAndVisible()
+    return true
   }
     
 //    channel
@@ -39,6 +38,15 @@ import Flutter
                     }
                     JTCallManager.shared.setupCallObserver(phone) { datas in
                         result(datas)
+                    }
+                    break
+                case "imgComp":
+                    if let data = call.arguments as? [UInt8] {
+                        print(data.count)
+                        let imgData: Data = Data(bytes: data, count: data.count)
+                        let img = UIImage(data: imgData)
+                        print(imgData.count)
+                        
                     }
                     break
                 default:

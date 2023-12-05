@@ -9,7 +9,7 @@
 import UIKit
 import JTOSSUploader_iOS
 import Alamofire
-
+import SnapKit
 
 class OSSViewController: UIViewController {
     var imgList: [String] = []
@@ -40,13 +40,17 @@ class OSSViewController: UIViewController {
                    "connectTimeout": "10000",
                    "receiveTimeout": "10000",]
     
+    lazy var footV: testView = {
+        let value = testView()
+        value.backgroundColor = .blue
+        return value
+    }()
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect(x: 20, y: 94, width: 350, height: 500), style: .plain)
+        let tableView = UITableView.init(frame: .zero, style: .plain)
         tableView.backgroundColor = UIColor.gray
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 50
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0.0
         }
@@ -54,6 +58,7 @@ class OSSViewController: UIViewController {
         tableView.sectionFooterHeight = 0.1
         tableView.register(UINib(nibName: "JTTableViewCell", bundle: nil), forCellReuseIdentifier: "JTTableViewCellID")
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        tableView.tableFooterView = footV
         return tableView
     }()
     
@@ -73,7 +78,30 @@ class OSSViewController: UIViewController {
         button1.addTarget(self, action: #selector(pushToImagePicker1), for: .touchUpInside)
         self.view.addSubview(button1)
         
-        self.view.addSubview(tableView)
+        let bgView = UIScrollView(frame: CGRect(x: 20, y: 94, width: 350, height: 500))
+        bgView.backgroundColor = .purple
+        
+        bgView.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+//            make.bottom.equalToSuperview()
+            make.height.equalTo(0)
+        }
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        bgView.addSubview(footV)
+        self.view.addSubview(bgView)
+        footV.snp.makeConstraints { make in
+            make.top.equalTo(tableView.snp.bottom).offset(10)
+            make.left.right.bottom.equalToSuperview()
+        }
+        footV.translatesAutoresizingMaskIntoConstraints = false
+        bgView.contentSize = CGSize(width: tableView.bounds.size.width, height: tableView.bounds.size.height + footV.bounds.size.height)
+        
+//        self.view.addSubview(tableView)
         
     }
     
@@ -159,6 +187,9 @@ extension OSSViewController: UIImagePickerControllerDelegate, UINavigationContro
              
              imgList.append(outputURL.relativePath)
              tableView.reloadData()
+             tableView.snp.updateConstraints { make in
+                 make.height.equalTo(imgList.count * 100)
+             }
          }catch _{}
          
         picker.dismiss(animated: true)
@@ -195,4 +226,69 @@ struct responseModel<T: Codable>: Codable {
     var succ: Bool = false
     var fail: Bool = false
     var data: T? = nil
+}
+
+
+class testView: UIView {
+    
+    lazy var firstV: UIView = {
+        let value = UIView()
+        value.backgroundColor = .yellow
+        return value
+    }()
+    
+    lazy var secendV: UIView = {
+        let value = UIView()
+        value.backgroundColor = .red
+        return value
+    }()
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    
+    var ish = false
+    
+    func setupUI() {
+        addSubview(firstV)
+        addSubview(secendV)
+        
+        let bui = UIButton(frame: CGRectMake(0, 0, 50, 50))
+        bui.backgroundColor = .brown
+        firstV.addSubview(bui)
+        bui.addTarget(self, action: #selector(lskdj), for: .touchUpInside)
+        
+        firstV.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+//            make.bottom.equalToSuperview()
+            make.width.equalTo(350)
+            make.height.equalTo(350)
+        }
+        
+        secendV.snp.makeConstraints { make in
+            make.top.equalTo(firstV.snp.bottom).offset(10)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.width.equalTo(350)
+            make.height.equalTo(350)
+            make.bottom.equalToSuperview()
+        }
+        
+    }
+    
+    @objc func lskdj(sender: UIButton){
+        ish = !ish
+        firstV.snp.updateConstraints { make in
+            make.height.equalTo(ish ? 100 : 350)
+        }
+        UIView.animate(withDuration: 0.2) {[weak self]in
+            self?.layoutIfNeeded()
+        }
+    }
 }

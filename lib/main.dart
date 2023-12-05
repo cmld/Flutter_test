@@ -2,6 +2,8 @@
 
 // import 'dart:html';
 
+import 'dart:io';
+
 import 'package:clmd_flutter/ble_manager.dart';
 import 'package:clmd_flutter/components/marquee_ai.dart';
 import 'package:clmd_flutter/routes.dart';
@@ -65,6 +67,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  final MethodChannel _channel = const MethodChannel('plugin_clmd');
+  
   int _counter = 0;
   ValueNotifier<LocationInfo?> locationNf = ValueNotifier(null);
   ValueNotifier<String?> addressNf = ValueNotifier(null);
@@ -163,6 +168,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       cropConfig:
                           CropConfig(enableCrop: false, width: 2, height: 1));
                   _filelist = _listImagePaths.map((e) => e.path ?? '').toList();
+                  var bd = await File(_filelist.first).readAsBytes();
+                  final result =
+                      await _channel.invokeMethod('imgComp', bd.toList());
                   print('ossSdk fileList: $_filelist');
                 },
                 child: const Text(
@@ -206,9 +214,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       Text('${v?.latitude} , ${v?.longitude}')),
               TextButton(
                 onPressed: () async {
-                  var result = await LocationHelper().getLocation();
-                  print(result.toString());
-                  locationNf.value = result;
+                  var auth = await LocationHelper().hasLocationPermission();
+                  if (auth) {
+                    var result = await LocationHelper().getLocation();
+                    print(result.toString());
+                    locationNf.value = result;
+                  } else {
+                    LocationHelper().openLocationSettings();
+                  }
                 },
                 child: const Text(
                   '私有插件-location',
@@ -230,7 +243,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     await launchUrlString(url);
                   }
 
-                  MethodChannel _channel = const MethodChannel('plugin_clmd');
+                  
                   final result =
                       await _channel.invokeMethod('callObs', '17621761283');
                   print(result.toString());

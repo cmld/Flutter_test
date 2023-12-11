@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
         
         content1.cv.dataList.insert(contentsOf: (1...20).map { item in
             let model = JTBalanceModel()
-            model.title = "\((1...Int.random(in: 3...15)).map({_ in return "6"}).joined(separator: ""))"
+            model.title = "\((1...Int.random(in: 1...15)).map({_ in return "6"}).joined(separator: ""))"
             return model
         }, at: 0)
         

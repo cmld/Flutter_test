@@ -20,7 +20,7 @@ class JTBalanceItemCell: JTBaseDataCollectionCell<JTBalanceModel> {
         let value = UILabel()
         value.textColor = .black
         value.font = UIFont.systemFont(ofSize: 14)
-        
+        value.textAlignment = .center
         value.backgroundColor = .white
         return value
     }()
@@ -44,6 +44,7 @@ class JTBalanceItemCell: JTBaseDataCollectionCell<JTBalanceModel> {
         titleV.snp.makeConstraints { make in
             make.top.left.right.bottom.equalToSuperview().inset(5)
             make.height.equalTo(25)
+            make.width.greaterThanOrEqualTo(25)
         }
     }
     

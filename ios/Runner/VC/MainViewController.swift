@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.title = "main start"
         // Do any additional setup after loading the view.
-        let content = JTReturnModeView(frame: CGRect(x: 10, y: 100, width: 304, height: 400))
+        let content = JTHandoverModeView(frame: CGRect(x: 10, y: 100, width: 304, height: 400))
         view.addSubview(content)
         
         let content1 = BalanceAlertView(frame:.zero)
@@ -39,6 +39,29 @@ class MainViewController: UIViewController {
                 make.top.equalTo(self.view.snp.bottom).inset(content1.cv.contentSize.height + 50 + 20)
             }
             self.view.layoutIfNeeded()
+        }
+        
+        
+        let noticeV = JTAutoScrollView()
+        noticeV.scrollV.dataList.insert(contentsOf: ["公告嘎嘎嘎嘎嘎嘎嘎嘎嘎-1", "公告嘎嘎嘎嘎嘎嘎嘎嘎嘎-2", "公告嘎嘎嘎嘎嘎嘎嘎嘎嘎-3",  "公告嘎嘎嘎嘎嘎嘎嘎嘎嘎-1"].map({ item in
+            let model = JTBalanceModel()
+            model.title = item
+            return model
+        }), at: 0)
+        self.view.addSubview(noticeV)
+        
+        noticeV.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(70)
+            make.left.right.equalToSuperview().inset(10)
+            make.height.equalTo(35)
+        }
+        
+        noticeV.cancelIcon.addTap {
+            noticeV.timerFire()
+        }
+        
+        noticeV.icon.addTap {
+            noticeV.timer?.invalidate()
         }
     }
 }

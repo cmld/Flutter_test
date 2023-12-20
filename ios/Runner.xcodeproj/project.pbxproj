@@ -12,6 +12,8 @@
 		5918638D2AFCDB1900612807 /* OSSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5918638C2AFCDB1900612807 /* OSSViewController.swift */; };
 		591863902AFCDB8F00612807 /* JTTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5918638E2AFCDB8F00612807 /* JTTableViewCell.xib */; };
 		591863912AFCDB8F00612807 /* JTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5918638F2AFCDB8F00612807 /* JTTableViewCell.swift */; };
+		5929787D2B2AA88D00011DDC /* JTHandoverModeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5929787C2B2AA88D00011DDC /* JTHandoverModeView.xib */; };
+		5929787F2B2AA8A000011DDC /* JTHandoverModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5929787E2B2AA8A000011DDC /* JTHandoverModeView.swift */; };
 		599A20962ADD2EBC00AD51ED /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599A20952ADD2EBC00AD51ED /* MainViewController.swift */; };
 		599A20992ADD30A400AD51ED /* JTReturnModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599A20982ADD30A400AD51ED /* JTReturnModeView.swift */; };
 		599A209B2ADD30B900AD51ED /* JTReturnModeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599A209A2ADD30B900AD51ED /* JTReturnModeView.xib */; };
@@ -24,6 +26,10 @@
 		59BE37FA2AF2005A00998E5F /* AddWaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE37F92AF2005A00998E5F /* AddWaterViewController.swift */; };
 		59C2CD8A2A89DB4B004B3600 /* JTCallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C2CD892A89DB4A004B3600 /* JTCallManager.swift */; };
 		59C2CD8C2A89DB6B004B3600 /* CallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C2CD8B2A89DB6B004B3600 /* CallKit.framework */; };
+		59E75FAC2B2ACAAE0008E807 /* HomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E75FAB2B2ACAAE0008E807 /* HomeListViewController.swift */; };
+		59E75FAE2B2ACD3D0008E807 /* ModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E75FAD2B2ACD3D0008E807 /* ModeViewController.swift */; };
+		59E75FB42B2AE65E0008E807 /* JTSendSecondModeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59E75FB32B2AE65E0008E807 /* JTSendSecondModeView.xib */; };
+		59E75FB62B2AE66F0008E807 /* JTSendSecondModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E75FB52B2AE66F0008E807 /* JTSendSecondModeView.swift */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
@@ -52,6 +58,8 @@
 		5918638C2AFCDB1900612807 /* OSSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSSViewController.swift; sourceTree = "<group>"; };
 		5918638E2AFCDB8F00612807 /* JTTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JTTableViewCell.xib; sourceTree = "<group>"; };
 		5918638F2AFCDB8F00612807 /* JTTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTTableViewCell.swift; sourceTree = "<group>"; };
+		5929787C2B2AA88D00011DDC /* JTHandoverModeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JTHandoverModeView.xib; sourceTree = "<group>"; };
+		5929787E2B2AA8A000011DDC /* JTHandoverModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTHandoverModeView.swift; sourceTree = "<group>"; };
 		599A20952ADD2EBC00AD51ED /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		599A20982ADD30A400AD51ED /* JTReturnModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTReturnModeView.swift; sourceTree = "<group>"; };
 		599A209A2ADD30B900AD51ED /* JTReturnModeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JTReturnModeView.xib; sourceTree = "<group>"; };
@@ -66,6 +74,10 @@
 		59BE37F92AF2005A00998E5F /* AddWaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWaterViewController.swift; sourceTree = "<group>"; };
 		59C2CD892A89DB4A004B3600 /* JTCallManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTCallManager.swift; sourceTree = "<group>"; };
 		59C2CD8B2A89DB6B004B3600 /* CallKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CallKit.framework; path = System/Library/Frameworks/CallKit.framework; sourceTree = SDKROOT; };
+		59E75FAB2B2ACAAE0008E807 /* HomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListViewController.swift; sourceTree = "<group>"; };
+		59E75FAD2B2ACD3D0008E807 /* ModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeViewController.swift; sourceTree = "<group>"; };
+		59E75FB32B2AE65E0008E807 /* JTSendSecondModeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JTSendSecondModeView.xib; sourceTree = "<group>"; };
+		59E75FB52B2AE66F0008E807 /* JTSendSecondModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTSendSecondModeView.swift; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79E4AB4D9E4D4C9A30615E4D /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +125,10 @@
 				5918638E2AFCDB8F00612807 /* JTTableViewCell.xib */,
 				599A20982ADD30A400AD51ED /* JTReturnModeView.swift */,
 				599A209A2ADD30B900AD51ED /* JTReturnModeView.xib */,
+				5929787E2B2AA8A000011DDC /* JTHandoverModeView.swift */,
+				5929787C2B2AA88D00011DDC /* JTHandoverModeView.xib */,
+				59E75FB52B2AE66F0008E807 /* JTSendSecondModeView.swift */,
+				59E75FB32B2AE65E0008E807 /* JTSendSecondModeView.xib */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -145,10 +161,12 @@
 		59AE35C22AE7C339000C349B /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				59E75FAB2B2ACAAE0008E807 /* HomeListViewController.swift */,
 				5918638C2AFCDB1900612807 /* OSSViewController.swift */,
 				599A20952ADD2EBC00AD51ED /* MainViewController.swift */,
 				59AE35CD2AEA60BD000C349B /* ImagePickerViewController.swift */,
 				59BE37F92AF2005A00998E5F /* AddWaterViewController.swift */,
+				59E75FAD2B2ACD3D0008E807 /* ModeViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -229,6 +247,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */;
 			buildPhases = (
+				59C719222B32F1CF00C5928A /* ShellScript */,
 				BB6B93FAA3FEE52A43925698 /* [CP] Check Pods Manifest.lock */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
@@ -290,6 +309,8 @@
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				591863902AFCDB8F00612807 /* JTTableViewCell.xib in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
+				59E75FB42B2AE65E0008E807 /* JTSendSecondModeView.xib in Resources */,
+				5929787D2B2AA88D00011DDC /* JTHandoverModeView.xib in Resources */,
 				599A209B2ADD30B900AD51ED /* JTReturnModeView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +333,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
+		};
+		59C719222B32F1CF00C5928A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/bin/sh\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print :CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\n\n\nbuildNumber=`date +\"%Y%m%d%H%M\"`\n\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${INFOPLIST_FILE}\"\n";
 		};
 		9740EEB61CF901F6004384FC /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -379,11 +418,15 @@
 				599FB81F2B1EF4FF00519B95 /* JTBaseDataTableView.swift in Sources */,
 				599FB8252B1EFB7800519B95 /* TestModel.swift in Sources */,
 				59BE37FA2AF2005A00998E5F /* AddWaterViewController.swift in Sources */,
+				59E75FAE2B2ACD3D0008E807 /* ModeViewController.swift in Sources */,
 				599FB8212B1EF63B00519B95 /* JTBaseDataCollectionView.swift in Sources */,
 				59C2CD8A2A89DB4B004B3600 /* JTCallManager.swift in Sources */,
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				591863912AFCDB8F00612807 /* JTTableViewCell.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
+				59E75FB62B2AE66F0008E807 /* JTSendSecondModeView.swift in Sources */,
+				5929787F2B2AA8A000011DDC /* JTHandoverModeView.swift in Sources */,
+				59E75FAC2B2ACAAE0008E807 /* HomeListViewController.swift in Sources */,
 				599A20962ADD2EBC00AD51ED /* MainViewController.swift in Sources */,
 				599A20992ADD30A400AD51ED /* JTReturnModeView.swift in Sources */,
 				59AE35CE2AEA60BD000C349B /* ImagePickerViewController.swift in Sources */,
@@ -479,6 +522,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.Neil.flutterAppTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -610,6 +654,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.Neil.flutterAppTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -635,6 +680,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.Neil.flutterAppTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";

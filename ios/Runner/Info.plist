@@ -23,7 +23,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<string>202312201802</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -37,20 +37,20 @@
 	<string>Need BLE permission</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>Need BLE permission</string>
+	<key>NSCameraUsageDescription</key>
+	<string>要用相机</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Need Location permission</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Need Location permission</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Need Location permission</string>
-    <key>NSCameraUsageDescription</key>
-    <string>要用相机</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>APP akan memanggil album untuk memilih atau menyimpan foto, bantu waybill dihantar, muat naik pendaftaran bermasalah, Collect or pick up.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>APP akan memanggil album untuk memilih atau menyimpan foto, bantu waybill dihantar, muat naik pendaftaran bermasalah, Collect or pick up.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-    <string>APP akan memanggil album untuk memilih atau menyimpan foto, bantu waybill dihantar, muat naik pendaftaran bermasalah, Collect or pick up.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>APP akan memanggil album untuk memilih atau menyimpan foto, bantu waybill dihantar, muat naik pendaftaran bermasalah, Collect or pick up.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>processing</string>

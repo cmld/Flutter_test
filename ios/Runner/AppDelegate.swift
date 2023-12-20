@@ -19,7 +19,7 @@ import Flutter
     let nativeWindow = UIWindow(frame: UIScreen.main.bounds)
     nativeWindow.backgroundColor = .white
 
-    let nv = UINavigationController(rootViewController: MainViewController())
+    let nv = UINavigationController(rootViewController: HomeListViewController())
     nativeWindow.rootViewController = nv
     self.window = nativeWindow
     self.window.makeKeyAndVisible()

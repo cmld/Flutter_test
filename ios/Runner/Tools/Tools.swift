@@ -288,3 +288,35 @@ extension UIImage {
         }
     }
 }
+
+//MARK: - 按钮和UIView的事件
+extension UIView { // 按钮和UIView的事件
+    
+    private static var blockKey = "blockKey"
+    
+    private var block: (()->())? {
+        get{ return objc_getAssociatedObject(self, &UIView.blockKey) as? ()->() }
+        set{ objc_setAssociatedObject(self, &UIView.blockKey, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC) }
+    }
+    
+    func addTap(_ aBlock: @escaping ()->()) {
+        block = aBlock
+        isUserInteractionEnabled = true
+        if let button = self as? UIButton {
+            button.addTarget(self, action: #selector(tapAction), for: .touchUpInside)
+        } else {
+            let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+            addGestureRecognizer(tap)
+        }
+    }
+    
+    @objc func tapAction() {
+        block?()
+    }
+}
+
+extension CALayer {
+    func setBorderColorWithUIColor(color: UIColor) {
+        self.borderColor = color.cgColor
+    }
+}

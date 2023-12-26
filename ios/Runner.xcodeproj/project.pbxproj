@@ -20,6 +20,7 @@
 		599FB81F2B1EF4FF00519B95 /* JTBaseDataTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FB81E2B1EF4FF00519B95 /* JTBaseDataTableView.swift */; };
 		599FB8212B1EF63B00519B95 /* JTBaseDataCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FB8202B1EF63B00519B95 /* JTBaseDataCollectionView.swift */; };
 		599FB8252B1EFB7800519B95 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FB8242B1EFB7800519B95 /* TestModel.swift */; };
+		59A513B02B3ABEA100F3E37F /* MyScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A513AF2B3ABEA100F3E37F /* MyScrollViewController.swift */; };
 		59AE35C12AE7C2CA000C349B /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AE35C02AE7C2CA000C349B /* OrderDetailViewController.m */; };
 		59AE35CE2AEA60BD000C349B /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE35CD2AEA60BD000C349B /* ImagePickerViewController.swift */; };
 		59BE37F82AF1FD5A00998E5F /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE37F72AF1FD5A00998E5F /* Tools.swift */; };
@@ -67,6 +68,7 @@
 		599FB81E2B1EF4FF00519B95 /* JTBaseDataTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTBaseDataTableView.swift; sourceTree = "<group>"; };
 		599FB8202B1EF63B00519B95 /* JTBaseDataCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTBaseDataCollectionView.swift; sourceTree = "<group>"; };
 		599FB8242B1EFB7800519B95 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
+		59A513AF2B3ABEA100F3E37F /* MyScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScrollViewController.swift; sourceTree = "<group>"; };
 		59AE35BF2AE7C2CA000C349B /* OrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
 		59AE35C02AE7C2CA000C349B /* OrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		59AE35C32AE7C6F2000C349B /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				59BE37F92AF2005A00998E5F /* AddWaterViewController.swift */,
 				59E75FAD2B2ACD3D0008E807 /* ModeViewController.swift */,
 				59C719232B34316800C5928A /* ToolsViewController.swift */,
+				59A513AF2B3ABEA100F3E37F /* MyScrollViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				5918638D2AFCDB1900612807 /* OSSViewController.swift in Sources */,
 				59AE35C12AE7C2CA000C349B /* OrderDetailViewController.m in Sources */,
 				599FB81F2B1EF4FF00519B95 /* JTBaseDataTableView.swift in Sources */,
+				59A513B02B3ABEA100F3E37F /* MyScrollViewController.swift in Sources */,
 				599FB8252B1EFB7800519B95 /* TestModel.swift in Sources */,
 				59BE37FA2AF2005A00998E5F /* AddWaterViewController.swift in Sources */,
 				59E75FAE2B2ACD3D0008E807 /* ModeViewController.swift in Sources */,

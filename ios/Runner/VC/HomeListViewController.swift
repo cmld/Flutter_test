@@ -29,7 +29,7 @@ class HomeListViewController: UIViewController {
             make.edges.equalToSuperview().inset(15)
         }
         
-        tableView.dataList.insert(contentsOf: ["Main", "Oss", "ImagePicker", "AddWater", "面单", "Tools"].map({ item in
+        tableView.dataList.insert(contentsOf: ["Main", "Oss", "ImagePicker", "AddWater", "面单", "Tools", "tableView + collectionView"].map({ item in
             let model = JTBalanceModel()
             model.title = item
             return model
@@ -50,14 +50,15 @@ class HomeListViewController: UIViewController {
                     vc = ModeViewController()
                 case 5:
                     vc = ToolsViewController()
-                    
+                case 6:
+                    vc = MyScrollViewController()
                 default:
                     vc = MainViewController()
             }
             self?.navigationController?.pushViewController(vc, animated: true)
         }
         
-        tableView.cellSelected(JTNoticeCell(), IndexPath(row: 0, section: 0))
+        tableView.cellSelected(JTNoticeCell(), IndexPath(row: 6, section: 0))
     }
     
 }

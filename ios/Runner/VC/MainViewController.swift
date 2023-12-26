@@ -16,34 +16,34 @@ class MainViewController: UIViewController {
         let content = JTHandoverModeView(frame: CGRect(x: 10, y: 100, width: 304, height: 400))
         view.addSubview(content)
         
-        let content1 = BalanceAlertView(frame:.zero)
-        view.addSubview(content1)
-        
-        content1.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.bottom)
-            make.left.right.equalToSuperview()
-        }
-        
-        content1.cv.dataList.insert(contentsOf: (1...20).map { item in
-            let model = JTBalanceModel()
-            model.title = "\((1...Int.random(in: 1...15)).map({_ in return "6"}).joined(separator: ""))"
-            return model
-        }, at: 0)
-        
-        content1.cv.snp.updateConstraints { make in
-            make.height.equalTo(content1.cv.contentSize.height)
-        }
-        self.view.layoutIfNeeded()
-        UIView.animate(withDuration: 1) {
-            content1.snp.makeConstraints { make in
-                make.top.equalTo(self.view.snp.bottom).inset(content1.cv.contentSize.height + 50 + 20)
-            }
-            self.view.layoutIfNeeded()
-        }
-        
-        content1.cv.cellSelected = { d, d1 in
-            print(d1.row)
-        }
+//        let content1 = BalanceAlertView(frame:.zero)
+//        view.addSubview(content1)
+//        
+//        content1.snp.makeConstraints { make in
+//            make.top.equalTo(view.snp.bottom)
+//            make.left.right.equalToSuperview()
+//        }
+//        
+//        content1.cv.dataList.insert(contentsOf: (1...20).map { item in
+//            let model = JTBalanceModel()
+//            model.title = "\((1...Int.random(in: 1...15)).map({_ in return "6"}).joined(separator: ""))"
+//            return model
+//        }, at: 0)
+//        
+//        content1.cv.snp.updateConstraints { make in
+//            make.height.equalTo(content1.cv.contentSize.height)
+//        }
+//        self.view.layoutIfNeeded()
+//        UIView.animate(withDuration: 1) {
+//            content1.snp.makeConstraints { make in
+//                make.top.equalTo(self.view.snp.bottom).inset(content1.cv.contentSize.height + 50 + 20)
+//            }
+//            self.view.layoutIfNeeded()
+//        }
+//        
+//        content1.cv.cellSelected = { d, d1 in
+//            print(d1.row)
+//        }
         
         let noticeV = JTAutoScrollView()
         noticeV.scrollV.dataList.insert(contentsOf: ["公告嘎嘎嘎嘎嘎嘎嘎嘎嘎-1", "公告嘎嘎嘎嘎嘎嘎嘎嘎嘎-2", "公告嘎嘎嘎嘎嘎嘎嘎嘎嘎-3",  "公告嘎嘎嘎嘎嘎嘎嘎嘎嘎-1"].map({ item in

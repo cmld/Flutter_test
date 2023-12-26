@@ -23,7 +23,7 @@ class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionView, U
     var dataList: [T.D] = [] {
         didSet {
             self.reloadData()
-            self.superview?.layoutIfNeeded()
+            self.layoutIfNeeded()
         }
     }
     

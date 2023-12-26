@@ -29,6 +29,7 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
     var dataList: [T.D] = [] {
         didSet {
             self.reloadData()
+            self.layoutIfNeeded()
         }
     }
 
@@ -37,9 +38,8 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
         
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = false
-        self.estimatedRowHeight = UITableView.automaticDimension
-        self.sectionHeaderHeight = 10
-        self.sectionFooterHeight = 1
+        self.sectionHeaderHeight = 0.1
+        self.sectionFooterHeight = 0.1
         self.tableFooterView = UIView()
         if #available(iOS 15.0, *) {
             self.sectionHeaderTopPadding = 0
@@ -49,7 +49,6 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
         
         self.delegate = self
         self.dataSource = self
-        self.rowHeight = UITableView.automaticDimension
         self.backgroundColor = .white
     }
     

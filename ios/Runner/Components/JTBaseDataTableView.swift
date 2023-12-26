@@ -9,12 +9,13 @@
 import UIKit
 import HandyJSON
 
-class JTBaseDataTableViewCell<D: HandyJSON>: UITableViewCell {
+class JTBaseDataTableViewCell: UITableViewCell {
+    typealias D = HandyJSON
     var cellModel: D?
     func setContent(model: D) {}
 }
 
-class JTBaseDataTableView<D: HandyJSON, T: JTBaseDataTableViewCell<D>>: UITableView, UITableViewDelegate, UITableViewDataSource {
+class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewDelegate, UITableViewDataSource {
     var cellID: String = "" {
         didSet {
             self.register(T.classForCoder(), forCellReuseIdentifier: cellID)
@@ -25,7 +26,7 @@ class JTBaseDataTableView<D: HandyJSON, T: JTBaseDataTableViewCell<D>>: UITableV
     
     var cellSelected:((_: T, _: IndexPath)->Void) = {_, _ in}
     
-    var dataList: [D] = [] {
+    var dataList: [T.D] = [] {
         didSet {
             self.reloadData()
         }

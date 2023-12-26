@@ -320,3 +320,30 @@ extension CALayer {
         self.borderColor = color.cgColor
     }
 }
+
+
+extension String {
+    var moneyAbbreviation: String {
+        if let amount = Decimal(string: self) {
+            var denominator = Decimal(1)
+            var unit = ""
+            if amount >= 10000 && amount < 1000000 {
+                denominator = Decimal(1000)
+                unit = "k"
+            } else if amount >= 1000000 && amount < 1000000000 {
+                denominator = Decimal(1000000)
+                unit = "M"
+            } else if amount >= 1000000000 {
+                denominator = Decimal(100000000)
+                unit = "B"
+            }
+            let conversion = amount / denominator
+            // 四舍五入用roundingMode: .plain
+            let handler = NSDecimalNumberHandler(roundingMode: .down, scale: 2, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: true)
+            let roundedNum = NSDecimalNumber(decimal: conversion).rounding(accordingToBehavior: handler).decimalValue.description
+            print("amount: \(amount)    denominator: \(denominator)   conversion: \(roundedNum)")
+            return roundedNum + unit
+        }
+        return self
+    }
+}

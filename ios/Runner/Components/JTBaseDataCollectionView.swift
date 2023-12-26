@@ -8,22 +8,22 @@
 import UIKit
 import HandyJSON
 
-class JTBaseDataCollectionCell<D: HandyJSON>: UICollectionViewCell {
+class JTBaseDataCollectionCell: UICollectionViewCell {
+    typealias D = HandyJSON
     var cellModel: D?
     func setContent(model: D) {}
 }
 
-class JTBaseDataCollectionView<D: HandyJSON, T: JTBaseDataCollectionCell<D>>: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     var cellID: String = "" {
         didSet {
             self.register(T.classForCoder(), forCellWithReuseIdentifier: cellID)
         }
     }
-    
-    var dataList: [D] = [] {
+    var dataList: [T.D] = [] {
         didSet {
             self.reloadData()
-            self.layoutIfNeeded()
+            self.superview?.layoutIfNeeded()
         }
     }
     

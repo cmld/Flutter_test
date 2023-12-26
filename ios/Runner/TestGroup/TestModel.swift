@@ -14,8 +14,7 @@ class JTBalanceModel: HandyJSON {
     required init() {}
 }
 
-class JTBalanceItemCell: JTBaseDataCollectionCell<JTBalanceModel> {
-    
+class JTBalanceItemCell: JTBaseDataCollectionCell {
     var titleV: UILabel = {
         let value = UILabel()
         value.textColor = .black
@@ -48,10 +47,11 @@ class JTBalanceItemCell: JTBaseDataCollectionCell<JTBalanceModel> {
         }
     }
     
-    override func setContent(model: JTBalanceModel) {
-        cellModel = model
-        
-        titleV.text = model.title ?? "empty"
+    override func setContent(model: D) {
+        if let  instance = model as? JTBalanceModel {
+            cellModel = instance
+            titleV.text = instance.title ?? "empty"
+        }
     }
     
     override var isSelected: Bool {
@@ -69,8 +69,8 @@ class JTAutoScrollView: UIView {
         return value
     }()
     
-    lazy var scrollV: JTBaseDataTableView<JTBalanceModel, JTNoticeCell> = {
-        let value = JTBaseDataTableView<JTBalanceModel, JTNoticeCell>()
+    lazy var scrollV: JTBaseDataTableView<JTNoticeCell> = {
+        let value = JTBaseDataTableView<JTNoticeCell>()
         value.cellID = "JTNoticeCellID"
         value.separatorStyle = .none
         value.isScrollEnabled = false
@@ -146,7 +146,7 @@ class JTAutoScrollView: UIView {
     }
 }
 
-class JTNoticeCell: JTBaseDataTableViewCell<JTBalanceModel> {
+class JTNoticeCell: JTBaseDataTableViewCell {
     lazy var contnetLb: UILabel = {
         let value = UILabel()
         value.textColor = .black
@@ -172,8 +172,10 @@ class JTNoticeCell: JTBaseDataTableViewCell<JTBalanceModel> {
         }
     }
     
-    override func setContent(model: JTBalanceModel) {
-        contnetLb.text = model.title
+    override func setContent(model: D) {
+        if let  instance = model as? JTBalanceModel {
+            contnetLb.text = instance.title
+        }
     }
     
     

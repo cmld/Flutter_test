@@ -9,8 +9,8 @@ import UIKit
 
 class HomeListViewController: UIViewController {
     
-    lazy var tableView: JTBaseDataTableView<JTBalanceModel, JTNoticeCell> = {
-        let value = JTBaseDataTableView<JTBalanceModel, JTNoticeCell>()
+    lazy var tableView: JTBaseDataTableView<JTNoticeCell> = {
+        let value = JTBaseDataTableView<JTNoticeCell>()
         value.cellID = "JTHomeCellID"
         value.separatorStyle = .none
         return value
@@ -29,7 +29,7 @@ class HomeListViewController: UIViewController {
             make.edges.equalToSuperview().inset(15)
         }
         
-        tableView.dataList.insert(contentsOf: ["Main", "Oss", "ImagePicker", "AddWater", "面单"].map({ item in
+        tableView.dataList.insert(contentsOf: ["Main", "Oss", "ImagePicker", "AddWater", "面单", "Tools"].map({ item in
             let model = JTBalanceModel()
             model.title = item
             return model
@@ -48,6 +48,8 @@ class HomeListViewController: UIViewController {
                     vc = AddWaterViewController()
                 case 4:
                     vc = ModeViewController()
+                case 5:
+                    vc = ToolsViewController()
                     
                 default:
                     vc = MainViewController()
@@ -55,7 +57,7 @@ class HomeListViewController: UIViewController {
             self?.navigationController?.pushViewController(vc, animated: true)
         }
         
-        tableView.cellSelected(JTNoticeCell(), IndexPath(row: 4, section: 0))
+        tableView.cellSelected(JTNoticeCell(), IndexPath(row: 0, section: 0))
     }
     
 }

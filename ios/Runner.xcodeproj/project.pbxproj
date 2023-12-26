@@ -26,6 +26,7 @@
 		59BE37FA2AF2005A00998E5F /* AddWaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE37F92AF2005A00998E5F /* AddWaterViewController.swift */; };
 		59C2CD8A2A89DB4B004B3600 /* JTCallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C2CD892A89DB4A004B3600 /* JTCallManager.swift */; };
 		59C2CD8C2A89DB6B004B3600 /* CallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C2CD8B2A89DB6B004B3600 /* CallKit.framework */; };
+		59C719242B34316800C5928A /* ToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C719232B34316800C5928A /* ToolsViewController.swift */; };
 		59E75FAC2B2ACAAE0008E807 /* HomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E75FAB2B2ACAAE0008E807 /* HomeListViewController.swift */; };
 		59E75FAE2B2ACD3D0008E807 /* ModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E75FAD2B2ACD3D0008E807 /* ModeViewController.swift */; };
 		59E75FB42B2AE65E0008E807 /* JTSendSecondModeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59E75FB32B2AE65E0008E807 /* JTSendSecondModeView.xib */; };
@@ -74,6 +75,7 @@
 		59BE37F92AF2005A00998E5F /* AddWaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWaterViewController.swift; sourceTree = "<group>"; };
 		59C2CD892A89DB4A004B3600 /* JTCallManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTCallManager.swift; sourceTree = "<group>"; };
 		59C2CD8B2A89DB6B004B3600 /* CallKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CallKit.framework; path = System/Library/Frameworks/CallKit.framework; sourceTree = SDKROOT; };
+		59C719232B34316800C5928A /* ToolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsViewController.swift; sourceTree = "<group>"; };
 		59E75FAB2B2ACAAE0008E807 /* HomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListViewController.swift; sourceTree = "<group>"; };
 		59E75FAD2B2ACD3D0008E807 /* ModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeViewController.swift; sourceTree = "<group>"; };
 		59E75FB32B2AE65E0008E807 /* JTSendSecondModeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JTSendSecondModeView.xib; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				59AE35CD2AEA60BD000C349B /* ImagePickerViewController.swift */,
 				59BE37F92AF2005A00998E5F /* AddWaterViewController.swift */,
 				59E75FAD2B2ACD3D0008E807 /* ModeViewController.swift */,
+				59C719232B34316800C5928A /* ToolsViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				59E75FB62B2AE66F0008E807 /* JTSendSecondModeView.swift in Sources */,
 				5929787F2B2AA8A000011DDC /* JTHandoverModeView.swift in Sources */,
 				59E75FAC2B2ACAAE0008E807 /* HomeListViewController.swift in Sources */,
+				59C719242B34316800C5928A /* ToolsViewController.swift in Sources */,
 				599A20962ADD2EBC00AD51ED /* MainViewController.swift in Sources */,
 				599A20992ADD30A400AD51ED /* JTReturnModeView.swift in Sources */,
 				59AE35CE2AEA60BD000C349B /* ImagePickerViewController.swift in Sources */,

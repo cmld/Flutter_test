@@ -19,6 +19,8 @@ class ModeViewController: UIViewController {
         let content = JTSendSecondModeView(frame: CGRect(x: 10, y: 100, width: 304, height: 200))
         content.setContent()
         view.addSubview(content)
+        
+        
     }
     
 }

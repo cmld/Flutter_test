@@ -41,6 +41,9 @@ class MainViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
         
+        content1.cv.cellSelected = { d, d1 in
+            print(d1.row)
+        }
         
         let noticeV = JTAutoScrollView()
         noticeV.scrollV.dataList.insert(contentsOf: ["公告嘎嘎嘎嘎嘎嘎嘎嘎嘎-1", "公告嘎嘎嘎嘎嘎嘎嘎嘎嘎-2", "公告嘎嘎嘎嘎嘎嘎嘎嘎嘎-3",  "公告嘎嘎嘎嘎嘎嘎嘎嘎嘎-1"].map({ item in
@@ -63,19 +66,22 @@ class MainViewController: UIViewController {
         noticeV.icon.addTap {
             noticeV.timer?.invalidate()
         }
+        
     }
+    
+
 }
 
 class BalanceAlertView:UIView {
     
-    var cv: JTBaseDataCollectionView<JTBalanceModel, JTBalanceItemCell> = {
+    var cv: JTBaseDataCollectionView<JTBalanceItemCell> = {
         let flowlayout = UICollectionViewLeftFlowLayout.init()
         flowlayout.scrollDirection = .vertical
         flowlayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         flowlayout.minimumLineSpacing = 10;
         flowlayout.minimumInteritemSpacing = 10
         
-        let value = JTBaseDataCollectionView<JTBalanceModel, JTBalanceItemCell>.init(frame: .zero, collectionViewLayout: flowlayout)
+        let value = JTBaseDataCollectionView<JTBalanceItemCell>.init(frame: .zero, collectionViewLayout: flowlayout)
         value.cellID = "JTBalanceItemCellID"
         return value
     }()

@@ -173,9 +173,10 @@ class JTNoticeCell: JTBaseDataTableViewCell {
     }
     
     override func setContent(model: D) {
-        if let  instance = model as? JTBalanceModel {
-            contnetLb.text = instance.title
+        guard let instance = model as? JTBalanceModel else {
+            return
         }
+        contnetLb.text = instance.title
     }
     
     

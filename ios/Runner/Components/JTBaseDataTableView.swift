@@ -22,7 +22,7 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
         }
     }
     
-    var actionHander:((_: T)->Void) = {_ in}
+    var setupCell:((_: T, _: IndexPath)->Void) = {_, _ in}
     
     var cellSelected:((_: T, _: IndexPath)->Void) = {_, _ in}
     
@@ -66,7 +66,7 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? T {
             let model = dataList[indexPath.row]
             cell.setContent(model: model)
-            actionHander(cell)
+            setupCell(cell, indexPath)
             return cell
         }
         return UITableViewCell()

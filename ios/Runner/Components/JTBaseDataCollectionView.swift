@@ -27,7 +27,7 @@ class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionView, U
         }
     }
     
-    var actionHander:((_: T)->Void) = {_ in}
+    var setupCell:((_: T, _: IndexPath)->Void) = {_, _ in}
     
     var cellSelected:((_: T, _: IndexPath)->Void) = {_, _ in}
     
@@ -61,7 +61,7 @@ class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionView, U
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? T {
             let model = dataList[indexPath.row]
             cell.setContent(model: model)
-            actionHander(cell)
+            setupCell(cell, indexPath)
             return cell
         }
         return UICollectionViewCell()

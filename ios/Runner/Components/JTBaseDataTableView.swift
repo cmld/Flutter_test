@@ -18,7 +18,11 @@ class JTBaseDataTableViewCell: UITableViewCell {
 class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewDelegate, UITableViewDataSource {
     var cellID: String = "" {
         didSet {
-            self.register(T.classForCoder(), forCellReuseIdentifier: cellID)
+            if cellID.contains("Nib") {
+                self.register(UINib(nibName: "\(T.classForCoder())", bundle: nil), forCellReuseIdentifier: cellID)
+            } else {
+                self.register(T.classForCoder(), forCellReuseIdentifier: cellID)
+            }
         }
     }
     

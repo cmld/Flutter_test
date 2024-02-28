@@ -14,6 +14,17 @@
 		591863912AFCDB8F00612807 /* JTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5918638F2AFCDB8F00612807 /* JTTableViewCell.swift */; };
 		5929787D2B2AA88D00011DDC /* JTHandoverModeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5929787C2B2AA88D00011DDC /* JTHandoverModeView.xib */; };
 		5929787F2B2AA8A000011DDC /* JTHandoverModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5929787E2B2AA8A000011DDC /* JTHandoverModeView.swift */; };
+		592BBF3D2B6A34A200500001 /* OptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BBF3C2B6A34A200500001 /* OptionCollectionViewCell.swift */; };
+		592BBF522B6A471B00500001 /* RecipientNormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BBF502B6A471B00500001 /* RecipientNormalCell.swift */; };
+		592BBF532B6A471B00500001 /* RecipientNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592BBF512B6A471B00500001 /* RecipientNormalCell.xib */; };
+		592BBF5A2B6A4B8100500001 /* GoodsInfoNormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BBF582B6A4B8100500001 /* GoodsInfoNormalCell.swift */; };
+		592BBF5B2B6A4B8100500001 /* GoodsInfoNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592BBF592B6A4B8100500001 /* GoodsInfoNormalCell.xib */; };
+		592BBF5E2B6A550500500001 /* GoodsInfoMSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BBF5C2B6A550500500001 /* GoodsInfoMSCell.swift */; };
+		592BBF5F2B6A550500500001 /* GoodsInfoMSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592BBF5D2B6A550500500001 /* GoodsInfoMSCell.xib */; };
+		598C5EEA2B58CC4C002EF6C1 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598C5EE92B58CC4C002EF6C1 /* PDFViewController.swift */; };
+		598C5EED2B58CD8F002EF6C1 /* NDA_test.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 598C5EEC2B58CD8F002EF6C1 /* NDA_test.pdf */; };
+		598C5EEF2B58D6EF002EF6C1 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598C5EEE2B58D6EE002EF6C1 /* Const.swift */; };
+		598C5EF32B59139B002EF6C1 /* test_area.txt in Resources */ = {isa = PBXBuildFile; fileRef = 598C5EF22B59139B002EF6C1 /* test_area.txt */; };
 		599A20962ADD2EBC00AD51ED /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599A20952ADD2EBC00AD51ED /* MainViewController.swift */; };
 		599A20992ADD30A400AD51ED /* JTReturnModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599A20982ADD30A400AD51ED /* JTReturnModeView.swift */; };
 		599A209B2ADD30B900AD51ED /* JTReturnModeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599A209A2ADD30B900AD51ED /* JTReturnModeView.xib */; };
@@ -21,13 +32,20 @@
 		599FB8212B1EF63B00519B95 /* JTBaseDataCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FB8202B1EF63B00519B95 /* JTBaseDataCollectionView.swift */; };
 		599FB8252B1EFB7800519B95 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FB8242B1EFB7800519B95 /* TestModel.swift */; };
 		59A513B02B3ABEA100F3E37F /* MyScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A513AF2B3ABEA100F3E37F /* MyScrollViewController.swift */; };
+		59A80BB42B65F67B00D0FA2B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A80BB32B65F67B00D0FA2B /* BaseViewController.swift */; };
+		59A80BB62B65F6F900D0FA2B /* ComponentsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A80BB52B65F6F900D0FA2B /* ComponentsViews.swift */; };
 		59AE35C12AE7C2CA000C349B /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AE35C02AE7C2CA000C349B /* OrderDetailViewController.m */; };
 		59AE35CE2AEA60BD000C349B /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE35CD2AEA60BD000C349B /* ImagePickerViewController.swift */; };
+		59BC11A32B8DC691004841FD /* CMPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC11A22B8DC691004841FD /* CMPopupView.swift */; };
+		59BC11B82B8DD569004841FD /* ActionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC11B72B8DD569004841FD /* ActionsTableViewController.swift */; };
 		59BE37F82AF1FD5A00998E5F /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE37F72AF1FD5A00998E5F /* Tools.swift */; };
 		59BE37FA2AF2005A00998E5F /* AddWaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE37F92AF2005A00998E5F /* AddWaterViewController.swift */; };
 		59C2CD8A2A89DB4B004B3600 /* JTCallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C2CD892A89DB4A004B3600 /* JTCallManager.swift */; };
 		59C2CD8C2A89DB6B004B3600 /* CallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C2CD8B2A89DB6B004B3600 /* CallKit.framework */; };
 		59C719242B34316800C5928A /* ToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C719232B34316800C5928A /* ToolsViewController.swift */; };
+		59E14F612B67B17900F1DF69 /* RecipientInternCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E14F5F2B67B17900F1DF69 /* RecipientInternCell.swift */; };
+		59E14F622B67B17900F1DF69 /* RecipientInternCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59E14F602B67B17900F1DF69 /* RecipientInternCell.xib */; };
+		59E14F642B67B33A00F1DF69 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E14F632B67B33A00F1DF69 /* TableViewController.swift */; };
 		59E75FAC2B2ACAAE0008E807 /* HomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E75FAB2B2ACAAE0008E807 /* HomeListViewController.swift */; };
 		59E75FAE2B2ACD3D0008E807 /* ModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E75FAD2B2ACD3D0008E807 /* ModeViewController.swift */; };
 		59E75FB42B2AE65E0008E807 /* JTSendSecondModeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59E75FB32B2AE65E0008E807 /* JTSendSecondModeView.xib */; };
@@ -62,6 +80,17 @@
 		5918638F2AFCDB8F00612807 /* JTTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTTableViewCell.swift; sourceTree = "<group>"; };
 		5929787C2B2AA88D00011DDC /* JTHandoverModeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JTHandoverModeView.xib; sourceTree = "<group>"; };
 		5929787E2B2AA8A000011DDC /* JTHandoverModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTHandoverModeView.swift; sourceTree = "<group>"; };
+		592BBF3C2B6A34A200500001 /* OptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCollectionViewCell.swift; sourceTree = "<group>"; };
+		592BBF502B6A471B00500001 /* RecipientNormalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientNormalCell.swift; sourceTree = "<group>"; };
+		592BBF512B6A471B00500001 /* RecipientNormalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipientNormalCell.xib; sourceTree = "<group>"; };
+		592BBF582B6A4B8100500001 /* GoodsInfoNormalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsInfoNormalCell.swift; sourceTree = "<group>"; };
+		592BBF592B6A4B8100500001 /* GoodsInfoNormalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsInfoNormalCell.xib; sourceTree = "<group>"; };
+		592BBF5C2B6A550500500001 /* GoodsInfoMSCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsInfoMSCell.swift; sourceTree = "<group>"; };
+		592BBF5D2B6A550500500001 /* GoodsInfoMSCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsInfoMSCell.xib; sourceTree = "<group>"; };
+		598C5EE92B58CC4C002EF6C1 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
+		598C5EEC2B58CD8F002EF6C1 /* NDA_test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NDA_test.pdf; sourceTree = "<group>"; };
+		598C5EEE2B58D6EE002EF6C1 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		598C5EF22B59139B002EF6C1 /* test_area.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_area.txt; sourceTree = "<group>"; };
 		599A20952ADD2EBC00AD51ED /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		599A20982ADD30A400AD51ED /* JTReturnModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTReturnModeView.swift; sourceTree = "<group>"; };
 		599A209A2ADD30B900AD51ED /* JTReturnModeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JTReturnModeView.xib; sourceTree = "<group>"; };
@@ -69,15 +98,22 @@
 		599FB8202B1EF63B00519B95 /* JTBaseDataCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTBaseDataCollectionView.swift; sourceTree = "<group>"; };
 		599FB8242B1EFB7800519B95 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		59A513AF2B3ABEA100F3E37F /* MyScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScrollViewController.swift; sourceTree = "<group>"; };
+		59A80BB32B65F67B00D0FA2B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		59A80BB52B65F6F900D0FA2B /* ComponentsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsViews.swift; sourceTree = "<group>"; };
 		59AE35BF2AE7C2CA000C349B /* OrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
 		59AE35C02AE7C2CA000C349B /* OrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		59AE35C32AE7C6F2000C349B /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		59AE35CD2AEA60BD000C349B /* ImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		59BC11A22B8DC691004841FD /* CMPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMPopupView.swift; sourceTree = "<group>"; };
+		59BC11B72B8DD569004841FD /* ActionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsTableViewController.swift; sourceTree = "<group>"; };
 		59BE37F72AF1FD5A00998E5F /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		59BE37F92AF2005A00998E5F /* AddWaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWaterViewController.swift; sourceTree = "<group>"; };
 		59C2CD892A89DB4A004B3600 /* JTCallManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTCallManager.swift; sourceTree = "<group>"; };
 		59C2CD8B2A89DB6B004B3600 /* CallKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CallKit.framework; path = System/Library/Frameworks/CallKit.framework; sourceTree = SDKROOT; };
 		59C719232B34316800C5928A /* ToolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsViewController.swift; sourceTree = "<group>"; };
+		59E14F5F2B67B17900F1DF69 /* RecipientInternCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientInternCell.swift; sourceTree = "<group>"; };
+		59E14F602B67B17900F1DF69 /* RecipientInternCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipientInternCell.xib; sourceTree = "<group>"; };
+		59E14F632B67B33A00F1DF69 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		59E75FAB2B2ACAAE0008E807 /* HomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListViewController.swift; sourceTree = "<group>"; };
 		59E75FAD2B2ACD3D0008E807 /* ModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeViewController.swift; sourceTree = "<group>"; };
 		59E75FB32B2AE65E0008E807 /* JTSendSecondModeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JTSendSecondModeView.xib; sourceTree = "<group>"; };
@@ -120,11 +156,30 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		598C5EEB2B58CD84002EF6C1 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				598C5EF22B59139B002EF6C1 /* test_area.txt */,
+				598C5EEC2B58CD8F002EF6C1 /* NDA_test.pdf */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		599A20972ADD307600AD51ED /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				599FB81E2B1EF4FF00519B95 /* JTBaseDataTableView.swift */,
 				599FB8202B1EF63B00519B95 /* JTBaseDataCollectionView.swift */,
+				59A80BB52B65F6F900D0FA2B /* ComponentsViews.swift */,
+				592BBF3C2B6A34A200500001 /* OptionCollectionViewCell.swift */,
+				59BC11A22B8DC691004841FD /* CMPopupView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		599FB8232B1EFB3B00519B95 /* TestGroup */ = {
+			isa = PBXGroup;
+			children = (
 				5918638F2AFCDB8F00612807 /* JTTableViewCell.swift */,
 				5918638E2AFCDB8F00612807 /* JTTableViewCell.xib */,
 				599A20982ADD30A400AD51ED /* JTReturnModeView.swift */,
@@ -133,13 +188,15 @@
 				5929787C2B2AA88D00011DDC /* JTHandoverModeView.xib */,
 				59E75FB52B2AE66F0008E807 /* JTSendSecondModeView.swift */,
 				59E75FB32B2AE65E0008E807 /* JTSendSecondModeView.xib */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		599FB8232B1EFB3B00519B95 /* TestGroup */ = {
-			isa = PBXGroup;
-			children = (
+				59A80BB32B65F67B00D0FA2B /* BaseViewController.swift */,
+				59E14F5F2B67B17900F1DF69 /* RecipientInternCell.swift */,
+				59E14F602B67B17900F1DF69 /* RecipientInternCell.xib */,
+				592BBF502B6A471B00500001 /* RecipientNormalCell.swift */,
+				592BBF512B6A471B00500001 /* RecipientNormalCell.xib */,
+				592BBF582B6A4B8100500001 /* GoodsInfoNormalCell.swift */,
+				592BBF592B6A4B8100500001 /* GoodsInfoNormalCell.xib */,
+				592BBF5C2B6A550500500001 /* GoodsInfoMSCell.swift */,
+				592BBF5D2B6A550500500001 /* GoodsInfoMSCell.xib */,
 				599FB8242B1EFB7800519B95 /* TestModel.swift */,
 			);
 			path = TestGroup;
@@ -173,6 +230,9 @@
 				59E75FAD2B2ACD3D0008E807 /* ModeViewController.swift */,
 				59C719232B34316800C5928A /* ToolsViewController.swift */,
 				59A513AF2B3ABEA100F3E37F /* MyScrollViewController.swift */,
+				598C5EE92B58CC4C002EF6C1 /* PDFViewController.swift */,
+				59E14F632B67B33A00F1DF69 /* TableViewController.swift */,
+				59BC11B72B8DD569004841FD /* ActionsTableViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -181,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				59BE37F72AF1FD5A00998E5F /* Tools.swift */,
+				598C5EEE2B58D6EE002EF6C1 /* Const.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -208,6 +269,7 @@
 		97C146E51CF9000F007C117D = {
 			isa = PBXGroup;
 			children = (
+				598C5EEB2B58CD84002EF6C1 /* Resource */,
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
 				97C146EF1CF9000F007C117D /* Products */,
@@ -253,8 +315,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */;
 			buildPhases = (
-				59C719222B32F1CF00C5928A /* ShellScript */,
 				BB6B93FAA3FEE52A43925698 /* [CP] Check Pods Manifest.lock */,
+				59C719222B32F1CF00C5928A /* ShellScript */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
@@ -312,12 +374,18 @@
 			files = (
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
+				598C5EED2B58CD8F002EF6C1 /* NDA_test.pdf in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
+				592BBF532B6A471B00500001 /* RecipientNormalCell.xib in Resources */,
 				591863902AFCDB8F00612807 /* JTTableViewCell.xib in Resources */,
+				598C5EF32B59139B002EF6C1 /* test_area.txt in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 				59E75FB42B2AE65E0008E807 /* JTSendSecondModeView.xib in Resources */,
+				592BBF5B2B6A4B8100500001 /* GoodsInfoNormalCell.xib in Resources */,
 				5929787D2B2AA88D00011DDC /* JTHandoverModeView.xib in Resources */,
 				599A209B2ADD30B900AD51ED /* JTReturnModeView.xib in Resources */,
+				592BBF5F2B6A550500500001 /* GoodsInfoMSCell.xib in Resources */,
+				59E14F622B67B17900F1DF69 /* RecipientInternCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,23 +490,35 @@
 				5918638D2AFCDB1900612807 /* OSSViewController.swift in Sources */,
 				59AE35C12AE7C2CA000C349B /* OrderDetailViewController.m in Sources */,
 				599FB81F2B1EF4FF00519B95 /* JTBaseDataTableView.swift in Sources */,
+				59A80BB42B65F67B00D0FA2B /* BaseViewController.swift in Sources */,
+				592BBF522B6A471B00500001 /* RecipientNormalCell.swift in Sources */,
+				59A80BB62B65F6F900D0FA2B /* ComponentsViews.swift in Sources */,
+				59BC11B82B8DD569004841FD /* ActionsTableViewController.swift in Sources */,
 				59A513B02B3ABEA100F3E37F /* MyScrollViewController.swift in Sources */,
 				599FB8252B1EFB7800519B95 /* TestModel.swift in Sources */,
 				59BE37FA2AF2005A00998E5F /* AddWaterViewController.swift in Sources */,
 				59E75FAE2B2ACD3D0008E807 /* ModeViewController.swift in Sources */,
 				599FB8212B1EF63B00519B95 /* JTBaseDataCollectionView.swift in Sources */,
+				592BBF5A2B6A4B8100500001 /* GoodsInfoNormalCell.swift in Sources */,
 				59C2CD8A2A89DB4B004B3600 /* JTCallManager.swift in Sources */,
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				591863912AFCDB8F00612807 /* JTTableViewCell.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
+				598C5EEA2B58CC4C002EF6C1 /* PDFViewController.swift in Sources */,
+				59E14F642B67B33A00F1DF69 /* TableViewController.swift in Sources */,
 				59E75FB62B2AE66F0008E807 /* JTSendSecondModeView.swift in Sources */,
+				59BC11A32B8DC691004841FD /* CMPopupView.swift in Sources */,
 				5929787F2B2AA8A000011DDC /* JTHandoverModeView.swift in Sources */,
 				59E75FAC2B2ACAAE0008E807 /* HomeListViewController.swift in Sources */,
+				59E14F612B67B17900F1DF69 /* RecipientInternCell.swift in Sources */,
+				592BBF3D2B6A34A200500001 /* OptionCollectionViewCell.swift in Sources */,
 				59C719242B34316800C5928A /* ToolsViewController.swift in Sources */,
 				599A20962ADD2EBC00AD51ED /* MainViewController.swift in Sources */,
 				599A20992ADD30A400AD51ED /* JTReturnModeView.swift in Sources */,
+				592BBF5E2B6A550500500001 /* GoodsInfoMSCell.swift in Sources */,
 				59AE35CE2AEA60BD000C349B /* ImagePickerViewController.swift in Sources */,
 				59BE37F82AF1FD5A00998E5F /* Tools.swift in Sources */,
+				598C5EEF2B58D6EF002EF6C1 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

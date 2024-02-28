@@ -45,11 +45,11 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   # 通话记录
-  location_plugin:
-    git:
-      url: http://code.jms.com/mobile/module/jt_flutter_package.git
-      path: location_plugin
-      ref: master
+  # location_plugin:
+  #   git:
+  #     url: http://code.jms.com/mobile/module/jt_flutter_package.git
+  #     path: location_plugin
+  #     ref: master
   # oss图片上传
   oss_plugin:
     git:

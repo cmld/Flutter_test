@@ -1,5 +1,6 @@
 import UIKit
 import Flutter
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
@@ -11,19 +12,21 @@ import Flutter
       
     let msger: FlutterBinaryMessenger  = window?.rootViewController as! FlutterBinaryMessenger
     pluginChannel(msg: msger)
+    
+    configKeyBoard()
       
       // MARK: 走Flutter - main
-//   return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+//    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     
       // MARK: 走Native - main
-    let nativeWindow = UIWindow(frame: UIScreen.main.bounds)
-    nativeWindow.backgroundColor = .white
+     let nativeWindow = UIWindow(frame: UIScreen.main.bounds)
+     nativeWindow.backgroundColor = .white
 
-    let nv = UINavigationController(rootViewController: HomeListViewController())
-    nativeWindow.rootViewController = nv
-    self.window = nativeWindow
-    self.window.makeKeyAndVisible()
-    return true
+     let nv = UINavigationController(rootViewController: HomeListViewController())
+     nativeWindow.rootViewController = nv
+     self.window = nativeWindow
+     self.window.makeKeyAndVisible()
+     return true
   }
     
 //    channel
@@ -53,5 +56,12 @@ import Flutter
                     break
             }
         }
+    }
+    
+    private func configKeyBoard() {
+        IQKeyboardManager.shared.enable = true;
+        IQKeyboardManager.shared.enableAutoToolbar = false;
+        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Done".localized;
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true;
     }
 }

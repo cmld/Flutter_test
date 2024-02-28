@@ -27,54 +27,51 @@ PODS:
     - AFNetworking
     - Flutter
     - SDWebImage
-    - ZLPhotoBrowser (~> 4.4.5)
-  - JTLocation-iOS (0.1.1)
-  - JTOSSUploader-iOS (0.1.0):
+    - ZLPhotoBrowser (= 4.4.8.1)
+  - IQKeyboardManagerSwift (6.5.16)
+  - JTOSSUploader-iOS (0.2.0):
     - Alamofire
-  - location_plugin (0.0.1):
-    - Flutter
-    - JTLocation-iOS
-  - oss_plugin (0.0.1):
+  - oss_plugin (0.0.2):
     - Flutter
     - JTOSSUploader-iOS
   - package_info (0.0.1):
     - Flutter
-  - permission_handler_apple (9.1.1):
-    - Flutter
   - Protobuf (3.11.4)
-  - SDWebImage (5.18.3):
-    - SDWebImage/Core (= 5.18.3)
-  - SDWebImage/Core (5.18.3)
+  - SDWebImage (5.18.6):
+    - SDWebImage/Core (= 5.18.6)
+  - SDWebImage/Core (5.18.6)
   - SnapKit (5.6.0)
+  - SwiftSoup (2.6.1)
   - url_launcher_ios (0.0.1):
     - Flutter
-  - ZLPhotoBrowser (4.4.6):
-    - ZLPhotoBrowser/Core (= 4.4.6)
-  - ZLPhotoBrowser/Core (4.4.6)
+  - ZLPhotoBrowser (4.4.8.1):
+    - ZLPhotoBrowser/Core (= 4.4.8.1)
+  - ZLPhotoBrowser/Core (4.4.8.1)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_blue (from `.symlinks/plugins/flutter_blue/ios`)
   - HandyJSON
   - image_pickers (from `.symlinks/plugins/image_pickers/ios`)
-  - location_plugin (from `.symlinks/plugins/location_plugin/ios`)
+  - IQKeyboardManagerSwift
   - oss_plugin (from `.symlinks/plugins/oss_plugin/ios`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
-  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - SnapKit
+  - SwiftSoup (~> 2.6.1)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 SPEC REPOS:
   http://code.jms.com/mobile/module/ios/jtspec.git:
-    - JTLocation-iOS
     - JTOSSUploader-iOS
   trunk:
     - AFNetworking
     - Alamofire
     - HandyJSON
+    - IQKeyboardManagerSwift
     - Protobuf
     - SDWebImage
     - SnapKit
+    - SwiftSoup
     - ZLPhotoBrowser
 
 EXTERNAL SOURCES:
@@ -84,14 +81,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_blue/ios"
   image_pickers:
     :path: ".symlinks/plugins/image_pickers/ios"
-  location_plugin:
-    :path: ".symlinks/plugins/location_plugin/ios"
   oss_plugin:
     :path: ".symlinks/plugins/oss_plugin/ios"
   package_info:
     :path: ".symlinks/plugins/package_info/ios"
-  permission_handler_apple:
-    :path: ".symlinks/plugins/permission_handler_apple/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
@@ -101,19 +94,18 @@ SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_blue: eeb381dc4727a0954dede73515f683865494b370
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
-  image_pickers: c198bbd339bc412a418cda3569db9a94a107661f
-  JTLocation-iOS: b77f521eea1410494537372af9308e2ffab6413e
-  JTOSSUploader-iOS: 5246f621d04b0c0cb0529602ccee649a96e69e08
-  location_plugin: 3bab18e1da613deb0dfb26bc8278860d79a21c86
-  oss_plugin: d264336ea5f6ed13a9dd1a72c6ffb631d19a557a
+  image_pickers: da92cbfcd65c0eabc7b37a349d9c3bd91bad7d00
+  IQKeyboardManagerSwift: 12d89768845bb77b55cc092ecc2b1f9370f06b76
+  JTOSSUploader-iOS: 32f0a7282c702bd6aa99e035bf5a7709fd5ddd4f
+  oss_plugin: 69237cb3e06ca3a05777b12d44138f16a47ba978
   package_info: 873975fc26034f0b863a300ad47e7f1ac6c7ec62
-  permission_handler_apple: e76247795d700c14ea09e3a2d8855d41ee80a2e6
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
-  SDWebImage: 96e0c18ef14010b7485210e92fac888587ebb958
+  SDWebImage: 3d8caa2430f3d674dbb3e515df4a100a2105af5f
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SwiftSoup: 5dd2c1b06afc964f30d99894af6ede22ede627aa
   url_launcher_ios: 68d46cc9766d0c41dbdc884310529557e3cd7a86
-  ZLPhotoBrowser: 8b3653a677a858e158fedf870f211b1219bb4c0f
+  ZLPhotoBrowser: 379473d376e3bee6f30f84778b2d5f9be09842e5
 
-PODFILE CHECKSUM: 997fdd07f977a0e46c811d8e5e99c4e621d22a5f
+PODFILE CHECKSUM: 4d44b14c581b4e41450b07b89de4a27a5dcfb7e2
 
 COCOAPODS: 1.13.0

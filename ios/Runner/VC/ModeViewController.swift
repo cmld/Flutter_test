@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ModeViewController: UIViewController {
+class ModeViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

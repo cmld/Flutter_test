@@ -292,7 +292,7 @@ extension UIImage {
 //MARK: - 按钮和UIView的事件
 extension UIView { // 按钮和UIView的事件
     
-    private static var blockKey = "blockKey"
+    private static var blockKey: UInt8 = 0
     
     private var block: (()->())? {
         get{ return objc_getAssociatedObject(self, &UIView.blockKey) as? ()->() }
@@ -312,6 +312,18 @@ extension UIView { // 按钮和UIView的事件
     
     @objc func tapAction() {
         block?()
+    }
+    
+    func addBorder(color: UIColor, radius: CGFloat = 6){
+        self.layer.borderColor = color.cgColor
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = radius
+    }
+    
+    func addSubviews(_ sub: [UIView]){
+        sub.forEach { item in
+            self.addSubview(item)
+        }
     }
 }
 
@@ -334,16 +346,148 @@ extension String {
                 denominator = Decimal(1000000)
                 unit = "M"
             } else if amount >= 1000000000 {
-                denominator = Decimal(100000000)
+                denominator = Decimal(1000000000)
                 unit = "B"
             }
             let conversion = amount / denominator
             // 四舍五入用roundingMode: .plain
-            let handler = NSDecimalNumberHandler(roundingMode: .down, scale: 2, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: true)
-            let roundedNum = NSDecimalNumber(decimal: conversion).rounding(accordingToBehavior: handler).decimalValue.description
-            print("amount: \(amount)    denominator: \(denominator)   conversion: \(roundedNum)")
-            return roundedNum + unit
+            let handler = NSDecimalNumberHandler(roundingMode: .down, scale: 2, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
+            let roundedNum = NSDecimalNumber(decimal: conversion).rounding(accordingToBehavior: handler)
+            print("amount: \(amount)    conversion: \(conversion)   roundedNum: \(roundedNum)")
+            return String(format: "%0.2f", Double(truncating: roundedNum)) + unit
         }
         return self
+    }
+    
+    func fileUrl() -> URL? {
+        let parts = self.components(separatedBy: ".")
+        if let path = Bundle.main.path(forResource: parts.first, ofType: parts.last) {
+            return URL(fileURLWithPath: path)
+        }
+        return nil
+    }
+    
+    /// 正则匹配
+    func reMatch(reString: String) -> Bool {
+        let pre = NSPredicate(format: "SELF MATCHES %@", reString)
+        return pre.evaluate(with: self)
+    }
+    
+    var localized: String {
+        return self
+    }
+}
+
+extension UITextField {
+    
+    private static var tempDelegateKey: UInt8 = 0
+    private var tempDelegate: UITFTools? {
+        get{ return objc_getAssociatedObject(self, &UITextField.tempDelegateKey) as? UITFTools }
+        set{ objc_setAssociatedObject(self, &UITextField.tempDelegateKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    }
+    func didEndEditing(_ call: @escaping (String?)->Void) {
+        if tempDelegate == nil {
+            tempDelegate = UITFTools()
+            self.delegate = tempDelegate
+        }
+        tempDelegate?.callBack = call
+    }
+    func shouldChangeMatch(_ matchStr: String = ".*", _ call: ((String?)->Void)? = nil) {
+        if tempDelegate == nil {
+            tempDelegate = UITFTools()
+            self.delegate = tempDelegate
+        }
+        tempDelegate?.matchStr = matchStr
+        tempDelegate?.change = call
+    }
+}
+
+class UITFTools: NSObject, UITextFieldDelegate {
+    var callBack: ((String?)->Void)?
+    var change: ((String?)->Void)?
+    var matchStr: String = ".*"
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        callBack?(textField.text)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let currentText = textField.text else { return true }
+        let newText = NSString(string: currentText).replacingCharacters(in: range, with: string)
+        change?(newText)
+        return newText.reMatch(reString: matchStr)
+    }
+    
+    // UITextFieldDelegate 方法，点击 Return 键时调用
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // 在这里处理点击 Done 按钮的事件
+        textField.resignFirstResponder() // 隐藏键盘
+        return true
+    }
+}
+
+
+class PaddingTextField: UITextField {
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        // 设置文本的内边距（显示文本时的内边距）
+        return bounds.insetBy(dx: 10, dy: 5)
+    }
+
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        // 设置编辑文本时的内边距
+        return bounds.insetBy(dx: 10, dy: 5)
+    }
+}
+
+
+extension UITextView {
+    private static var tempDelegateKey: UInt8 = 0
+    private var tempDelegate: UITVTools? {
+        get{ return objc_getAssociatedObject(self, &UITextView.tempDelegateKey) as? UITVTools }
+        set{ objc_setAssociatedObject(self, &UITextView.tempDelegateKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    }
+    func didEndEditing(_ call: @escaping (String?)->Void) {
+        if tempDelegate == nil {
+            tempDelegate = UITVTools()
+            self.delegate = tempDelegate
+        }
+        tempDelegate?.callBack = call
+    }
+    func shouldChangeMatch(_ matchStr: String = ".*", _ call: ((String?)->Void)? = nil) {
+        if tempDelegate == nil {
+            tempDelegate = UITVTools()
+            self.delegate = tempDelegate
+        }
+        tempDelegate?.matchStr = matchStr
+        tempDelegate?.change = call
+    }
+    
+    func beginEditing(_ call: ((String?)->Void)? = nil){
+        if tempDelegate == nil {
+            tempDelegate = UITVTools()
+            self.delegate = tempDelegate
+        }
+        tempDelegate?.beginBack = call
+    }
+}
+class UITVTools: NSObject, UITextViewDelegate {
+    var callBack: ((String?)->Void)?
+    var change: ((String?)->Void)?
+    var beginBack: ((String?)->Void)?
+    var matchStr: String = ".*"
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        beginBack?(textView.text)
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard let currentText = textView.text else { return true }
+        let newText = NSString(string: currentText).replacingCharacters(in: range, with: text)
+        change?(newText)
+        return newText.reMatch(reString: matchStr)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        callBack?(textView.text)
     }
 }

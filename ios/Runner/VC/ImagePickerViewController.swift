@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImagePickerViewController: UIViewController, UINavigationControllerDelegate {
+class ImagePickerViewController: BaseViewController, UINavigationControllerDelegate {
     
     var showImage: UIImageView = UIImageView()
     

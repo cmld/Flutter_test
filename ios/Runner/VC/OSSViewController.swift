@@ -11,7 +11,7 @@ import JTOSSUploader_iOS
 import Alamofire
 import SnapKit
 
-class OSSViewController: UIViewController {
+class OSSViewController: BaseViewController {
     var imgList: [String] = []
     
     var resultDic: [String: String] = [:]

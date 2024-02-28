@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddWaterViewController: UIViewController {
+class AddWaterViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

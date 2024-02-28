@@ -12,8 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_pickers/image_pickers.dart';
-import 'package:location_plugin/entity/LocationInfo.dart';
-import 'package:location_plugin/location_plugin.dart';
+// import 'package:location_plugin/entity/LocationInfo.dart';
+// import 'package:location_plugin/location_plugin.dart';
 import 'package:oss_plugin/bean/OssRequest.dart';
 import 'package:oss_plugin/oss_plugin.dart';
 import 'package:package_info/package_info.dart';
@@ -67,11 +67,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   final MethodChannel _channel = const MethodChannel('plugin_clmd');
-  
+
   int _counter = 0;
-  ValueNotifier<LocationInfo?> locationNf = ValueNotifier(null);
+  // ValueNotifier<LocationInfo?> locationNf = ValueNotifier(null);
   ValueNotifier<String?> addressNf = ValueNotifier(null);
 
   BLEManager manager = BLEManager();
@@ -105,6 +104,38 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              TextField(
+                // controller: widget.textController,
+                // style: JTStyle.text3c16SpStyle,
+                textAlign: TextAlign.left,
+                autofocus: false,
+                minLines: 1,
+                maxLines: 5,
+                readOnly: false,
+                maxLength: 50,
+                // inputFormatters: widget.inputFormatters,
+                enableSuggestions: false,
+                onChanged: (String v) {
+                  // widget.onChange?.call(v);
+                },
+                decoration: InputDecoration(
+                  filled: false,
+                  isCollapsed: true,
+                  hintText: '请输入内容',
+                  contentPadding: EdgeInsets.symmetric(horizontal: 13.w),
+                  border: InputBorder.none,
+                  enabledBorder: null,
+                  focusedBorder: null,
+                  counterText: '',
+                ),
+                magnifierConfiguration: TextMagnifierConfiguration(shouldDisplayHandlesInMagnifier: false),
+                // focusNode: widget.focusNode,
+              ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+                color: Colors.black,
+              ),
               TextButton(
                 onPressed: () async {
                   var model = OssRequest.fromJson({
@@ -190,10 +221,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   valueListenable: addressNf, builder: (c, v, p) => Text('$v')),
               TextButton(
                 onPressed: () async {
-                  var result = await LocationHelper()
-                      .covertAddress(locationNf.value ?? LocationInfo());
-                  print(result.toString());
-                  addressNf.value = result;
+                  // var result = await LocationHelper()
+                  //     .covertAddress(locationNf.value ?? LocationInfo());
+                  // print(result.toString());
+                  // addressNf.value = result;
                 },
                 child: const Text(
                   '私有插件-covertAddress',
@@ -208,29 +239,29 @@ class _MyHomePageState extends State<MyHomePage> {
                 thickness: 2,
                 color: Colors.black,
               ),
-              ValueListenableBuilder(
-                  valueListenable: locationNf,
-                  builder: (c, v, p) =>
-                      Text('${v?.latitude} , ${v?.longitude}')),
-              TextButton(
-                onPressed: () async {
-                  var auth = await LocationHelper().hasLocationPermission();
-                  if (auth) {
-                    var result = await LocationHelper().getLocation();
-                    print(result.toString());
-                    locationNf.value = result;
-                  } else {
-                    LocationHelper().openLocationSettings();
-                  }
-                },
-                child: const Text(
-                  '私有插件-location',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              // ValueListenableBuilder(
+              //     valueListenable: locationNf,
+              //     builder: (c, v, p) =>
+              //         Text('${v?.latitude} , ${v?.longitude}')),
+              // TextButton(
+              //   onPressed: () async {
+              //     var auth = await LocationHelper().hasLocationPermission();
+              //     if (auth) {
+              //       var result = await LocationHelper().getLocation();
+              //       print(result.toString());
+              //       locationNf.value = result;
+              //     } else {
+              //       LocationHelper().openLocationSettings();
+              //     }
+              //   },
+              //   child: const Text(
+              //     '私有插件-location',
+              //     style: TextStyle(
+              //       fontSize: 18,
+              //       fontWeight: FontWeight.bold,
+              //     ),
+              //   ),
+              // ),
               const Divider(
                 height: 10,
                 thickness: 2,
@@ -243,7 +274,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     await launchUrlString(url);
                   }
 
-                  
                   final result =
                       await _channel.invokeMethod('callObs', '17621761283');
                   print(result.toString());

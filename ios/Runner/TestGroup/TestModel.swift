@@ -21,6 +21,7 @@ class JTBalanceItemCell: JTBaseDataCollectionCell {
         value.font = UIFont.systemFont(ofSize: 14)
         value.textAlignment = .center
         value.backgroundColor = .white
+        value.numberOfLines = 0
         return value
     }()
     
@@ -43,7 +44,7 @@ class JTBalanceItemCell: JTBaseDataCollectionCell {
         titleV.snp.makeConstraints { make in
             make.top.left.right.bottom.equalToSuperview().inset(5)
             make.height.equalTo(25)
-            make.width.greaterThanOrEqualTo(25)
+            make.width.greaterThanOrEqualTo(50)
         }
     }
     
@@ -165,7 +166,7 @@ class JTNoticeCell: JTBaseDataTableViewCell {
     }
     
     func setupContent() {
-        addSubview(contnetLb)
+        contentView.addSubview(contnetLb)
         contnetLb.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.height.equalTo(35)
@@ -181,3 +182,14 @@ class JTNoticeCell: JTBaseDataTableViewCell {
     
     
 }
+
+struct tempModel: HandyJSON {
+    var content: [AddressModel]?
+}
+
+struct AddressModel: HandyJSON {
+    var key: String?
+    var title: String?
+    var children: [AddressModel]?
+}
+

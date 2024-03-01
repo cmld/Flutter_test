@@ -36,6 +36,9 @@
 		59A80BB62B65F6F900D0FA2B /* ComponentsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A80BB52B65F6F900D0FA2B /* ComponentsViews.swift */; };
 		59AE35C12AE7C2CA000C349B /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AE35C02AE7C2CA000C349B /* OrderDetailViewController.m */; };
 		59AE35CE2AEA60BD000C349B /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE35CD2AEA60BD000C349B /* ImagePickerViewController.swift */; };
+		59B616F12B8F1A7A0069ACEE /* OrderListNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B616EF2B8F1A7A0069ACEE /* OrderListNewCell.swift */; };
+		59B616F22B8F1A7A0069ACEE /* OrderListNewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59B616F02B8F1A7A0069ACEE /* OrderListNewCell.xib */; };
+		59B616F42B8F36D20069ACEE /* OrderFilteringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B616F32B8F36D20069ACEE /* OrderFilteringView.swift */; };
 		59BC11A32B8DC691004841FD /* CMPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC11A22B8DC691004841FD /* CMPopupView.swift */; };
 		59BC11B82B8DD569004841FD /* ActionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC11B72B8DD569004841FD /* ActionsTableViewController.swift */; };
 		59BE37F82AF1FD5A00998E5F /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE37F72AF1FD5A00998E5F /* Tools.swift */; };
@@ -104,6 +107,9 @@
 		59AE35C02AE7C2CA000C349B /* OrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		59AE35C32AE7C6F2000C349B /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		59AE35CD2AEA60BD000C349B /* ImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		59B616EF2B8F1A7A0069ACEE /* OrderListNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListNewCell.swift; sourceTree = "<group>"; };
+		59B616F02B8F1A7A0069ACEE /* OrderListNewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderListNewCell.xib; sourceTree = "<group>"; };
+		59B616F32B8F36D20069ACEE /* OrderFilteringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFilteringView.swift; sourceTree = "<group>"; };
 		59BC11A22B8DC691004841FD /* CMPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMPopupView.swift; sourceTree = "<group>"; };
 		59BC11B72B8DD569004841FD /* ActionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsTableViewController.swift; sourceTree = "<group>"; };
 		59BE37F72AF1FD5A00998E5F /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
@@ -156,6 +162,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		594923022B916711002CF2B6 /* BaseDataView */ = {
+			isa = PBXGroup;
+			children = (
+				599FB81E2B1EF4FF00519B95 /* JTBaseDataTableView.swift */,
+				599FB8202B1EF63B00519B95 /* JTBaseDataCollectionView.swift */,
+			);
+			path = BaseDataView;
+			sourceTree = "<group>";
+		};
 		598C5EEB2B58CD84002EF6C1 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,8 +183,8 @@
 		599A20972ADD307600AD51ED /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				599FB81E2B1EF4FF00519B95 /* JTBaseDataTableView.swift */,
-				599FB8202B1EF63B00519B95 /* JTBaseDataCollectionView.swift */,
+				594923022B916711002CF2B6 /* BaseDataView */,
+				59A80BB32B65F67B00D0FA2B /* BaseViewController.swift */,
 				59A80BB52B65F6F900D0FA2B /* ComponentsViews.swift */,
 				592BBF3C2B6A34A200500001 /* OptionCollectionViewCell.swift */,
 				59BC11A22B8DC691004841FD /* CMPopupView.swift */,
@@ -188,7 +203,6 @@
 				5929787C2B2AA88D00011DDC /* JTHandoverModeView.xib */,
 				59E75FB52B2AE66F0008E807 /* JTSendSecondModeView.swift */,
 				59E75FB32B2AE65E0008E807 /* JTSendSecondModeView.xib */,
-				59A80BB32B65F67B00D0FA2B /* BaseViewController.swift */,
 				59E14F5F2B67B17900F1DF69 /* RecipientInternCell.swift */,
 				59E14F602B67B17900F1DF69 /* RecipientInternCell.xib */,
 				592BBF502B6A471B00500001 /* RecipientNormalCell.swift */,
@@ -197,6 +211,9 @@
 				592BBF592B6A4B8100500001 /* GoodsInfoNormalCell.xib */,
 				592BBF5C2B6A550500500001 /* GoodsInfoMSCell.swift */,
 				592BBF5D2B6A550500500001 /* GoodsInfoMSCell.xib */,
+				59B616EF2B8F1A7A0069ACEE /* OrderListNewCell.swift */,
+				59B616F02B8F1A7A0069ACEE /* OrderListNewCell.xib */,
+				59B616F32B8F36D20069ACEE /* OrderFilteringView.swift */,
 				599FB8242B1EFB7800519B95 /* TestModel.swift */,
 			);
 			path = TestGroup;
@@ -378,6 +395,7 @@
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				592BBF532B6A471B00500001 /* RecipientNormalCell.xib in Resources */,
 				591863902AFCDB8F00612807 /* JTTableViewCell.xib in Resources */,
+				59B616F22B8F1A7A0069ACEE /* OrderListNewCell.xib in Resources */,
 				598C5EF32B59139B002EF6C1 /* test_area.txt in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 				59E75FB42B2AE65E0008E807 /* JTSendSecondModeView.xib in Resources */,
@@ -493,10 +511,12 @@
 				59A80BB42B65F67B00D0FA2B /* BaseViewController.swift in Sources */,
 				592BBF522B6A471B00500001 /* RecipientNormalCell.swift in Sources */,
 				59A80BB62B65F6F900D0FA2B /* ComponentsViews.swift in Sources */,
+				59B616F42B8F36D20069ACEE /* OrderFilteringView.swift in Sources */,
 				59BC11B82B8DD569004841FD /* ActionsTableViewController.swift in Sources */,
 				59A513B02B3ABEA100F3E37F /* MyScrollViewController.swift in Sources */,
 				599FB8252B1EFB7800519B95 /* TestModel.swift in Sources */,
 				59BE37FA2AF2005A00998E5F /* AddWaterViewController.swift in Sources */,
+				59B616F12B8F1A7A0069ACEE /* OrderListNewCell.swift in Sources */,
 				59E75FAE2B2ACD3D0008E807 /* ModeViewController.swift in Sources */,
 				599FB8212B1EF63B00519B95 /* JTBaseDataCollectionView.swift in Sources */,
 				592BBF5A2B6A4B8100500001 /* GoodsInfoNormalCell.swift in Sources */,

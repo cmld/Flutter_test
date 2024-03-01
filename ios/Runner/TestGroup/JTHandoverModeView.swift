@@ -114,22 +114,4 @@ class DashedLineLabel: UILabel {
     }
 }
 
-class DashedBorderView: UIView {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        addDashedBorder()
-    }
 
-    func addDashedBorder() {
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeColor = UIColor.gray.cgColor
-        shapeLayer.lineWidth = 1
-        shapeLayer.lineDashPattern = [4, 2, 2, 2]  // 设置虚线的样式
-
-        let path = UIBezierPath(rect: bounds)
-        shapeLayer.path = path.cgPath
-
-        layer.addSublayer(shapeLayer)
-    }
-}

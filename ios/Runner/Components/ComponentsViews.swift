@@ -399,3 +399,85 @@ class DesensitizationView: UIView {
         return pointView
     }
 }
+
+// 边框虚线
+class DashedBorderView: UIView {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        addDashedBorder()
+    }
+
+    func addDashedBorder() {
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeColor = UIColor.gray.cgColor
+        shapeLayer.lineWidth = 1
+        shapeLayer.lineDashPattern = [4, 2, 2, 2]  // 设置虚线的样式
+
+        let path = UIBezierPath(rect: bounds)
+        shapeLayer.path = path.cgPath
+
+        layer.addSublayer(shapeLayer)
+    }
+}
+
+class OptionsView: UIView {
+    
+    var actionCall:((Int)->Void)?
+    
+    var creatBtn = {
+        let value = UIButton()
+        value.layer.borderWidth = 1
+        value.layer.borderColor = UIColor.lightGray.cgColor
+        value.setTitleColor(.black, for: .normal)
+        value.backgroundColor = .white
+        return value
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+//        createCellUI()
+    }
+    
+    init(_ opts: [String]) {
+        super.init(frame: .zero)
+        createCellUI(opts)
+    }
+    
+    func createCellUI(_ opts: [String]) {
+        var lastV: UIButton!
+        for (index, titleStr) in opts.enumerated() {
+            let btn = creatBtn()
+            btn.setTitle(titleStr, for: .normal)
+            self.addSubview(btn)
+            btn.addTap {[weak self]  in
+                guard let `self` = self else { return }
+                actionCall?(index)
+            }
+            
+            let isLast = index == (opts.count - 1)
+            
+            btn.snp.makeConstraints { make in
+                make.top.bottom.equalToSuperview()
+                
+                if let lv = lastV {
+                    make.left.equalTo(lv.snp.right).offset(10)
+                } else {
+                    make.left.equalToSuperview()
+                }
+                if isLast {
+                    make.right.equalToSuperview()
+                }
+            }
+            
+            lastV = btn
+        }
+    }
+    
+    
+}
+

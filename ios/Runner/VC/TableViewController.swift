@@ -9,9 +9,15 @@ import UIKit
 
 class TableViewController: BaseViewController {
     
-    lazy var tableV: JTBaseDataTableView<GoodsInfoMSCell> = {
-        let value = JTBaseDataTableView<GoodsInfoMSCell>()
+//    lazy var tableV: JTBaseDataTableView<GoodsInfoMSCell> = {
+//        let value = JTBaseDataTableView<GoodsInfoMSCell>()
+//        value.cellID = "RecipientInternCellNibID"
+//        return value
+//    }()
+    lazy var tableV: JTBaseDataTableView<OrderListNewCell> = {
+        let value = JTBaseDataTableView<OrderListNewCell>()
         value.cellID = "RecipientInternCellNibID"
+//        value.backgroundColor = .lightGray
         return value
     }()
     
@@ -23,7 +29,7 @@ class TableViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
         
-        tableV.dataList = [JTBalanceModel()]
+        tableV.dataList = [JTBalanceModel(), JTBalanceModel(), ]
     }
 
 }

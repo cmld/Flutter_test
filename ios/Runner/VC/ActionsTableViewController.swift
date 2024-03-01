@@ -24,7 +24,7 @@ class ActionsTableViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
         
-        let actions: [String] = ["弹出视图"]
+        let actions: [String] = ["弹出视图", "模态弹出"]
         myTableV.dataList = actions.map { item in
             let model = JTBalanceModel()
             model.title = item
@@ -36,6 +36,9 @@ class ActionsTableViewController: BaseViewController {
             switch idx.row {
                 case 0:
                     showPopupV()
+                case 1:
+                    let vc = ToolsViewController()
+                    self.present(vc, animated: true)
                 default:
                     break
             }
@@ -50,8 +53,25 @@ class ActionsTableViewController: BaseViewController {
             make.width.height.equalTo(200)
         }
         
-        let popupV = CMPopupView()
-        popupV.showWithConfig(testV, config: CMPopupConfig(position: .top, yTopGap: 300, yDownGap: 0))
+        let optV = OptionsView(["附件上传", "编辑", "取消"])
+        optV.actionCall = {[weak self] index in
+            guard let `self` = self else { return }
+            print("点击了 \(index)")
+        }
+        
+        
+        testV.addSubview(optV)
+        optV.snp.makeConstraints { make in
+            make.top.right.equalToSuperview()
+            make.height.equalTo(30)
+        }
+        
+        let filteringV = OrderFilteringView()
+        filteringV.snp.makeConstraints { make in
+            make.width.equalTo(SCREEN_WIDTH)
+        }
+        
+        CMPopupView().showWithConfig(filteringV, config: CMPopupConfig(position: .top, yTopGap: 100, yDownGap: 0))
     }
 
 }

@@ -60,6 +60,7 @@ class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionView, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? T {
             let model = dataList[indexPath.row]
+            cell.cellModel = model
             cell.setContent(model: model)
             setupCell(cell, indexPath)
             return cell
@@ -94,10 +95,6 @@ class UICollectionViewLeftFlowLayout: UICollectionViewFlowLayout {
                         nextAttr.frame = frame
                     }
                 }
-            } else if attrsArry.count == 1, let curAttr = attrsArry.first {
-                var frame = curAttr.frame
-                frame.origin.x = 0
-                curAttr.frame = frame
             }
         }
         return attrsArry

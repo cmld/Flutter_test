@@ -34,8 +34,11 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
         didSet {
             self.reloadData()
             self.layoutIfNeeded()
+            self.setEmptyView(isEmpty: dataList.count <= 0)
         }
     }
+    
+    var emptyView: UIView?
 
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -60,6 +63,20 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setEmptyView(isEmpty: Bool){
+        guard let ev = emptyView else { return }
+        if isEmpty {
+            if ev.superview == nil {
+                ev.frame = self.bounds
+                self.addSubview(ev)
+            }
+        }else{
+            if ev.superview != nil {
+                ev.removeFromSuperview()
+            }
+        }
+    }
+    
     //MARK: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataList.count
@@ -68,6 +85,7 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? T {
             let model = dataList[indexPath.row]
+            cell.cellModel = model
             cell.setContent(model: model)
             setupCell(cell, indexPath)
             return cell

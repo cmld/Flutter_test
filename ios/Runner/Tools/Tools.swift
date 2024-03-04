@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+typealias CallbackVoid = ()->Void
+typealias Callback1Value<T> = (T)->Void
+typealias Callback2Value<T, B> = (T, B)->Void
+
 class Tools {
     static func addWater(content: UIImage, text: String) {
 

@@ -31,13 +31,17 @@ class CMPopupView: UIView {
     lazy var maskV: UIView = {
         let value = UIView()
         value.backgroundColor = UIColor.black.withAlphaComponent(0)
+        value.clipsToBounds = true
         return value
     }()
     
     lazy var content: UIView = {
         let value = UIView()
+        value.clipsToBounds = true
         return value
     }()
+    
+    var contentView: UIView?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -49,16 +53,9 @@ class CMPopupView: UIView {
     }
     
     func createCellUI() {
-        self.clipsToBounds = true
         self.addSubviews([maskV, content])
         
-        maskV.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        maskV.addTap {[weak self]  in
-            guard let `self` = self else { return }
-            
+        maskV.addTap {
             CMPopupView.hiddenOnWindow()
         }
     }
@@ -69,31 +66,44 @@ class CMPopupView: UIView {
         
         getWindow().addSubview(self)
         self.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        maskV.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(config.yTopGap)
             make.bottom.equalToSuperview().inset(config.yDownGap)
             make.left.right.equalToSuperview()
         }
         
-        content.addSubview(contentV)
-        contentV.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        content.alpha = config.position == .center ? 0 : 1
-        
-        let contentH = contentV.bounds.size.height > 0 ? contentV.bounds.size.height : (SCREEN_HEIGHT / 2)
         content.snp.makeConstraints { make in
             make.centerX.equalTo(maskV)
             make.left.greaterThanOrEqualTo(maskV)
             switch config.position {
                 case .top:
-                    make.top.equalTo(maskV).offset(-contentH)
+                    make.top.equalTo(maskV)
                 case .down:
-                    make.bottom.equalTo(maskV).offset(contentH)
+                    make.bottom.equalTo(maskV)
                 case .center:
                     make.centerY.equalTo(maskV)
             }
         }
+        
+        contentView = contentV
+        content.addSubview(contentV)
+        let contentH = max(contentV.bounds.size.height, (SCREEN_HEIGHT / 2))
+        contentV.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            switch config.position {
+                case .top:
+                    make.top.bottom.equalToSuperview().offset(-contentH)
+                case .down:
+                    make.top.bottom.equalToSuperview().offset(contentH)
+                case .center:
+                    make.top.bottom.equalToSuperview()
+            }
+        }
+        
+        contentV.alpha = (config.position == .center) ? 0 : 1
         self.layoutIfNeeded()
         
         showAnimate(config: config)
@@ -103,17 +113,10 @@ class CMPopupView: UIView {
     func showAnimate(config: CMPopupConfig) {
         UIView.animate(withDuration: 0.2) {
             self.maskV.backgroundColor = .black.withAlphaComponent(0.3)
-            self.content.alpha = 1
+            self.contentView?.alpha = 1
             
-            self.content.snp.updateConstraints { make in
-                switch config.position {
-                    case .top:
-                        make.top.equalTo(self.maskV).offset(0)
-                    case .down:
-                        make.bottom.equalTo(self.maskV).offset(0)
-                    case .center:
-                        make.centerY.equalTo(self.maskV)
-                }
+            self.contentView?.snp.updateConstraints { make in
+                make.top.bottom.equalToSuperview()
             }
             self.layoutIfNeeded()
         }
@@ -129,6 +132,15 @@ class CMPopupView: UIView {
                 }
             }
         }
+    }
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let pointV = super.hitTest(point, with: event)
+        if pointV == self {
+            self.removeFromSuperview()
+            return nil
+        }
+        return pointV
     }
     
 }

@@ -484,3 +484,51 @@ class OptionsView: UIView {
     
 }
 
+
+class DownOptionsView: UIView {
+    
+    lazy var leftBtn: UIButton = {
+        let value = UIButton()
+        value.backgroundColor = .white
+        value.layer.borderWidth = 1
+        value.layer.borderColor = UIColor(hex: "#E6262C").cgColor
+        value.layer.cornerRadius = 20
+        value.setTitleColor(UIColor(hex: "#E6262C"), for: .normal)
+        value.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        return value
+    }()
+    
+    lazy var rightBtn: UIButton = {
+        let value = UIButton()
+        value.backgroundColor = UIColor(hex: "#E6262C")
+        value.layer.cornerRadius = 20
+        value.setTitleColor(.white, for: .normal)
+        value.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        return value
+    }()
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        createCellUI()
+    }
+    
+    func createCellUI() {
+        addSubviews([leftBtn, rightBtn])
+        leftBtn.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(20)
+            make.left.equalToSuperview().inset(15)
+            make.height.equalTo(40)
+        }
+        rightBtn.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(20)
+            make.right.equalToSuperview().inset(15)
+            make.left.equalTo(leftBtn.snp.right).offset(15)
+            make.height.equalTo(40)
+            make.width.equalTo(leftBtn)
+        }
+    }
+}

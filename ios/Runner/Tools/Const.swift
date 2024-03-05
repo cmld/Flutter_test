@@ -30,7 +30,7 @@ var kSafeInset: UIEdgeInsets {
 }
 
 /// `iPhoneX`系列底部的安全边距
-let BottomSafeArea :CGFloat = kSafeInset.bottom
+let kBottomSafeArea :CGFloat = kSafeInset.bottom
 
 /// App导航栏高度
 let kNavigatioHeight: CGFloat = kSafeInset.top + 44

@@ -31,6 +31,7 @@ class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionView, U
     
     var cellSelected:((_: T, _: IndexPath)->Void) = {_, _ in}
     
+    var autoSetH: NSLayoutConstraint?
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         
 //        let flowlayout = UICollectionViewFlowLayout.init()
@@ -46,6 +47,9 @@ class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionView, U
         self.backgroundColor = .clear
         self.delegate = self
         self.dataSource = self
+        
+        autoSetH = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
+        autoSetH?.isActive = true
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -74,6 +78,12 @@ class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionView, U
         }
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if self.contentSize.height != autoSetH?.constant {
+            autoSetH?.constant = self.contentSize.height
+        }
+    }
 }
 
 // MARK: 自定义布局约束 左对齐

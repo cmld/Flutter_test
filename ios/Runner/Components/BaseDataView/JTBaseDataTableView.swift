@@ -39,7 +39,8 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
     }
     
     var emptyView: UIView?
-
+    
+    var autoSetH: NSLayoutConstraint?
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         
@@ -57,6 +58,9 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
         self.delegate = self
         self.dataSource = self
         self.backgroundColor = .white
+        
+        autoSetH = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
+        autoSetH?.isActive = true
     }
     
     required init?(coder: NSCoder) {
@@ -96,6 +100,13 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? T {
             cellSelected(cell, indexPath)
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if self.contentSize.height != autoSetH?.constant {
+            autoSetH?.constant = self.contentSize.height
         }
     }
 }

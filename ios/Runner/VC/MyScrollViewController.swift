@@ -56,13 +56,13 @@ class MyScrollViewController: BaseViewController {
         myTableV.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(100)
             make.left.right.equalToSuperview().inset(15)
-            make.height.equalTo(1000)
+//            make.height.equalTo(50)
         }
         
         myCollectionV.snp.makeConstraints { make in
             make.top.equalTo(myTableV.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(15)
-            make.height.equalTo(50)
+//            make.height.equalTo(50)
         }
         
         btn.snp.makeConstraints { make in
@@ -78,7 +78,7 @@ class MyScrollViewController: BaseViewController {
     }
     
     func setData() {
-        let randomNum = (1...Int.random(in: 1...15))
+        let randomNum = (1...Int.random(in: 1...5))
         if myTableV.dataList.isEmpty {
             myTableV.dataList = randomNum.map { item in
                 let model = JTBalanceModel()
@@ -86,9 +86,6 @@ class MyScrollViewController: BaseViewController {
                 return model
             }
             print("myTableV: \(self.myTableV.contentSize) | \(randomNum.count * 35)")
-            self.myTableV.snp.updateConstraints { make in
-                make.height.equalTo(self.myTableV.contentSize.height)
-            }
         }
         
         myCollectionV.dataList = (1...Int.random(in: 1...15)).map { item in
@@ -98,9 +95,6 @@ class MyScrollViewController: BaseViewController {
         }
         
         print("myCollectionV: \(self.myCollectionV.contentSize)")
-        self.myCollectionV.snp.updateConstraints { make in
-            make.height.equalTo(self.myCollectionV.contentSize.height)
-        }
         
     }
         

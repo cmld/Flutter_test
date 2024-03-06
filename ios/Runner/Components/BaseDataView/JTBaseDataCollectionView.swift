@@ -80,8 +80,8 @@ class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionView, U
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if self.contentSize.height != autoSetH?.constant {
-            autoSetH?.constant = self.contentSize.height
+        if let needSetH = autoSetH, self.contentSize.height != needSetH.constant {
+            needSetH.constant = self.contentSize.height
         }
     }
 }
@@ -105,6 +105,10 @@ class UICollectionViewLeftFlowLayout: UICollectionViewFlowLayout {
                         nextAttr.frame = frame
                     }
                 }
+            } else if attrsArry.count == 1, let curAttr = attrsArry.first {
+                var frame = curAttr.frame
+                frame.origin.x = 0
+                curAttr.frame = frame
             }
         }
         return attrsArry

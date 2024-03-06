@@ -105,8 +105,8 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if self.contentSize.height != autoSetH?.constant {
-            autoSetH?.constant = self.contentSize.height
+        if let needSetH = autoSetH, self.contentSize.height != needSetH.constant {
+            needSetH.constant = self.contentSize.height
         }
     }
 }

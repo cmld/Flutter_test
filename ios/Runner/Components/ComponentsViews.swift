@@ -458,8 +458,8 @@ class OptionsView: UIView {
             btn.setTitle(titleStr, for: .normal)
             self.addSubview(btn)
             btn.addTap {[weak self]  in
-                guard let `self` = self else { return }
-                actionCall?(index)
+                guard let `self` = self, let actionCall else { return }
+                actionCall(index)
             }
             
             let isLast = index == (opts.count - 1)

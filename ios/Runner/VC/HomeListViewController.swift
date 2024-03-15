@@ -9,8 +9,8 @@ import UIKit
 
 class HomeListViewController: BaseViewController {
     
-    lazy var tableView: JTBaseDataTableView<JTNoticeCell> = {
-        let value = JTBaseDataTableView<JTNoticeCell>()
+    lazy var tableView: JTBaseDataTableView<HomeTableViewCell> = {
+        let value = JTBaseDataTableView<HomeTableViewCell>()
         value.cellID = "JTHomeCellID"
         value.separatorStyle = .none
         return value
@@ -29,7 +29,7 @@ class HomeListViewController: BaseViewController {
             make.edges.equalToSuperview().inset(15)
         }
         
-        tableView.dataList.insert(contentsOf: [
+        tableView.dataList = [
             "Main",
             "Oss",
             "ImagePicker",
@@ -38,11 +38,14 @@ class HomeListViewController: BaseViewController {
             "Tools",
             "tableView + collectionView",
             "PDF",
-            "tableView"].map({ item in
+            "tableView",
+            "ActionsTableView",
+            "DatePickerViewController",
+        ].map({ item in
             let model = JTBalanceModel()
             model.title = item
             return model
-        }), at: 0)
+        })
         
         tableView.cellSelected = {[weak self] cell, idx in
             var vc: UIViewController!
@@ -67,13 +70,15 @@ class HomeListViewController: BaseViewController {
                     vc = TableViewController()
                 case 9:
                     vc = ActionsTableViewController()
+                case 10:
+                    vc = DatePickerViewController()
                 default:
                     vc = MainViewController()
             }
             self?.navigationController?.pushViewController(vc, animated: true)
         }
         
-        tableView.cellSelected(JTNoticeCell(), IndexPath(row: 9, section: 0))
+        tableView.cellSelected(HomeTableViewCell(), IndexPath(row: 10, section: 0))
     }
     
 }

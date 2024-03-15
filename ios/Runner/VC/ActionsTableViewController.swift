@@ -8,11 +8,9 @@
 import UIKit
 
 class ActionsTableViewController: BaseViewController {
-    lazy var myTableV: JTBaseDataTableView<JTNoticeCell> = {
-        let value = JTBaseDataTableView<JTNoticeCell>()
+    lazy var myTableV: JTBaseDataTableView<HomeTableViewCell> = {
+        let value = JTBaseDataTableView<HomeTableViewCell>()
         value.cellID = "myTableVID"
-        value.layer.borderWidth = 2
-        value.layer.borderColor = UIColor.lightGray.cgColor
         value.separatorStyle = .none
         return value
     }()
@@ -21,29 +19,14 @@ class ActionsTableViewController: BaseViewController {
         super.viewDidLoad()
         view.addSubview(myTableV)
         myTableV.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(10)
         }
         
-        let actions: [String] = ["弹出视图", 
+        let actions: [String] = [
                                  "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
-                                 "模态弹出",
+                                 "弹出视图1",
+                                 "弹出视图2",
+                                 "弹出视图3",
         ]
         myTableV.dataList = actions.map { item in
             let model = JTBalanceModel()
@@ -55,12 +38,8 @@ class ActionsTableViewController: BaseViewController {
             
             switch idx.row {
                 case 0:
-                    showPopupV()
-                case 1:
                     let vc = ToolsViewController()
                     self.present(vc, animated: true)
-                case 2:
-                    break
                 default:
                     showPopupV(idx.row % 3)
                     break

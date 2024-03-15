@@ -399,6 +399,7 @@ extension UIColor {
     }
 }
 
+
 // MARK: UITextField 和 UITextView
 extension UITextField {
     
@@ -414,7 +415,7 @@ extension UITextField {
         }
         tempDelegate?.callBack = call
     }
-    func shouldChangeMatch(_ matchStr: String = ".*", _ call: ((String?)->Void)? = nil) {
+    func shouldChangeMatch(_ matchStr: String = ".*", _ call: ((String?)->Bool)? = nil) {
         if tempDelegate == nil {
             tempDelegate = UITFTools()
             self.delegate = tempDelegate
@@ -426,7 +427,7 @@ extension UITextField {
 
 class UITFTools: NSObject, UITextFieldDelegate {
     var callBack: ((String?)->Void)?
-    var change: ((String?)->Void)?
+    var change: ((String?)->Bool)?
     var matchStr: String = ".*"
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -436,8 +437,8 @@ class UITFTools: NSObject, UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let currentText = textField.text else { return true }
         let newText = NSString(string: currentText).replacingCharacters(in: range, with: string)
-        change?(newText)
-        return newText.reMatch(reString: matchStr)
+        
+        return change?(newText) ?? newText.reMatch(reString: matchStr)
     }
     
     // UITextFieldDelegate 方法，点击 Return 键时调用
@@ -475,7 +476,7 @@ extension UITextView {
         }
         tempDelegate?.callBack = call
     }
-    func shouldChangeMatch(_ matchStr: String = ".*", _ call: ((String?)->Void)? = nil) {
+    func shouldChangeMatch(_ matchStr: String = ".*", _ call: ((String?)->Bool)? = nil) {
         if tempDelegate == nil {
             tempDelegate = UITVTools()
             self.delegate = tempDelegate
@@ -494,7 +495,7 @@ extension UITextView {
 }
 class UITVTools: NSObject, UITextViewDelegate {
     var callBack: ((String?)->Void)?
-    var change: ((String?)->Void)?
+    var change: ((String?)->Bool)?
     var beginBack: ((String?)->Void)?
     var matchStr: String = ".*"
     
@@ -505,8 +506,8 @@ class UITVTools: NSObject, UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         guard let currentText = textView.text else { return true }
         let newText = NSString(string: currentText).replacingCharacters(in: range, with: text)
-        change?(newText)
-        return newText.reMatch(reString: matchStr)
+        
+        return change?(newText) ?? newText.reMatch(reString: matchStr)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {

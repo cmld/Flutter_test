@@ -15,6 +15,7 @@ class MyScrollViewController: BaseViewController {
         value.layer.borderWidth = 2
         value.layer.borderColor = UIColor.lightGray.cgColor
         value.separatorStyle = .none
+        value.autoSetH?.isActive = true
         return value
     }()
     

@@ -60,7 +60,7 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
         self.backgroundColor = .white
         
         autoSetH = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
-        autoSetH?.isActive = true
+//        autoSetH?.isActive = true
     }
     
     required init?(coder: NSCoder) {

@@ -21,6 +21,12 @@ class CMDatePickerView: UIView {
         return value
     }()
     
+    lazy var startLine: UILabel = {
+        let value = UILabel()
+        value.backgroundColor = mainColor
+        return value
+    }()
+    
     lazy var connector: UILabel = {
         let value = UILabel()
         value.text = "-"
@@ -36,6 +42,11 @@ class CMDatePickerView: UIView {
         return value
     }()
     
+    lazy var endLine: UILabel = {
+        let value = UILabel()
+        return value
+    }()
+    
     fileprivate var datePicker: UIDatePicker = {
         let value = UIDatePicker()
         value.locale = Locale(identifier: "zh_CN")
@@ -46,19 +57,19 @@ class CMDatePickerView: UIView {
     
     var minLimit: Date!
     var maxLimit: Date!
+    var formatStr: String!
     
-    init(startD: Date, endD: Date, minLimit: Date, maxLimit: Date = Date(), mode: UIDatePicker.Mode = .date) {
+    init(startD: Date, endD: Date, formatStr: String, color: UIColor = .black, mode: UIDatePicker.Mode = .date) {
         super.init(frame: .zero)
+        mainColor = color
+        self.formatStr = formatStr
         createCellUI()
         
-        startBtn.setTitle(startD.toFormat("YYYY-MM-dd"), for: .normal)
-        endBtn.setTitle(endD.toFormat("YYYY-MM-dd"), for: .normal)
+        startBtn.setTitle(startD.toFormat(formatStr), for: .normal)
+        endBtn.setTitle(endD.toFormat(formatStr), for: .normal)
         
         datePicker.setDate(startD, animated: false)
         datePicker.datePickerMode = .date
-        
-        self.minLimit = minLimit
-        self.maxLimit = maxLimit
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -71,11 +82,19 @@ class CMDatePickerView: UIView {
     }
     
     func createCellUI() {
+        startBtn.addSubview(startLine)
+        endBtn.addSubview(endLine)
+        
         addSubviews([startBtn, connector, endBtn, datePicker])
         
         startBtn.snp.makeConstraints { make in
             make.top.left.equalToSuperview()
             make.height.equalTo(40)
+        }
+        startLine.snp.makeConstraints { make in
+            make.left.right.equalTo(startBtn.titleLabel!)
+            make.top.equalTo(startBtn.titleLabel!.snp.bottom).offset(5)
+            make.height.equalTo(1)
         }
         
         connector.snp.makeConstraints { make in
@@ -87,6 +106,11 @@ class CMDatePickerView: UIView {
             make.centerY.height.width.equalTo(startBtn)
             make.left.equalTo(connector.snp.right)
             make.right.equalToSuperview()
+        }
+        endLine.snp.makeConstraints { make in
+            make.left.right.equalTo(endBtn.titleLabel!)
+            make.top.equalTo(endBtn.titleLabel!.snp.bottom).offset(5)
+            make.height.equalTo(1)
         }
         
         datePicker.snp.makeConstraints { make in
@@ -104,6 +128,9 @@ class CMDatePickerView: UIView {
             startBtn.isSelected = true
             endBtn.isSelected = false
             
+            startLine.backgroundColor = mainColor
+            endLine.backgroundColor = .clear
+            
             if let date = startBtn.titleLabel?.text?.toDate()?.date {
                 datePicker.setDate(date, animated: false)
             }
@@ -112,6 +139,9 @@ class CMDatePickerView: UIView {
             guard let `self` = self else { return }
             startBtn.isSelected = false
             endBtn.isSelected = true
+            
+            endLine.backgroundColor = mainColor
+            startLine.backgroundColor = .clear
             
             if let date = endBtn.titleLabel?.text?.toDate()?.date {
                 datePicker.setDate(date, animated: false)
@@ -143,7 +173,7 @@ class CMDatePickerView: UIView {
             } else {
                 limitCheck()
             }
-            startBtn.setTitle(selectedDate.toFormat("YYYY-MM-dd"), for: .normal)
+            startBtn.setTitle(selectedDate.toFormat(formatStr), for: .normal)
         }
         if endBtn.isSelected {
             if let startD = startBtn.titleLabel?.text?.toDate()?.date, selectedDate < startD {
@@ -152,7 +182,7 @@ class CMDatePickerView: UIView {
             } else {
                 limitCheck()
             }
-            endBtn.setTitle(selectedDate.toFormat("YYYY-MM-dd"), for: .normal)
+            endBtn.setTitle(selectedDate.toFormat(formatStr), for: .normal)
         }
     }
 }

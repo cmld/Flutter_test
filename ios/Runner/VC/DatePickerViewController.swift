@@ -11,8 +11,9 @@ import SwiftDate
 class DatePickerViewController: BaseViewController {
     
     lazy var picker: CMDatePickerView = {
-        let value = CMDatePickerView(startD: Date() - 6.days, endD: Date(), minLimit: Date() - 6.months, maxLimit: Date(), mode: .date)
-        
+        let value = CMDatePickerView(startD: Date() - 6.days, endD: Date(), formatStr: "YYYY-MM-dd", color: UIColor.red)
+        value.minLimit = Date() - 6.months
+        value.maxLimit = Date()
         return value
     }()
     

@@ -22,4 +22,13 @@ test2add
 
 rebase 1 ++
 
+##运行配置
+flutter run  --flavor Flutter
+
+{
+            "name": "Flutter_test",
+            "request": "launch",
+            "type": "dart",
+            "args": ["--flavor", "Flutter"]
+        },
 

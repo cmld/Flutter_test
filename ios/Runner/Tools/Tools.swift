@@ -380,6 +380,16 @@ extension String {
     var localized: String {
         return self
     }
+    func dflt(_ defStr: String = "") -> String {
+        return self.count > 0 ? self : defStr
+    }
+}
+
+extension String? {
+    func dflt(_ defStr: String = "") -> String {
+        let tranStr = self ?? defStr
+        return tranStr.count > 0 ? tranStr : defStr
+    }
 }
 
 extension UIColor {

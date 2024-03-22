@@ -16,6 +16,13 @@ class HomeTableViewCell: JTBaseDataTableViewCell {
         return value
     }()
     
+    lazy var descLb: UILabel = {
+        let value = UILabel()
+        value.textColor = .lightGray
+        value.font = UIFont.systemFont(ofSize: 14)
+        return value
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
@@ -37,9 +44,14 @@ class HomeTableViewCell: JTBaseDataTableViewCell {
             make.left.right.bottom.equalToSuperview()
         }
         contentView.addSubview(contnetLb)
+        contentView.addSubview(descLb)
         contnetLb.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(10)
-            make.height.equalTo(35)
+            make.top.left.right.equalToSuperview().inset(10)
+        }
+        
+        descLb.snp.makeConstraints { make in
+            make.top.equalTo(contnetLb.snp.bottom).offset(5)
+            make.bottom.left.right.equalToSuperview().inset(10)
         }
     }
     
@@ -47,7 +59,9 @@ class HomeTableViewCell: JTBaseDataTableViewCell {
         guard let instance = model as? JTBalanceModel else {
             return
         }
-        contnetLb.text = instance.title
+        let items = instance.title?.components(separatedBy: ",")
+        contnetLb.text = items?.first
+        descLb.text = items?.last
     }
     
 }

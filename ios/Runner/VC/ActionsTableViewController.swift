@@ -27,7 +27,9 @@ class ActionsTableViewController: BaseViewController {
                                  "弹出视图1",
                                  "弹出视图2",
                                  "弹出视图3",
+                                 "date 操作",
         ]
+        
         myTableV.dataList = actions.map { item in
             let model = JTBalanceModel()
             model.title = item
@@ -40,6 +42,8 @@ class ActionsTableViewController: BaseViewController {
                 case 0:
                     let vc = ToolsViewController()
                     self.present(vc, animated: true)
+                case 4:
+                    getBanner()
                 default:
                     showPopupV(idx.row % 3)
                     break
@@ -83,6 +87,26 @@ class ActionsTableViewController: BaseViewController {
                 break
         }
         
+    }
+    
+    func getBanner() {
+        let startDate = Calendar.current.startOfDay(for: Date())
+        var popDates = ""
+        if let temp = UserDefaults.standard.value(forKey: "BannerPopDates") as? String {
+            popDates = temp
+        }
+        var dates: [String] = []
+        if !popDates.isEmpty {
+            dates = popDates.split(separator: ",")
+                    .map({String($0)})
+                    .filter({$0.toDate("YYYY-MM-dd HH:mm:ss:SSS")?.date.isAfterDate(startDate, granularity: .nanosecond) ?? false})
+        }
+        if let lastDate = dates.last?.toDate("YYYY-MM-dd HH:mm:ss:SSS")?.date, Date().timeIntervalSince(lastDate) > 7200, dates.count < 5 {
+            dates.append(Date().toFormat("YYYY-MM-dd HH:mm:ss:SSS"))
+            popDates = dates.joined(separator: ",")
+            UserDefaults.standard.set(popDates, forKey: "BannerPopDates")
+            // TODO: Armand 开始请求
+        }
     }
 
 }

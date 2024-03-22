@@ -29,56 +29,39 @@ class HomeListViewController: BaseViewController {
             make.edges.equalToSuperview().inset(15)
         }
         
-        tableView.dataList = [
-            "Main",
-            "Oss",
-            "ImagePicker",
-            "AddWater",
-            "面单",
-            "Tools",
-            "tableView + collectionView",
-            "PDF",
-            "tableView",
-            "ActionsTableView",
-            "DatePickerViewController",
-        ].map({ item in
+        let dataSourceList = [
+            "MainViewController, Main",
+            "OSSViewController, Oss",
+            "ImagePickerViewController, ImagePicker",
+            "AddWaterViewController, AddWater",
+            "ModeViewController, 面单",
+            "ToolsViewController, Tools",
+            "MyScrollViewController, tableView + collectionView",
+            "PDFViewController, PDF",
+            "TableViewController, tableView",
+            "ActionsTableViewController, ActionsTableView",
+            "DatePickerViewController, DatePickerViewController",
+        ]
+        
+        tableView.dataList = dataSourceList.reversed().map({ item in
             let model = JTBalanceModel()
             model.title = item
             return model
         })
         
         tableView.cellSelected = {[weak self] cell, idx in
-            var vc: UIViewController!
-            switch idx.row {
-                case 0:
-                    vc = MainViewController()
-                case 1:
-                    vc = OSSViewController()
-                case 2:
-                    vc = ImagePickerViewController()
-                case 3:
-                    vc = AddWaterViewController()
-                case 4:
-                    vc = ModeViewController()
-                case 5:
-                    vc = ToolsViewController()
-                case 6:
-                    vc = MyScrollViewController()
-                case 7:
-                    vc = PDFViewController()
-                case 8:
-                    vc = TableViewController()
-                case 9:
-                    vc = ActionsTableViewController()
-                case 10:
-                    vc = DatePickerViewController()
-                default:
-                    vc = MainViewController()
+            guard let `self` = self else { return }
+            
+            if let classStr = dataSourceList.reversed()[idx.row].components(separatedBy: ",").first {
+                guard let vclass = NSClassFromString("Runner."+classStr) as? UIViewController.Type else {
+                    return
+                }
+                let vc = vclass.init()
+                navigationController?.pushViewController(vc, animated: true)
             }
-            self?.navigationController?.pushViewController(vc, animated: true)
         }
         
-        tableView.cellSelected(HomeTableViewCell(), IndexPath(row: 10, section: 0))
+        tableView.cellSelected(HomeTableViewCell(), IndexPath(row: 0, section: 0))
     }
     
 }

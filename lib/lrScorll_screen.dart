@@ -53,6 +53,18 @@ class _LrScorllScreenState extends State<LrScorllScreen> {
                 (slKey.currentState as SwipeListState).scorllToIdx(10);
               },
               child: Text('to 0')),
+          Row(
+            children: [
+              SizedBox(
+                  width: 4343,
+                  child: TextButton(
+                    onPressed: () {
+                      var dd = [''][2];
+                    },
+                    child: Text('error'),
+                  )),
+            ],
+          )
         ]),
       ),
     );

@@ -2,6 +2,7 @@
 
 // import 'dart:html';
 
+import 'dart:async';
 import 'dart:io';
 
 import 'package:clmd_flutter/ble_manager.dart';
@@ -20,14 +21,34 @@ import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 void main() {
-  runApp(ScreenUtilInit(
-    designSize: const Size(375, 812),
-    minTextAdapt: true,
-    splitScreenMode: true,
-    builder: (context, child) {
-      return const MyApp();
+  // runApp(ScreenUtilInit(
+  //       designSize: const Size(375, 812),
+  //       minTextAdapt: true,
+  //       splitScreenMode: true,
+  //       builder: (context, child) {
+  //         return const MyApp();
+  //       },
+  //     ));
+
+  FlutterError.onError = (d) async {
+    Zone.current
+        .handleUncaughtError(d.exception, d.stack ?? StackTrace.current);
+  };
+  runZonedGuarded(
+    () => runApp(
+      ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return const MyApp();
+        },
+      ),
+    ),
+    (error, stack) {
+      print('clmd err:' + error.toString() + '\nclmd stack info:\n' + stack.toString());
     },
-  ));
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -128,7 +149,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   focusedBorder: null,
                   counterText: '',
                 ),
-                magnifierConfiguration: TextMagnifierConfiguration(shouldDisplayHandlesInMagnifier: false),
+                magnifierConfiguration: TextMagnifierConfiguration(
+                    shouldDisplayHandlesInMagnifier: false),
                 // focusNode: widget.focusNode,
               ),
               const Divider(

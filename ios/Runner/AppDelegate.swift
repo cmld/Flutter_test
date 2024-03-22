@@ -15,18 +15,20 @@ import IQKeyboardManagerSwift
     
     configKeyBoard()
       
+    #if FLU
       // MARK: 走Flutter - main
-//    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
-    
+      return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+    #else
       // MARK: 走Native - main
-     let nativeWindow = UIWindow(frame: UIScreen.main.bounds)
-     nativeWindow.backgroundColor = .white
+      let nativeWindow = UIWindow(frame: UIScreen.main.bounds)
+      nativeWindow.backgroundColor = .white
 
-     let nv = UINavigationController(rootViewController: HomeListViewController())
-     nativeWindow.rootViewController = nv
-     self.window = nativeWindow
-     self.window.makeKeyAndVisible()
-     return true
+      let nv = UINavigationController(rootViewController: HomeListViewController())
+      nativeWindow.rootViewController = nv
+      self.window = nativeWindow
+      self.window.makeKeyAndVisible()
+      return true
+    #endif
   }
     
 //    channel

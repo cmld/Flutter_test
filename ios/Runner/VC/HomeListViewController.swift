@@ -40,7 +40,7 @@ class HomeListViewController: BaseViewController {
             "PDFViewController, PDF",
             "TableViewController, tableView",
             "ActionsTableViewController, ActionsTableView",
-            "DatePickerViewController, DatePickerViewController",
+            "DatePickerViewController, DatePickerViewController + TextView",
         ]
         
         tableView.dataList = dataSourceList.reversed().map({ item in

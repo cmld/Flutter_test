@@ -6,33 +6,37 @@
 //
 
 import UIKit
-import HandyJSON
+//import HandyJSON
 
-class JTBaseDataCollectionCell: UICollectionViewCell {
-    typealias D = HandyJSON
-    var cellModel: D?
-    func setContent(model: D) {}
+open class JTBaseDataCollectionCell: UICollectionViewCell {
+    public typealias D = Any
+    open var cellModel: D?
+    open func setContent(model: D) {}
 }
 
-class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-    var cellID: String = "" {
+open class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+    open var cellID: String = "" {
         didSet {
-            self.register(T.classForCoder(), forCellWithReuseIdentifier: cellID)
+            if cellID.contains("Nib") {
+                self.register(UINib(nibName: "\(T.classForCoder())", bundle: nil), forCellWithReuseIdentifier: cellID)
+            } else {
+                self.register(T.classForCoder(), forCellWithReuseIdentifier: cellID)
+            }
         }
     }
-    var dataList: [T.D] = [] {
+    open var dataList: [T.D] = [] {
         didSet {
             self.reloadData()
             self.layoutIfNeeded()
         }
     }
     
-    var setupCell:((_: T, _: IndexPath)->Void) = {_, _ in}
+    open var setupCell:((_: T, _: IndexPath)->Void) = {_, _ in}
     
-    var cellSelected:((_: T, _: IndexPath)->Void) = {_, _ in}
+    open var cellSelected:((_: T, _: IndexPath)->Void) = {_, _ in}
     
-    var autoSetH: NSLayoutConstraint?
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+    open var autoSetH: NSLayoutConstraint?
+    override public init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         
 //        let flowlayout = UICollectionViewFlowLayout.init()
 //        flowlayout.scrollDirection = .vertical
@@ -51,17 +55,17 @@ class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionView, U
         autoSetH = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
         autoSetH?.isActive = true
     }
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     
     //MARK:delegate
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataList.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? T {
             let model = dataList[indexPath.row]
             cell.cellModel = model
@@ -72,13 +76,13 @@ class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionView, U
         return UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? T {
             cellSelected(cell, indexPath)
         }
     }
     
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         if let needSetH = autoSetH, self.contentSize.height != needSetH.constant {
             needSetH.constant = self.contentSize.height
@@ -87,8 +91,8 @@ class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionView, U
 }
 
 // MARK: 自定义布局约束 左对齐
-class UICollectionViewLeftFlowLayout: UICollectionViewFlowLayout {
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+open class UICollectionViewLeftFlowLayout: UICollectionViewFlowLayout {
+    open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard let attrsArry = super.layoutAttributesForElements(in: rect) else {
             return nil
         }
@@ -108,10 +112,22 @@ class UICollectionViewLeftFlowLayout: UICollectionViewFlowLayout {
             } else if attrsArry.count == 1, let curAttr = attrsArry.first {
                 var frame = curAttr.frame
                 frame.origin.x = 0
-                curAttr.frame = frame
+                curAttr.frame = frame.toRTL(self.collectionView?.bounds.width ?? 0)
             }
         }
+        
         return attrsArry
     }
     
+}
+
+extension CGRect {
+    func toRTL(_ superW: CGFloat) -> CGRect {
+        var result = self
+        if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft, superW > 0 {
+            let transX = superW - self.maxX
+            result = CGRect(x: transX, y: self.minY, width: self.width, height: self.height)
+        }
+        return result
+    }
 }

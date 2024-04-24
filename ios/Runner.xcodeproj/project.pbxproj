@@ -23,6 +23,7 @@
 		592BBF5B2B6A4B8100500001 /* GoodsInfoNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592BBF592B6A4B8100500001 /* GoodsInfoNormalCell.xib */; };
 		592BBF5E2B6A550500500001 /* GoodsInfoMSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BBF5C2B6A550500500001 /* GoodsInfoMSCell.swift */; };
 		592BBF5F2B6A550500500001 /* GoodsInfoMSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592BBF5D2B6A550500500001 /* GoodsInfoMSCell.xib */; };
+		594179EA2BBCEFDD00ABBA4A /* WZZKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 594179E92BBCEFDD00ABBA4A /* WZZKeyboardManager.m */; };
 		598C5EEA2B58CC4C002EF6C1 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598C5EE92B58CC4C002EF6C1 /* PDFViewController.swift */; };
 		598C5EED2B58CD8F002EF6C1 /* NDA_test.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 598C5EEC2B58CD8F002EF6C1 /* NDA_test.pdf */; };
 		598C5EEF2B58D6EF002EF6C1 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598C5EEE2B58D6EE002EF6C1 /* Const.swift */; };
@@ -96,10 +97,13 @@
 		592BBF592B6A4B8100500001 /* GoodsInfoNormalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsInfoNormalCell.xib; sourceTree = "<group>"; };
 		592BBF5C2B6A550500500001 /* GoodsInfoMSCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsInfoMSCell.swift; sourceTree = "<group>"; };
 		592BBF5D2B6A550500500001 /* GoodsInfoMSCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsInfoMSCell.xib; sourceTree = "<group>"; };
+		594179E82BBCEFDD00ABBA4A /* WZZKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZZKeyboardManager.h; sourceTree = "<group>"; };
+		594179E92BBCEFDD00ABBA4A /* WZZKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZZKeyboardManager.m; sourceTree = "<group>"; };
 		598C5EE92B58CC4C002EF6C1 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		598C5EEC2B58CD8F002EF6C1 /* NDA_test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NDA_test.pdf; sourceTree = "<group>"; };
 		598C5EEE2B58D6EE002EF6C1 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		598C5EF22B59139B002EF6C1 /* test_area.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_area.txt; sourceTree = "<group>"; };
+		598C9E152BB51B5E00A9C7AB /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		599A20952ADD2EBC00AD51ED /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		599A20982ADD30A400AD51ED /* JTReturnModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTReturnModeView.swift; sourceTree = "<group>"; };
 		599A209A2ADD30B900AD51ED /* JTReturnModeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JTReturnModeView.xib; sourceTree = "<group>"; };
@@ -168,6 +172,23 @@
 				2E161C5E4C6B677121FD8777 /* Pods-Runner.debug-flutter.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		594179E62BBCEFAA00ABBA4A /* otherLibs */ = {
+			isa = PBXGroup;
+			children = (
+				594179E72BBCEFDD00ABBA4A /* WZZKeyboardManager */,
+			);
+			path = otherLibs;
+			sourceTree = "<group>";
+		};
+		594179E72BBCEFDD00ABBA4A /* WZZKeyboardManager */ = {
+			isa = PBXGroup;
+			children = (
+				594179E82BBCEFDD00ABBA4A /* WZZKeyboardManager.h */,
+				594179E92BBCEFDD00ABBA4A /* WZZKeyboardManager.m */,
+			);
+			path = WZZKeyboardManager;
 			sourceTree = "<group>";
 		};
 		594923022B916711002CF2B6 /* BaseDataView */ = {
@@ -326,9 +347,11 @@
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				59C2CD892A89DB4A004B3600 /* JTCallManager.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
+				598C9E152BB51B5E00A9C7AB /* PrivacyInfo.xcprivacy */,
 				59AE35C22AE7C339000C349B /* VC */,
 				59BE37F62AF1FD3B00998E5F /* Tools */,
 				599A20972ADD307600AD51ED /* Components */,
+				594179E62BBCEFAA00ABBA4A /* otherLibs */,
 				599FB8232B1EFB3B00519B95 /* TestGroup */,
 				59AE35BE2AE7C288000C349B /* OCVC */,
 				59AE35BD2AE7C26F000C349B /* OCComponents */,
@@ -543,6 +566,7 @@
 				592304382BA3F2F90020CC14 /* DatePickerViewController.swift in Sources */,
 				59E75FB62B2AE66F0008E807 /* JTSendSecondModeView.swift in Sources */,
 				59BC11A32B8DC691004841FD /* CMPopupView.swift in Sources */,
+				594179EA2BBCEFDD00ABBA4A /* WZZKeyboardManager.m in Sources */,
 				5929787F2B2AA8A000011DDC /* JTHandoverModeView.swift in Sources */,
 				59E75FAC2B2ACAAE0008E807 /* HomeListViewController.swift in Sources */,
 				59E14F612B67B17900F1DF69 /* RecipientInternCell.swift in Sources */,

@@ -7,16 +7,16 @@
 //
 
 import UIKit
-import HandyJSON
+//import HandyJSON
 
-class JTBaseDataTableViewCell: UITableViewCell {
-    typealias D = HandyJSON
-    var cellModel: D?
-    func setContent(model: D) {}
+open class JTBaseDataTableViewCell: UITableViewCell {
+    public typealias D = Any
+    open var cellModel: D?
+    open func setContent(model: D) {}
 }
 
-class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewDelegate, UITableViewDataSource {
-    var cellID: String = "" {
+open class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewDelegate, UITableViewDataSource {
+    open var cellID: String = "" {
         didSet {
             if cellID.contains("Nib") {
                 self.register(UINib(nibName: "\(T.classForCoder())", bundle: nil), forCellReuseIdentifier: cellID)
@@ -26,11 +26,11 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
         }
     }
     
-    var setupCell:((_: T, _: IndexPath)->Void) = {_, _ in}
+    open var setupCell:((_: T, _: IndexPath)->Void) = {_, _ in}
     
-    var cellSelected:((_: T, _: IndexPath)->Void) = {_, _ in}
+    open var cellSelected:((_: T, _: IndexPath)->Void) = {_, _ in}
     
-    var dataList: [T.D] = [] {
+    open var dataList: [T.D] = [] {
         didSet {
             self.reloadData()
             self.layoutIfNeeded()
@@ -38,9 +38,9 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
         }
     }
     
-    var emptyView: UIView?
+    open var emptyView: UIView?
     
-    var autoSetH: NSLayoutConstraint?
+    open var autoSetH: NSLayoutConstraint?
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         
@@ -58,16 +58,15 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
         self.delegate = self
         self.dataSource = self
         self.backgroundColor = .white
-        
         autoSetH = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
 //        autoSetH?.isActive = true
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setEmptyView(isEmpty: Bool){
+    open func setEmptyView(isEmpty: Bool){
         guard let ev = emptyView else { return }
         if isEmpty {
             if ev.superview == nil {
@@ -82,11 +81,11 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
     }
     
     //MARK: UITableViewDelegate, UITableViewDataSource
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataList.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? T {
             let model = dataList[indexPath.row]
             cell.cellModel = model
@@ -97,13 +96,13 @@ class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITableViewD
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? T {
             cellSelected(cell, indexPath)
         }
     }
     
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         if let needSetH = autoSetH, self.contentSize.height != needSetH.constant {
             needSetH.constant = self.contentSize.height

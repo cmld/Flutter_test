@@ -80,7 +80,7 @@ class ActionsTableViewController: BaseViewController {
             case 0:
                 CMPopupView().showWithConfig(filteringV, config: CMPopupConfig(position: .top, yTopGap: 200, yDownGap: 0))
             case 1:
-                CMPopupView().showWithConfig(filteringV, config: CMPopupConfig(position: .down, yTopGap: 0, yDownGap: 200))
+                CMPopupView().showWithConfig(filteringV, config: CMPopupConfig(position: .down, yTopGap: 0, yDownGap: 0))
             case 2:
                 CMPopupView().showWithConfig(filteringV, config: CMPopupConfig(position: .center, yTopGap: 100, yDownGap: 100))
             default:

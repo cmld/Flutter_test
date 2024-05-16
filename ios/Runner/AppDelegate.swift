@@ -2,6 +2,8 @@ import UIKit
 import Flutter
 import IQKeyboardManagerSwift
 
+var basicChannl: FlutterBasicMessageChannel!
+
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
   override func application(
@@ -12,6 +14,8 @@ import IQKeyboardManagerSwift
       
     let msger: FlutterBinaryMessenger  = window?.rootViewController as! FlutterBinaryMessenger
     pluginChannel(msg: msger)
+      basicChannel(msger: msger)
+      
     
     configKeyBoard()
       
@@ -31,7 +35,7 @@ import IQKeyboardManagerSwift
     #endif
   }
     
-//    channel
+//   Method channel
     func pluginChannel(msg: FlutterBinaryMessenger) {
         let channel = FlutterMethodChannel(name: "plugin_clmd", binaryMessenger: msg)
         channel.setMethodCallHandler { (call: FlutterMethodCall, result:@escaping FlutterResult) in
@@ -54,9 +58,25 @@ import IQKeyboardManagerSwift
                         
                     }
                     break
+                case "imgPicker":
+                    ImageUtil.shared.pushToImagePicker()
+                    break
+                case "basicChannlTest":
+                    basicChannl.sendMessage("basic channl test NA 2 Dart") { back in
+                        print(back as Any)
+                    }
+                    break
                 default:
                     break
             }
+        }
+    }
+    
+    func basicChannel(msger: FlutterBinaryMessenger) {
+        basicChannl = FlutterBasicMessageChannel(name: "basic_plugin_clmd", binaryMessenger: msger)
+        basicChannl.setMessageHandler { msg, callback in
+            print(msg as Any)
+            callback("setMessageHandler back")
         }
     }
     

@@ -107,6 +107,7 @@ class OSSViewController: BaseViewController {
     
     @objc func pushToImagePicker()  {
         let imgPickerVC = UIImagePickerController()
+        imgPickerVC.sourceType = .camera
         imgPickerVC.delegate = self
         self.present(imgPickerVC, animated: true)
     }

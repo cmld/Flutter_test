@@ -28,6 +28,7 @@ class ActionsTableViewController: BaseViewController {
                                  "弹出视图2",
                                  "弹出视图3",
                                  "date 操作",
+                                 "BloomFilter",
         ]
         
         myTableV.dataList = actions.map { item in
@@ -44,6 +45,16 @@ class ActionsTableViewController: BaseViewController {
                     self.present(vc, animated: true)
                 case 4:
                     getBanner()
+                case 5:
+                    print("armand p: 1", Date().toFormat("YYYY-MM-dd HH:mm:ss:SSS"))
+                    let bloomFilter = BloomFilter(size: 239626460, hashFunctionsCount: 17)
+                    print("armand p: 2", Date().toFormat("YYYY-MM-dd HH:mm:ss:SSS"))
+                    for i in (0..<10000) {
+                        bloomFilter.add("slkjfsfadfadfafdsa" + i.description)
+                    }
+                    print("armand p: 3", Date().toFormat("YYYY-MM-dd HH:mm:ss:SSS"))
+                    let dd = bloomFilter.contains("slkjfsfadfadfafdsa01")
+                    print("armand p: 4 \(dd)", Date().toFormat("YYYY-MM-dd HH:mm:ss:SSS"))
                 default:
                     showPopupV(idx.row % 3)
                     break

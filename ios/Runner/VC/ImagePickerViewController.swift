@@ -93,3 +93,30 @@ extension ImagePickerViewController: UIImagePickerControllerDelegate {
         return (tempImg.jpegData(compressionQuality: 1)?.count ?? 0) / 1024
     }
 }
+
+
+class ImageUtil: NSObject, UINavigationControllerDelegate {
+    public static var shared: ImageUtil { return self.instance }
+    private static let instance = ImageUtil()
+    private override init() {}
+    
+    func pushToImagePicker()  {
+        let imgPickerVC = UIImagePickerController()
+        imgPickerVC.sourceType = .camera // TODO: Armand 改变获取方式
+        imgPickerVC.delegate = self
+        imgPickerVC.modalPresentationStyle = .overFullScreen
+        getWindow().rootViewController?.present(imgPickerVC, animated: true)
+        
+    }
+}
+
+extension ImageUtil: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let origianalImage = info[.originalImage] as? UIImage else {
+            return
+        }
+        print(origianalImage.size)
+        
+        picker.dismiss(animated: true)
+    }
+}

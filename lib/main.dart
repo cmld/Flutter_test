@@ -12,7 +12,7 @@ import 'package:clmd_flutter/utils/thread_sync.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:image_pickers/image_pickers.dart';
+import 'package:image_picker/image_picker.dart';
 // import 'package:location_plugin/entity/LocationInfo.dart';
 // import 'package:location_plugin/location_plugin.dart';
 import 'package:oss_plugin/bean/OssRequest.dart';
@@ -21,34 +21,38 @@ import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 void main() {
-  // runApp(ScreenUtilInit(
+  // WidgetsFlutterBinding.ensureInitialized();
+  runApp(ScreenUtilInit(
+    designSize: const Size(375, 812),
+    minTextAdapt: true,
+    splitScreenMode: true,
+    builder: (context, child) {
+      return const MyApp();
+    },
+  ));
+
+  // FlutterError.onError = (d) async {
+  //   Zone.current
+  //       .handleUncaughtError(d.exception, d.stack ?? StackTrace.current);
+  // };
+  // runZonedGuarded(
+  //   () => runApp(
+  //     ScreenUtilInit(
   //       designSize: const Size(375, 812),
   //       minTextAdapt: true,
   //       splitScreenMode: true,
   //       builder: (context, child) {
   //         return const MyApp();
   //       },
-  //     ));
-
-  FlutterError.onError = (d) async {
-    Zone.current
-        .handleUncaughtError(d.exception, d.stack ?? StackTrace.current);
-  };
-  runZonedGuarded(
-    () => runApp(
-      ScreenUtilInit(
-        designSize: const Size(375, 812),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, child) {
-          return const MyApp();
-        },
-      ),
-    ),
-    (error, stack) {
-      print('clmd err:' + error.toString() + '\nclmd stack info:\n' + stack.toString());
-    },
-  );
+  //     ),
+  //   ),
+  //   (error, stack) {
+  //     print('clmd err:' +
+  //         error.toString() +
+  //         '\nclmd stack info:\n' +
+  //         stack.toString());
+  //   },
+  // );
 }
 
 class MyApp extends StatelessWidget {
@@ -89,6 +93,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final MethodChannel _channel = const MethodChannel('plugin_clmd');
+  final BasicMessageChannel _basecChannel =
+      const BasicMessageChannel('basic_plugin_clmd', StandardMessageCodec());
 
   int _counter = 0;
   // ValueNotifier<LocationInfo?> locationNf = ValueNotifier(null);
@@ -111,6 +117,15 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _basecChannel.setMessageHandler((message) {
+      print(message.toString());
+      return Future(() => "basic channl back");
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -125,6 +140,57 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              TextButton(
+                onPressed: () {
+                  for (int i = 0; i < 3; i++) {
+                    futuresCall(i);
+                  }
+                },
+                child: const Text(
+                  'future list call',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () async {
+                  final String reply = await _basecChannel.send('dart 2 na');
+                  print('MessageChannelTest in dart： $reply');
+                },
+                child: const Text(
+                  'basic channl test - dart 2 na',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () async {
+                  _channel.invokeMethod('basicChannlTest');
+                },
+                child: const Text(
+                  'basic channl test - na 2 dart',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () async {
+                  _channel.invokeMethod('imgPicker');
+                },
+                child: const Text(
+                  'channel到原生拍摄',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
               TextField(
                 // controller: widget.textController,
                 // style: JTStyle.text3c16SpStyle,
@@ -211,16 +277,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               TextButton(
                 onPressed: () async {
-                  List<Media> _listImagePaths = await ImagePickers.pickerPaths(
-                      galleryMode: GalleryMode.image,
-                      selectCount: 10,
-                      showGif: false,
-                      showCamera: true,
-                      compressSize: 500,
-                      uiConfig: UIConfig(uiThemeColor: Color(0xffff0f50)),
-                      cropConfig:
-                          CropConfig(enableCrop: false, width: 2, height: 1));
-                  _filelist = _listImagePaths.map((e) => e.path ?? '').toList();
+                  var rsp =
+                      await ImagePicker().pickImage(source: ImageSource.camera);
+                  _filelist = [rsp?.path ?? ''];
                   var bd = await File(_filelist.first).readAsBytes();
                   final result =
                       await _channel.invokeMethod('imgComp', bd.toList());
@@ -704,5 +763,29 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
+  }
+
+  Completer comp = Completer();
+  void futuresCall(int item) {
+    test1()
+        .then((value) => test2())
+        .then((value) => test3())
+        .whenComplete(() {});
+  }
+
+  Future<bool> test1() async {
+    print('test1');
+    return Future.delayed(const Duration(seconds: 1), () => true);
+  }
+
+  Future<bool> test2() async {
+    print('test2');
+    await Future.delayed(const Duration(seconds: 1));
+    return true;
+  }
+
+  Future test3() async {
+    print('test3');
+    return 1;
   }
 }

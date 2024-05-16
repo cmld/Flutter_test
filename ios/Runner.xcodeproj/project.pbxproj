@@ -14,6 +14,7 @@
 		591863912AFCDB8F00612807 /* JTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5918638F2AFCDB8F00612807 /* JTTableViewCell.swift */; };
 		592304362BA19B490020CC14 /* CMDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592304352BA19B490020CC14 /* CMDatePickerView.swift */; };
 		592304382BA3F2F90020CC14 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592304372BA3F2F90020CC14 /* DatePickerViewController.swift */; };
+		5925F01C2BF353CF0008A8C2 /* BloomFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925F01B2BF353CF0008A8C2 /* BloomFilter.swift */; };
 		5929787D2B2AA88D00011DDC /* JTHandoverModeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5929787C2B2AA88D00011DDC /* JTHandoverModeView.xib */; };
 		5929787F2B2AA8A000011DDC /* JTHandoverModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5929787E2B2AA8A000011DDC /* JTHandoverModeView.swift */; };
 		592BBF3D2B6A34A200500001 /* OptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BBF3C2B6A34A200500001 /* OptionCollectionViewCell.swift */; };
@@ -88,6 +89,7 @@
 		5918638F2AFCDB8F00612807 /* JTTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTTableViewCell.swift; sourceTree = "<group>"; };
 		592304352BA19B490020CC14 /* CMDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMDatePickerView.swift; sourceTree = "<group>"; };
 		592304372BA3F2F90020CC14 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		5925F01B2BF353CF0008A8C2 /* BloomFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomFilter.swift; sourceTree = "<group>"; };
 		5929787C2B2AA88D00011DDC /* JTHandoverModeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JTHandoverModeView.xib; sourceTree = "<group>"; };
 		5929787E2B2AA8A000011DDC /* JTHandoverModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTHandoverModeView.swift; sourceTree = "<group>"; };
 		592BBF3C2B6A34A200500001 /* OptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				59BE37F72AF1FD5A00998E5F /* Tools.swift */,
+				5925F01B2BF353CF0008A8C2 /* BloomFilter.swift */,
 				598C5EEE2B58D6EE002EF6C1 /* Const.swift */,
 			);
 			path = Tools;
@@ -564,6 +567,7 @@
 				598C5EEA2B58CC4C002EF6C1 /* PDFViewController.swift in Sources */,
 				59E14F642B67B33A00F1DF69 /* TableViewController.swift in Sources */,
 				592304382BA3F2F90020CC14 /* DatePickerViewController.swift in Sources */,
+				5925F01C2BF353CF0008A8C2 /* BloomFilter.swift in Sources */,
 				59E75FB62B2AE66F0008E807 /* JTSendSecondModeView.swift in Sources */,
 				59BC11A32B8DC691004841FD /* CMPopupView.swift in Sources */,
 				594179EA2BBCEFDD00ABBA4A /* WZZKeyboardManager.m in Sources */,

@@ -69,7 +69,7 @@ SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_blue: eeb381dc4727a0954dede73515f683865494b370
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
-  image_picker_ios: c560581cceedb403a6ff17f2f816d7fea1421fc1
+  image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
   IQKeyboardManagerSwift: 12d89768845bb77b55cc092ecc2b1f9370f06b76
   JTOSSUploader-iOS: 039422f51662ba179d1d5cef26cfeb6792e220a4
   oss_plugin: 69237cb3e06ca3a05777b12d44138f16a47ba978
@@ -78,7 +78,7 @@ SPEC CHECKSUMS:
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
   SwiftSoup: 5dd2c1b06afc964f30d99894af6ede22ede627aa
-  url_launcher_ios: 6116280ddcfe98ab8820085d8d76ae7449447586
+  url_launcher_ios: 68d46cc9766d0c41dbdc884310529557e3cd7a86
 
 PODFILE CHECKSUM: 2a958ada44388d8654e0d4dfd540f6a334c8f0ea
 

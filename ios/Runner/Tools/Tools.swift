@@ -233,6 +233,53 @@ extension UIImage {
         }
     }
     
+    // 图片斜边水印
+    func waterMarkMerge(markImg: UIImage, content: String, contentAttr: [NSAttributedString.Key: Any]) -> UIImage {
+        autoreleasepool {
+            let viewWidth = size.width
+            let viewHeight = size.height
+            let sqrtLength = sqrt(viewWidth * viewWidth + viewHeight * viewHeight)
+            let factor = viewHeight/720
+            
+            let rotation = Double.pi / 6 // 旋转角度 pi为180度 正数为顺时针
+            
+            // 1.开启上下文
+            UIGraphicsBeginImageContextWithOptions(size, true, 1)
+            //2.绘制图片
+            draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+            markImg.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+            
+            guard let context = UIGraphicsGetCurrentContext() else { return self }
+          
+            // 添加内容水印
+            //添加水印文字
+            let contentStr: NSMutableAttributedString = NSMutableAttributedString(string: content, attributes: contentAttr)
+            //绘制文字的宽高
+            let contentStrWidth = contentStr.size().width
+            let contentStrHeight = contentStr.size().height
+            
+            //此处计算出需要绘制水印文字的起始点，由于水印区域要大于图片区域所以起点在原有基础上移
+            let space: CGFloat = 10
+            let contentOriginY: CGFloat = self.size.height - contentStrHeight - space
+            
+            //在每行绘制时Y坐标叠加
+            let bgColorH = contentStrHeight + space * 2
+            context.setFillColor(UIColor(red: 0, green: 0, blue: 0, alpha: 0.4).cgColor)
+            context.fill(CGRectMake(0, size.height - bgColorH, size.width, bgColorH))
+            
+            content.draw(in: CGRect(x: (self.size.width - contentStrWidth)/2, y: contentOriginY, width: contentStrWidth, height: contentStrHeight), withAttributes: contentAttr)
+            
+            //3.从上下文中获取新图片
+            let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
+            
+            //4.关闭上下文
+            UIGraphicsEndImageContext()
+            //context.restoreGState()
+
+            return newImage
+            
+        }
+    }
     
     /// 压缩图片
     /// - Return: 压缩后的图片data

@@ -13,4 +13,5 @@ final Map<String, Widget Function(BuildContext)> routes = {
   'cc': (BuildContext context) => const ChartCardScreen(),
   'lrs': (BuildContext context) => LrScorllScreen(),
   'spp': (BuildContext context) => ScanPluginPage(),
+  
 };

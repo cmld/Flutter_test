@@ -1,8 +1,10 @@
+import 'package:clmd_flutter/pages/picturePreviewPage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:scan_plugin/ScanObjController.dart';
 import 'package:scan_plugin/ScanObjWidget.dart';
 
+/// JT内部扫描插件页面
 class ScanPluginPage extends StatefulWidget {
   const ScanPluginPage({Key? key}) : super(key: key);
 
@@ -32,17 +34,47 @@ class _ScanPluginPageState extends State<ScanPluginPage> {
           ScanObjWidget(
             controller: _scanObjctrl,
           ),
+          const Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: Colors.grey),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.warning_amber_rounded,
+                    color: Colors.red,
+                  ),
+                  Text(
+                    'sdj',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ],
+              ),
+            ),
+          ),
           Positioned(
             bottom: 100,
             left: 20,
             right: 20,
             child: IconButton.filled(
               onPressed: () async {
-                var file = await ImagePicker().pickImage(source: ImageSource.gallery);
+                var file =
+                    await ImagePicker().pickImage(source: ImageSource.gallery);
                 if (file == null) return;
-                var result = await _scanObjctrl.fileAnalysis(filePath: file.path);
+                var result =
+                    await _scanObjctrl.fileAnalysis(filePath: file.path);
                 _scanObjctrl.resetEmptyParse();
                 print(result);
+                String path = result?['bitmap'];
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        PicturePreviewPage(filePath: path),
+                  ),
+                );
               },
               icon: const Icon(Icons.image_search_outlined),
             ),
@@ -56,6 +88,14 @@ class _ScanPluginPageState extends State<ScanPluginPage> {
                 var captureAnalysis = await _scanObjctrl.captureAnalysis();
                 _scanObjctrl.resetEmptyParse();
                 print(captureAnalysis);
+                String path = captureAnalysis?['bitmap'];
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        PicturePreviewPage(filePath: path),
+                  ),
+                );
               },
               icon: const Icon(Icons.camera),
             ),

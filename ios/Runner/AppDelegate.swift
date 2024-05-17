@@ -60,6 +60,42 @@ var basicChannl: FlutterBasicMessageChannel!
                 case "imgPicker":
                     ImageUtil.shared.pushToImagePicker()
                     break
+                case "imgWater":
+                    if let arg = call.arguments as? [String] {
+                        guard let filepath = arg.first, let tempImg = UIImage(contentsOfFile: filepath), let contentStr = arg.last else {
+                            return
+                        }
+                        
+                        let obliqueAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: tempImg.size.width/720 * 40), NSAttributedString.Key.foregroundColor: UIColor.gray]
+                        
+                        let textStyle = NSMutableParagraphStyle()
+                        textStyle.alignment = .center
+                        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: tempImg.size.width/720 * 30), NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.paragraphStyle: textStyle]
+                        
+                        let temp = tempImg.waterMarkMerge(markImg:UIImage(named: "img_water_bg") ?? UIImage(), content: contentStr, contentAttr: attributes)
+                        
+                        // 文件名称
+                        let mediaName = Date().description + ".jpg"
+                        let filePath = NSHomeDirectory() + "/Library/Application Support"
+                        // 创建文件
+                        if !FileManager.default.fileExists(atPath: filePath) {
+                            do{
+                                try FileManager.default.createDirectory(atPath: filePath, withIntermediateDirectories: true, attributes: nil)
+                            } catch{
+                                print("creat false")
+                            }
+                        }
+                        // 输出地址
+                        let outputURL = URL(fileURLWithPath: filePath).appendingPathComponent(mediaName)
+                        do {
+                            let imgdata = temp.compressData(1.0)
+                            try imgdata?.write(to: outputURL)
+                            result(outputURL.relativePath)
+                        }catch _{
+                            result("")
+                        }
+                    }
+                    break
                 case "basicChannlTest":
                     basicChannl.sendMessage("basic channl test NA 2 Dart") { back in
                         print(back as Any)

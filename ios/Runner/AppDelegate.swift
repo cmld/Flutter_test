@@ -10,7 +10,7 @@ var basicChannl: FlutterBasicMessageChannel!
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    GeneratedPluginRegistrant.register(with: self)
+      GeneratedPluginRegistrant.register(with: self)
       
     let msger: FlutterBinaryMessenger  = window?.rootViewController as! FlutterBinaryMessenger
     pluginChannel(msg: msger)
@@ -18,7 +18,6 @@ var basicChannl: FlutterBasicMessageChannel!
       
     
     configKeyBoard()
-      
     #if FLU
       // MARK: 走Flutter - main
       return super.application(application, didFinishLaunchingWithOptions: launchOptions)

@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:clmd_flutter/ble_manager.dart';
+import 'package:clmd_flutter/pages/ble_manager.dart';
 import 'package:clmd_flutter/components/marquee_ai.dart';
 import 'package:clmd_flutter/routes.dart';
 import 'package:clmd_flutter/utils/thread_sync.dart';
@@ -140,6 +140,18 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, 'spp');
+                },
+                child: const Text(
+                  '内部组件 scanPlugin',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
               TextButton(
                 onPressed: () {
                   for (int i = 0; i < 3; i++) {

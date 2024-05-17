@@ -57,12 +57,12 @@ dependencies:
       path: oss_plugin
       ref: dev_oss_plugin
   # 扫码库
-  # scan_plugin:
-  #   git:
-  #     url: http://code.jms.com/mobile/module/jt_flutter_package.git
-  #     path: scanPlugin
-  #     ref: feature/flutter_3.19.5_update
-  image_picker: ^0.8.9
+  scan_plugin:
+    git:
+      url: http://code.jms.com/mobile/module/jt_flutter_package.git
+      path: scanPlugin
+      ref: 8083c40f8c6ec6b478f3324065c3f34b61e2a89f
+  image_picker: ^1.1.1
   
 dev_dependencies:
   flutter_test:

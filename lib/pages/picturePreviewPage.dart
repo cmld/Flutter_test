@@ -31,6 +31,9 @@ class _PicturePreviewPageState extends State<PicturePreviewPage> {
                 widget.filePath,
                 "31.654564,121.654655\n中国上海青浦区华东路来老师会计法1231号\n2023-11-56 18:23:23"
               ]);
+              if (waterPath.isNotEmpty) {
+                File(widget.filePath).delete();
+              }
             }), builder: (c, p) {
               if (p.connectionState == ConnectionState.done) {
                 return Center(
@@ -52,13 +55,43 @@ class _PicturePreviewPageState extends State<PicturePreviewPage> {
             }),
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 15),
-            child: IconButton.filled(
-              onPressed: () async {
-                File(waterPath).delete();
-                Navigator.pop(context);
-              },
-              icon: const Icon(Icons.cancel_presentation_rounded),
+            padding: const EdgeInsets.only(left: 30, right: 30, bottom: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                OutlinedButton(
+                  onPressed: () async {
+                    File(waterPath).delete();
+                    Navigator.pop(context);
+                  },
+                  style: ButtonStyle(
+                      shape: MaterialStatePropertyAll(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          side: const BorderSide(color: Colors.red)
+                        ),
+                      ),
+                      side: MaterialStateProperty.all(const BorderSide(color: Colors.red)),
+                      foregroundColor: MaterialStateProperty.all(Colors.red),),
+                  child: const Text('删除'),
+                ),
+                OutlinedButton(
+                  onPressed: () async {
+                    File(waterPath).delete();
+                    Navigator.pop(context);
+                  },
+                  style: ButtonStyle(
+                      shape: MaterialStatePropertyAll(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          side: const BorderSide(color: Colors.red)
+                        ),
+                      ),
+                      side: MaterialStateProperty.all(const BorderSide(color: Colors.red)),
+                      foregroundColor: MaterialStateProperty.all(Colors.red),),
+                  child: const Text('确定'),
+                ),
+              ],
             ),
           )
         ],

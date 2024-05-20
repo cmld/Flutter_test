@@ -15,6 +15,8 @@ class ScanPluginPage extends StatefulWidget {
 class _ScanPluginPageState extends State<ScanPluginPage> {
   late ScanObjController _scanObjctrl;
 
+  final ValueNotifier<bool> _isFlashOn = ValueNotifier(false);
+
   @override
   void initState() {
     super.initState();
@@ -27,7 +29,7 @@ class _ScanPluginPageState extends State<ScanPluginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Scan Plugin'),
+        title: const Text('Scan Plugin'),
       ),
       body: Stack(
         children: [
@@ -55,8 +57,7 @@ class _ScanPluginPageState extends State<ScanPluginPage> {
             ),
           ),
           Positioned(
-            bottom: 100,
-            left: 20,
+            bottom: 50,
             right: 20,
             child: IconButton.filled(
               onPressed: () async {
@@ -71,8 +72,7 @@ class _ScanPluginPageState extends State<ScanPluginPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        PicturePreviewPage(filePath: path),
+                    builder: (context) => PicturePreviewPage(filePath: path),
                   ),
                 );
               },
@@ -82,7 +82,24 @@ class _ScanPluginPageState extends State<ScanPluginPage> {
           Positioned(
             bottom: 50,
             left: 20,
-            right: 20,
+            child: IconButton.filled(
+              onPressed: () async {
+                _scanObjctrl.enableTorch(!_isFlashOn.value);
+                _isFlashOn.value = !_isFlashOn.value;
+              },
+              icon: ValueListenableBuilder(
+                valueListenable: _isFlashOn,
+                builder: (bc, value, w) {
+                  return Icon(
+                      value ? Icons.flash_on_rounded : Icons.flash_off_rounded);
+                },
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 50,
+            left: 80,
+            right: 80,
             child: IconButton.filled(
               onPressed: () async {
                 var captureAnalysis = await _scanObjctrl.captureAnalysis();
@@ -92,8 +109,7 @@ class _ScanPluginPageState extends State<ScanPluginPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        PicturePreviewPage(filePath: path),
+                    builder: (context) => PicturePreviewPage(filePath: path),
                   ),
                 );
               },

@@ -18,11 +18,13 @@ class CMPopupConfig {
     var position: CMPopupPosition = .top
     var yTopGap: CGFloat = 0
     var yDownGap: CGFloat = 0
+    var maskTapHidden: Bool = true
     
-    init(position: CMPopupPosition, yTopGap: CGFloat = 0, yDownGap: CGFloat = 0) {
+    init(position: CMPopupPosition, maskth: Bool = true, yTopGap: CGFloat = 0, yDownGap: CGFloat = 0) {
         self.position = position
         self.yTopGap = yTopGap
         self.yDownGap = yDownGap
+        self.maskTapHidden = maskth
     }
 }
 
@@ -43,6 +45,8 @@ class CMPopupView: UIView {
     
     var contentView: UIView?
     
+    var hiddenCall: (()->Void)?
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -55,14 +59,13 @@ class CMPopupView: UIView {
     func createCellUI() {
         self.addSubviews([maskV, content])
         
-        maskV.addTap {
-            CMPopupView.hiddenOnWindow()
-        }
     }
     
-    func showWithConfig(_ contentV: UIView, config: CMPopupConfig) {
+    func showWithConfig(_ contentV: UIView, config: CMPopupConfig, hiddenCallback: (()->Void)? = nil) {
         
         CMPopupView.hiddenOnWindow()
+        
+        hiddenCall = hiddenCallback
         
         getWindow().addSubview(self)
         self.snp.makeConstraints { make in
@@ -73,6 +76,11 @@ class CMPopupView: UIView {
             make.top.equalToSuperview().inset(config.yTopGap)
             make.bottom.equalToSuperview().inset(config.yDownGap)
             make.left.right.equalToSuperview()
+        }
+        if config.maskTapHidden {
+            maskV.addTap {
+                CMPopupView.hiddenOnWindow()
+            }
         }
         
         content.snp.makeConstraints { make in
@@ -90,7 +98,7 @@ class CMPopupView: UIView {
         
         contentView = contentV
         content.addSubview(contentV)
-        let contentH = max(contentV.bounds.size.height, (SCREEN_HEIGHT / 2))
+        let contentH = max(contentV.bounds.size.height, (UIScreen.main.bounds.height / 2))
         contentV.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             switch config.position {
@@ -123,13 +131,22 @@ class CMPopupView: UIView {
     }
     
     static func hiddenOnWindow() {
-        for subV in getWindow().subviews {
-            if subV.isKind(of: CMPopupView.self) {
+        for subItem in getWindow().subviews {
+            if let subV = subItem as? CMPopupView {
                 UIView.animate(withDuration: 0.2) {
                     subV.alpha = 0
                 } completion: { isCom in
+                    subV.hiddenCall?()
                     subV.removeFromSuperview()
                 }
+            }
+        }
+    }
+    
+    static func setHidden(_ ish: Bool){
+        for subV in getWindow().subviews {
+            if subV.isKind(of: CMPopupView.self) {
+                subV.isHidden = ish
             }
         }
     }

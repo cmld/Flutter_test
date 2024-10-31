@@ -29,6 +29,9 @@ class ActionsTableViewController: BaseViewController {
                                  "弹出视图3",
                                  "date 操作",
                                  "BloomFilter",
+                                 "model trans",
+                                 "阿里 DNS -data",
+                                 "阿里 DNS",
         ]
         
         myTableV.dataList = actions.map { item in
@@ -55,6 +58,19 @@ class ActionsTableViewController: BaseViewController {
                     print("armand p: 3", Date().toFormat("YYYY-MM-dd HH:mm:ss:SSS"))
                     let dd = bloomFilter.contains("slkjfsfadfadfafdsa01")
                     print("armand p: 4 \(dd)", Date().toFormat("YYYY-MM-dd HH:mm:ss:SSS"))
+                case 6:
+                    let temp = JTStoreCertificationDetailUserModel()
+                    print(temp.toJSONString(prettyPrint: true) ?? "")
+                case 7:
+                    DNSResolver.share().getIpv4Data(withDomain: "bc.jtexpress.my") { ipList in
+                        print("armand p:", ipList)
+                    }
+                    break
+                case 8:
+                    DNSResolver.share().getIpv4Info(withDomain: "bc.jtexpress.my") { ipList in
+                        print("armand p:", ipList)
+                    }
+                    break
                 default:
                     showPopupV(idx.row % 3)
                     break

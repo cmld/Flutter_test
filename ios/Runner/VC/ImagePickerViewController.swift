@@ -11,6 +11,7 @@ class ImagePickerViewController: BaseViewController, UINavigationControllerDeleg
     
     var showImage: UIImageView = UIImageView()
     
+    var imageList: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,9 @@ class ImagePickerViewController: BaseViewController, UINavigationControllerDeleg
         button.addTarget(self, action: #selector(pushToImagePicker), for: .touchUpInside)
         self.view.addSubview(button)
         
+        showImage.addTap {
+            ImageShowViewController.showList(self.imageList)
+        }
     }
     
     @objc func pushToImagePicker()  {
@@ -52,6 +56,7 @@ extension ImagePickerViewController: UIImagePickerControllerDelegate {
             
             DispatchQueue.main.async {
                 self?.showImage.image = show
+                self?.imageList.append(show)
             }
         }
         

@@ -29,6 +29,7 @@ open class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITable
     open var setupCell:((_: T, _: IndexPath)->Void) = {_, _ in}
     
     open var cellSelected:((_: T, _: IndexPath)->Void) = {_, _ in}
+    open var cellUnselected:((_: T, _: IndexPath)->Void) = {_, _ in}
     
     open var dataList: [T.D] = [] {
         didSet {
@@ -41,6 +42,7 @@ open class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITable
     open var emptyView: UIView?
     
     open var autoSetH: NSLayoutConstraint?
+    open var maxH: CGFloat?
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         
@@ -101,11 +103,20 @@ open class JTBaseDataTableView<T: JTBaseDataTableViewCell>: UITableView, UITable
             cellSelected(cell, indexPath)
         }
     }
+    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? T {
+            cellUnselected(cell, indexPath)
+        }
+    }
     
     open override func layoutSubviews() {
         super.layoutSubviews()
         if let needSetH = autoSetH, self.contentSize.height != needSetH.constant {
-            needSetH.constant = self.contentSize.height
+            var willSetH = self.contentSize.height
+            if let maxH {
+                willSetH = min(maxH, willSetH)
+            }
+            needSetH.constant = willSetH
         }
     }
 }

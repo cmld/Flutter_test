@@ -20,6 +20,7 @@ class HomeTableViewCell: JTBaseDataTableViewCell {
         let value = UILabel()
         value.textColor = .lightGray
         value.font = UIFont.systemFont(ofSize: 14)
+        value.numberOfLines = 0
         return value
     }()
     

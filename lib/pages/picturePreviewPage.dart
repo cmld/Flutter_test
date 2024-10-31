@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 class PicturePreviewPage extends StatefulWidget {
   final String filePath;
@@ -65,31 +64,35 @@ class _PicturePreviewPageState extends State<PicturePreviewPage> {
                     Navigator.pop(context);
                   },
                   style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(
-                        RoundedRectangleBorder(
+                    shape: MaterialStatePropertyAll(
+                      RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
-                          side: const BorderSide(color: Colors.red)
-                        ),
-                      ),
-                      side: MaterialStateProperty.all(const BorderSide(color: Colors.red)),
-                      foregroundColor: MaterialStateProperty.all(Colors.red),),
-                  child: const Text('删除'),
+                          side: const BorderSide(color: Colors.red)),
+                    ),
+                    side: MaterialStateProperty.all(
+                        const BorderSide(color: Colors.red, width: 1.5)),
+                    foregroundColor: MaterialStateProperty.all(Colors.red),
+                  ),
+                  child: const Text('删除', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
                 ),
                 OutlinedButton(
                   onPressed: () async {
                     File(waterPath).delete();
-                    Navigator.pop(context);
+                    Navigator.popUntil(context, (route) {
+                      return route.settings.name == '/';
+                    });
                   },
                   style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(
-                        RoundedRectangleBorder(
+                    shape: MaterialStatePropertyAll(
+                      RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
-                          side: const BorderSide(color: Colors.red)
-                        ),
-                      ),
-                      side: MaterialStateProperty.all(const BorderSide(color: Colors.red)),
-                      foregroundColor: MaterialStateProperty.all(Colors.red),),
-                  child: const Text('确定'),
+                          side: const BorderSide(color: Colors.red)),
+                    ),
+                    side: MaterialStateProperty.all(
+                        const BorderSide(color: Colors.red, width: 1.5)),
+                    foregroundColor: MaterialStateProperty.all(Colors.red),
+                  ),
+                  child: const Text('确定', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
                 ),
               ],
             ),

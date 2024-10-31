@@ -1,20 +1,15 @@
-// import 'dart:html';
-
-// import 'dart:html';
-
 import 'dart:async';
 import 'dart:io';
 
 import 'package:clmd_flutter/pages/ble_manager.dart';
 import 'package:clmd_flutter/components/marquee_ai.dart';
 import 'package:clmd_flutter/routes.dart';
+import 'package:clmd_flutter/utils/network.dart';
 import 'package:clmd_flutter/utils/thread_sync.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-// import 'package:location_plugin/entity/LocationInfo.dart';
-// import 'package:location_plugin/location_plugin.dart';
 import 'package:oss_plugin/bean/OssRequest.dart';
 import 'package:oss_plugin/oss_plugin.dart';
 import 'package:package_info/package_info.dart';
@@ -71,6 +66,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
     );
   }
+
 }
 
 class MyHomePage extends StatefulWidget {
@@ -91,7 +87,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   final MethodChannel _channel = const MethodChannel('plugin_clmd');
   final BasicMessageChannel _basecChannel =
       const BasicMessageChannel('basic_plugin_clmd', StandardMessageCodec());
@@ -123,6 +119,15 @@ class _MyHomePageState extends State<MyHomePage> {
       print(message.toString());
       return Future(() => "basic channl back");
     });
+
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    WidgetsBinding.instance.removeObserver(this);
   }
 
   @override
@@ -140,9 +145,91 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              SizedBox(
+                  height: 50,
+                  width: 100,
+                  child: File('/private/var/mobile/Containers/Data/Application/14801AF9-72F5-4F24-9A22-8A31996A0014/tmp/image_picker_9BEAEFD6-E07F-43ED-8D5D-7AE2A11CB4C6-4995-00001F81C7711BA8.jpg').existsSync() ? Text('存在') : Text('不存在')),
+
+              SizedBox(
+                height: 50,
+                width: 100,
+                child: Column(
+                  children: [
+                    Expanded(
+                        flex: 1,
+                        child: Row(children: [
+                          Image.asset(
+                            fit: BoxFit.fitHeight,
+                            'assets/home_good_man.png',
+                          ),
+                          if (_counter % 4 > 0)
+                            Image.asset(
+                              fit: BoxFit.fitHeight,
+                              'assets/home_good_man.png',
+                            ),
+                        ])),
+                    if (_counter % 4 > 1)
+                      Expanded(
+                          flex: 1,
+                          child: Row(children: [
+                            Image.asset(
+                              fit: BoxFit.fitHeight,
+                              'assets/home_good_man.png',
+                            ),
+                            if (_counter % 4 > 2)
+                              Image.asset(
+                                fit: BoxFit.fitHeight,
+                                'assets/home_good_man.png',
+                              ),
+                          ])),
+                  ],
+                ),
+              ),
               TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, 'spp');
+                onPressed: () async {
+                  final result =
+                      await _channel.invokeMethod('getDNS', 'bc.jtexpress.my');
+                  print(result.toString());
+                  Api.post1Data('https://${result}:443/bclogin/out/loginV2', {
+                    "content-type": "application/json; charset=utf-8",
+                    "timestamp": "1723716255312",
+                    "signature": "NjM0QkZFRkYwODJGODg2ODg5Q0RCQjFBNUI4MDcyNTY=",
+                    "userCode": "null",
+                    "authToken": "913ee941fd6a4133bf322d3d03f05ce5",
+                    "X-SimplyPost-Id": "1723716255312",
+                    "X-SimplyPost-Signature":
+                        "2a5068066e62da248e73e0186bbeee75",
+                    "langType": "CN",
+                    "contentType": "application/json; charset=utf-8",
+                    "responseType": "ResponseType.json",
+                    "followRedirects": "true",
+                    "connectTimeout": "20000",
+                    "receiveTimeout": "20000",
+                  }, {
+                    "account": "NSN6100003",
+                    "appDeviceCode": "Android-31",
+                    "appType": "4",
+                    "appVersion": "1.1.13",
+                    "latitudeAndLongitude": "31.220267,121.209177",
+                    "macAddr": "WA-427b2c652b36c0f",
+                    "password": "4e71002969fcd46813b869e931aedf4b",
+                    "platform": "android",
+                    "serialnumber": "WA-427b2c652b36c0f",
+                    "source": "outfield",
+                  });
+                },
+                child: const Text(
+                  '阿里 DNS',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () async {
+                  var sppResult = await Navigator.pushNamed(context, 'spp');
+                  print('spp page' + sppResult.toString());
                 },
                 child: const Text(
                   '内部组件 scanPlugin',
@@ -799,5 +886,24 @@ class _MyHomePageState extends State<MyHomePage> {
   Future test3() async {
     print('test3');
     return 1;
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    switch (state) {
+      case AppLifecycleState.paused:
+        print('paused');
+        break;
+      case AppLifecycleState.resumed:
+        print('resumed');
+        break;
+      case AppLifecycleState.inactive:
+        print('inactive');
+        break;
+      case AppLifecycleState.detached:
+        print('detached');
+        break;
+    }
   }
 }

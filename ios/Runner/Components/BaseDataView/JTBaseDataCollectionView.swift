@@ -36,6 +36,9 @@ open class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionVi
     open var cellSelected:((_: T, _: IndexPath)->Void) = {_, _ in}
     
     open var autoSetH: NSLayoutConstraint?
+    open var maxH: CGFloat?
+    open var autoSetW: NSLayoutConstraint?
+    open var maxW: CGFloat?
     override public init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         
 //        let flowlayout = UICollectionViewFlowLayout.init()
@@ -54,6 +57,8 @@ open class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionVi
         
         autoSetH = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
         autoSetH?.isActive = true
+        autoSetW = NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
+        autoSetW?.isActive = false
     }
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -84,8 +89,19 @@ open class JTBaseDataCollectionView<T: JTBaseDataCollectionCell>: UICollectionVi
     
     open override func layoutSubviews() {
         super.layoutSubviews()
-        if let needSetH = autoSetH, self.contentSize.height != needSetH.constant {
-            needSetH.constant = self.contentSize.height
+        if let autoSetH, self.contentSize.height != autoSetH.constant {
+            var willSetH = self.contentSize.height
+            if let maxH {
+                willSetH = min(maxH, willSetH)
+            }
+            autoSetH.constant = willSetH
+        }
+        if let autoSetW, self.contentSize.width != autoSetW.constant {
+            var willSetW = self.contentSize.width
+            if let maxW {
+                willSetW = min(maxW, willSetW)
+            }
+            autoSetW.constant = willSetW
         }
     }
 }
@@ -112,7 +128,7 @@ open class UICollectionViewLeftFlowLayout: UICollectionViewFlowLayout {
             } else if attrsArry.count == 1, let curAttr = attrsArry.first {
                 var frame = curAttr.frame
                 frame.origin.x = 0
-                curAttr.frame = frame.toRTL(self.collectionView?.bounds.width ?? 0)
+                curAttr.frame = self.collectionView?.semanticContentAttribute == .forceRightToLeft ? frame.toRTL(self.collectionView?.bounds.width ?? 0) : frame
             }
         }
         
@@ -124,7 +140,7 @@ open class UICollectionViewLeftFlowLayout: UICollectionViewFlowLayout {
 extension CGRect {
     func toRTL(_ superW: CGFloat) -> CGRect {
         var result = self
-        if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft, superW > 0 {
+        if superW > 0 {
             let transX = superW - self.maxX
             result = CGRect(x: transX, y: self.minY, width: self.width, height: self.height)
         }

@@ -35,17 +35,18 @@ class HomeListViewController: BaseViewController {
             "ImagePickerViewController, ImagePicker",
             "AddWaterViewController, AddWater",
             "ModeViewController, 面单",
-            "ToolsViewController, Tools",
+            "ToolsViewController, Tools + DesensitizationView + CustomInputView + UIStackView + AutoDecodeReceivingView",
             "MyScrollViewController, tableView + collectionView",
             "PDFViewController, PDF",
             "TableViewController, tableView",
             "ActionsTableViewController, ActionsTableView",
             "DatePickerViewController, DatePickerViewController + TextView加载html",
+            "ImageShowViewController, 图片显示",
         ]
         
-        tableView.dataList = dataSourceList.reversed().map({ item in
+        tableView.dataList = dataSourceList.reversed().enumerated().map({ (index, item) in
             let model = JTBalanceModel()
-            model.title = item
+            model.title = "\(index)、" + item
             return model
         })
         
@@ -61,7 +62,7 @@ class HomeListViewController: BaseViewController {
             }
         }
         
-        tableView.cellSelected(HomeTableViewCell(), IndexPath(row: 0, section: 0))
+        tableView.cellSelected(HomeTableViewCell(), IndexPath(row: 9, section: 0)) // 倒序
     }
     
 }

@@ -32,6 +32,16 @@ class ToolsViewController: BaseViewController, XMLParserDelegate {
         return value
     }()
     
+    lazy var stackV: UIStackView = {
+        let value = UIStackView()
+        value.axis = .horizontal
+//        value.distribution = .fillEqually
+        value.spacing = 10
+        value.backgroundColor = .lightGray
+        value.isLayoutMarginsRelativeArrangement = false
+        
+        return value
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,8 +69,8 @@ class ToolsViewController: BaseViewController, XMLParserDelegate {
         textF1.keyboardType = .numbersAndPunctuation
         view.addSubview(textF1)
         
-//        inpView.layer.borderWidth = 1
-//        inpView.layer.borderColor = UIColor.green.cgColor
+        //        inpView.layer.borderWidth = 1
+        //        inpView.layer.borderColor = UIColor.green.cgColor
         view.addSubview(inpView)
         inpView.snp.makeConstraints { make in
             make.top.equalTo(textF1.snp.bottom).offset(20)
@@ -85,6 +95,28 @@ class ToolsViewController: BaseViewController, XMLParserDelegate {
         }
         
         
+        view.addSubview(stackV)
+        stackV.snp.makeConstraints { make in
+            make.top.equalTo(desV.snp.bottom).offset(10)
+            make.left.right.equalToSuperview().inset(15)
+        }
+        
+        let button1 = UIButton()
+        button1.setTitle("Button 1", for:.normal)
+        button1.backgroundColor = .blue
+        
+        let button2 = UIButton()
+        button2.setTitle("Button 2", for:.normal)
+        button2.backgroundColor = .green
+        
+        let button3 = UIButton()
+        button3.setTitle("Button 3", for:.normal)
+        button3.backgroundColor = .orange
+        
+        
+        stackV.addArrangedSubview(button1)
+        stackV.addArrangedSubview(button2)
+        stackV.addArrangedSubview(button3)
         
     }
 
@@ -96,4 +128,14 @@ extension ToolsViewController: UITextFieldDelegate {
     }
 }
 
+class CustomButton: UIButton {
+    init(title: String) {
+        super.init(frame:.zero)
+        setTitle(title, for:.normal)
+        backgroundColor = .blue
+    }
 
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}

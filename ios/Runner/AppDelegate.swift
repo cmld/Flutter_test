@@ -12,12 +12,13 @@ var basicChannl: FlutterBasicMessageChannel!
   ) -> Bool {
       GeneratedPluginRegistrant.register(with: self)
       
-    let msger: FlutterBinaryMessenger  = window?.rootViewController as! FlutterBinaryMessenger
-    pluginChannel(msg: msger)
+      let msger: FlutterBinaryMessenger  = window?.rootViewController as! FlutterBinaryMessenger
+      aliDNSSetup()
+      pluginChannel(msg: msger)
       basicChannel(msger: msger)
-      
     
-    configKeyBoard()
+    
+      configKeyBoard()
     #if FLU
       // MARK: 走Flutter - main
       return super.application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -63,10 +64,9 @@ var basicChannl: FlutterBasicMessageChannel!
                 case "imgWater":
                     if let arg = call.arguments as? [String] {
                         guard let filepath = arg.first, let tempImg = UIImage(contentsOfFile: filepath), let contentStr = arg.last else {
+                            result("")
                             return
                         }
-                        
-                        let obliqueAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: tempImg.size.width/720 * 40), NSAttributedString.Key.foregroundColor: UIColor.gray]
                         
                         let textStyle = NSMutableParagraphStyle()
                         textStyle.alignment = .center
@@ -83,6 +83,7 @@ var basicChannl: FlutterBasicMessageChannel!
                                 try FileManager.default.createDirectory(atPath: filePath, withIntermediateDirectories: true, attributes: nil)
                             } catch{
                                 print("creat false")
+                                result("")
                             }
                         }
                         // 输出地址
@@ -99,6 +100,17 @@ var basicChannl: FlutterBasicMessageChannel!
                 case "basicChannlTest":
                     basicChannl.sendMessage("basic channl test NA 2 Dart") { back in
                         print(back as Any)
+                    }
+                    break
+                case "getDNS":
+                    if let arg = call.arguments as? String {
+                        DNSResolver.share().getIpv4Data(withDomain: arg) { ipList in
+                            if let ipV4 = ipList?.first {
+                                result(ipV4)
+                            } else {
+                                result("")
+                            }
+                        }
                     }
                     break
                 default:
@@ -120,5 +132,11 @@ var basicChannl: FlutterBasicMessageChannel!
         IQKeyboardManager.shared.enableAutoToolbar = false;
         IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Done".localized;
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true;
+    }
+    
+    func aliDNSSetup()  {
+        DNSResolver.share().setAccountId("142734", andAccessKeyId: "28351084245369856", andAccesskeySecret: "df237a0f41244718bb5128db5ecf3d8b")
+        DNSResolver.share().cacheEnable = false
+        
     }
 }

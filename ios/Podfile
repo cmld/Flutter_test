@@ -1,6 +1,9 @@
 
-source 'http://code.jms.com/mobile/module/ios/jtspec.git'
+
 source 'https://cdn.cocoapods.org/'
+source 'http://code.jms.com/mobile/module/ios/jtspec.git'
+source 'https://github.com/aliyun/aliyun-specs.git'
+
 # Uncomment this line to define a global platform for your project
  platform :ios, '12.0'
 
@@ -40,6 +43,7 @@ target 'Runner' do
   pod 'HandyJSON'
   pod 'SwiftSoup', '~> 2.6.1'
   pod 'IQKeyboardManagerSwift'
+  pod 'AlicloudPDNS'
   
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
   

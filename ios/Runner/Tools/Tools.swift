@@ -456,56 +456,97 @@ extension UIColor {
     }
 }
 
-
+private var maxLengthKey = 100
+private var UITextFieldInputStyleKey = 101
+enum UITextFieldInputStyle{
+    case none
+    case number
+    case numberAndLetter
+    case space
+}
 // MARK: UITextField 和 UITextView
-extension UITextField {
+extension UITextField  {
+    
+    /**
+     * 配合代理使用 UITextFieldDelegate
+     * func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+     *     return  string == "" ? true : textField.text?.count ?? 0 < textField.maxLength
+     * }
+     */
+    var maxLength: Int {
+        set {
+            objc_setAssociatedObject(self, &maxLengthKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+        get {
+            if let rs = objc_getAssociatedObject(self, &maxLengthKey) as? Int {
+                return rs
+            }
+            return 10000
+        }
+    }
+    
+    var inputStyle: UITextFieldInputStyle {
+        set {
+            objc_setAssociatedObject(self, &UITextFieldInputStyleKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+        get {
+            if let rs = objc_getAssociatedObject(self, &UITextFieldInputStyleKey) as? UITextFieldInputStyle {
+                return rs
+            }
+            return .none
+        }
+    }
     
     private static var tempDelegateKey: UInt8 = 0
     private var tempDelegate: UITFTools? {
-        get{ return objc_getAssociatedObject(self, &UITextField.tempDelegateKey) as? UITFTools }
-        set{ objc_setAssociatedObject(self, &UITextField.tempDelegateKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
-    }
-    func didEndEditing(_ call: @escaping (String?)->Void) {
-        if tempDelegate == nil {
-            tempDelegate = UITFTools()
-            self.delegate = tempDelegate
-        }
-        tempDelegate?.callBack = call
-    }
-    func shouldChangeMatch(_ matchStr: String = ".*", _ call: ((String?)->Bool)? = nil) {
-        if tempDelegate == nil {
-            tempDelegate = UITFTools()
-            self.delegate = tempDelegate
-        }
-        tempDelegate?.matchStr = matchStr
-        tempDelegate?.change = call
-    }
-}
+         get{ return objc_getAssociatedObject(self, &UITextField.tempDelegateKey) as? UITFTools }
+         set{ objc_setAssociatedObject(self, &UITextField.tempDelegateKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+     }
+     func didEndEditing(_ call: @escaping (String?)->Void) {
+         if tempDelegate == nil {
+             tempDelegate = UITFTools()
+             self.delegate = tempDelegate
+         }
+         tempDelegate?.callBack = call
+     }
+     func shouldChangeMatch(_ call: ((String?)->Bool)? = nil) {
+         if tempDelegate == nil {
+             tempDelegate = UITFTools()
+             self.delegate = tempDelegate
+         }
+         tempDelegate?.change = call
+     }
+     func shouldChangeMatch(_ call: ((UITextField, NSRange, String)->Bool)? = nil){
+         if tempDelegate == nil {
+             tempDelegate = UITFTools()
+             self.delegate = tempDelegate
+         }
+         tempDelegate?.fullChange = call
+     }
+ }
 
-class UITFTools: NSObject, UITextFieldDelegate {
-    var callBack: ((String?)->Void)?
-    var change: ((String?)->Bool)?
-    var matchStr: String = ".*"
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        callBack?(textField.text)
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let currentText = textField.text else { return true }
-        let newText = NSString(string: currentText).replacingCharacters(in: range, with: string)
-        
-        return change?(newText) ?? newText.reMatch(reString: matchStr)
-    }
-    
-    // UITextFieldDelegate 方法，点击 Return 键时调用
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // 在这里处理点击 Done 按钮的事件
-        textField.resignFirstResponder() // 隐藏键盘
-        return true
-    }
-}
-
+ class UITFTools: NSObject, UITextFieldDelegate {
+     var callBack: ((String?)->Void)?
+     var change: ((String?)->Bool)?
+     var fullChange: ((UITextField, NSRange, String)->Bool)?
+     
+     func textFieldDidEndEditing(_ textField: UITextField) {
+         callBack?(textField.text)
+     }
+     
+     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+         guard let currentText = textField.text else { return true }
+         let newText = NSString(string: currentText).replacingCharacters(in: range, with: string)
+         return fullChange?(textField, range, string) ?? (change?(newText) ?? true)
+     }
+     
+     // UITextFieldDelegate 方法，点击 Return 键时调用
+     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+         // 在这里处理点击 Done 按钮的事件
+         textField.resignFirstResponder() // 隐藏键盘
+         return true
+     }
+ }
 
 class PaddingTextField: UITextField {
     override func textRect(forBounds bounds: CGRect) -> CGRect {

@@ -70,7 +70,9 @@ var basicChannl: FlutterBasicMessageChannel!
                         
                         let textStyle = NSMutableParagraphStyle()
                         textStyle.alignment = .center
-                        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: tempImg.size.width/720 * 30), NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.paragraphStyle: textStyle]
+                        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: tempImg.size.width/720 * 40),
+                                          NSAttributedString.Key.foregroundColor: UIColor.white,
+                                          NSAttributedString.Key.paragraphStyle: textStyle]
                         
                         let temp = tempImg.waterMarkMerge(markImg:UIImage(named: "img_water_bg") ?? UIImage(), content: contentStr, contentAttr: attributes)
                         

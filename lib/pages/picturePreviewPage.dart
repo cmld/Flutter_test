@@ -28,7 +28,7 @@ class _PicturePreviewPageState extends State<PicturePreviewPage> {
             child: FutureBuilder(future: Future(() async {
               waterPath = await _channel.invokeMethod('imgWater', [
                 widget.filePath,
-                "31.654564,121.654655\n中国上海青浦区华东路来老师会计法1231号\n2023-11-56 18:23:23"
+                "656516516516\n31.654564,121.654655\n中国上海青浦区华东路来老师会计法1231号\n2023-11-56 18:23:23"
               ]);
               if (waterPath.isNotEmpty) {
                 File(widget.filePath).delete();

@@ -233,48 +233,55 @@ extension UIImage {
         }
     }
     
+    /* 使用
+     let textStyle = NSMutableParagraphStyle()
+     textStyle.alignment = .center
+     let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: tempImg.size.width/720 * 40),
+                       NSAttributedString.Key.foregroundColor: UIColor.white,
+                       NSAttributedString.Key.paragraphStyle: textStyle]
+     
+     let temp = tempImg.waterMarkMerge(markImg:UIImage(named: "img_water_bg") ?? UIImage(), content: contentStr, contentAttr: attributes)
+     
+     */
     // 图片斜边水印
     func waterMarkMerge(markImg: UIImage, content: String, contentAttr: [NSAttributedString.Key: Any]) -> UIImage {
         autoreleasepool {
             let viewWidth = size.width
             let viewHeight = size.height
-            let sqrtLength = sqrt(viewWidth * viewWidth + viewHeight * viewHeight)
-            let factor = viewHeight/720
             
-            let rotation = Double.pi / 6 // 旋转角度 pi为180度 正数为顺时针
+            // 添加内容水印
+            //添加水印文字
+            let contentStr: NSMutableAttributedString = NSMutableAttributedString(string: content, attributes: contentAttr)
+            let contnetR = contentStr.boundingRect(with: CGSize(width: viewWidth, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, context: nil)
+            //绘制文字的宽高
+            let contentStrWidth = contnetR.size.width
+            let contentStrHeight = contnetR.size.height
+            
+            //此处计算出需要绘制水印文字的起始点，由于水印区域要大于图片区域所以起点在原有基础上移
+            let space: CGFloat = 20
+            let contentOriginY: CGFloat = self.size.height + space
             
             // 1.开启上下文
-            UIGraphicsBeginImageContextWithOptions(size, true, 1)
-            //2.绘制图片
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(viewWidth, viewHeight + contentStrHeight + space * 2), true, 1)
+            //2.绘制自己的图片
             draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+            //3.绘制水印图片
             markImg.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
             
             guard let context = UIGraphicsGetCurrentContext() else { return self }
           
-            // 添加内容水印
-            //添加水印文字
-            let contentStr: NSMutableAttributedString = NSMutableAttributedString(string: content, attributes: contentAttr)
-            //绘制文字的宽高
-            let contentStrWidth = contentStr.size().width
-            let contentStrHeight = contentStr.size().height
+            //在每行绘制时Y坐标叠加 文本背景色
+//            let bgColorH = contentStrHeight + space * 2
+//            context.setFillColor(UIColor(red: 0, green: 0, blue: 0, alpha: 0.4).cgColor)
+//            context.fill(CGRectMake(0, size.height, size.width, bgColorH))
             
-            //此处计算出需要绘制水印文字的起始点，由于水印区域要大于图片区域所以起点在原有基础上移
-            let space: CGFloat = 10
-            let contentOriginY: CGFloat = self.size.height - contentStrHeight - space
+            content.draw(in: CGRect(x: max((self.size.width - contentStrWidth)/2, 0), y: contentOriginY, width: min(contentStrWidth, viewWidth), height: contentStrHeight), withAttributes: contentAttr)
             
-            //在每行绘制时Y坐标叠加
-            let bgColorH = contentStrHeight + space * 2
-            context.setFillColor(UIColor(red: 0, green: 0, blue: 0, alpha: 0.4).cgColor)
-            context.fill(CGRectMake(0, size.height - bgColorH, size.width, bgColorH))
-            
-            content.draw(in: CGRect(x: (self.size.width - contentStrWidth)/2, y: contentOriginY, width: contentStrWidth, height: contentStrHeight), withAttributes: contentAttr)
-            
-            //3.从上下文中获取新图片
+            //4.从上下文中获取新图片
             let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
             
-            //4.关闭上下文
+            //5.关闭上下文
             UIGraphicsEndImageContext()
-            //context.restoreGState()
 
             return newImage
             

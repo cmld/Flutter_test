@@ -9,7 +9,7 @@ import 'package:clmd_flutter/utils/thread_sync.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:image_picker/image_picker.dart';
+// import 'package:image_picker/image_picker.dart';
 import 'package:oss_plugin/bean/OssRequest.dart';
 import 'package:oss_plugin/oss_plugin.dart';
 import 'package:package_info/package_info.dart';
@@ -374,24 +374,24 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 thickness: 2,
                 color: Colors.black,
               ),
-              TextButton(
-                onPressed: () async {
-                  var rsp =
-                      await ImagePicker().pickImage(source: ImageSource.camera);
-                  _filelist = [rsp?.path ?? ''];
-                  var bd = await File(_filelist.first).readAsBytes();
-                  final result =
-                      await _channel.invokeMethod('imgComp', bd.toList());
-                  print('ossSdk fileList: $_filelist');
-                },
-                child: const Text(
-                  '私有插件-oss 选择图片',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              // TextButton(
+              //   onPressed: () async {
+              //     var rsp =
+              //         await ImagePicker().pickImage(source: ImageSource.camera);
+              //     _filelist = [rsp?.path ?? ''];
+              //     var bd = await File(_filelist.first).readAsBytes();
+              //     final result =
+              //         await _channel.invokeMethod('imgComp', bd.toList());
+              //     print('ossSdk fileList: $_filelist');
+              //   },
+              //   child: const Text(
+              //     '私有插件-oss 选择图片',
+              //     style: TextStyle(
+              //       fontSize: 18,
+              //       fontWeight: FontWeight.bold,
+              //     ),
+              //   ),
+              // ),
               const Divider(
                 height: 10,
                 thickness: 2,
@@ -557,21 +557,21 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 thickness: 2,
                 color: Colors.black,
               ),
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.blue),
-                ),
-                child: SizedBox(
-                  width: 200,
-                  child: MarqueeWidget(
-                      text:
-                          "Hello World! How are you today? This is a demo of a MarqueeWidget in Flutter.",
-                      width: 300.0,
-                      height: 30.0,
-                      style: TextStyle(fontSize: 18.0, color: Colors.blue),
-                      speed: 3000),
-                ),
-              ),
+              // DecoratedBox(
+              //   decoration: BoxDecoration(
+              //     border: Border.all(color: Colors.blue),
+              //   ),
+              //   child: SizedBox(
+              //     width: 200,
+              //     child: MarqueeWidget(
+              //         text:
+              //             "Hello World! How are you today? This is a demo of a MarqueeWidget in Flutter.",
+              //         width: 300.0,
+              //         height: 30.0,
+              //         style: TextStyle(fontSize: 18.0, color: Colors.blue),
+              //         speed: 3000),
+              //   ),
+              // ),
               const Divider(
                 height: 10,
                 thickness: 2,

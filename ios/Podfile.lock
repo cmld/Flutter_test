@@ -79,8 +79,6 @@ PODS:
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (3.5.0)
   - HandyJSON (5.1.3)
-  - image_picker_ios (0.0.1):
-    - Flutter
   - IQKeyboardManagerSwift (6.5.16)
   - JTOSSUploader-iOS (0.3.2):
     - Alamofire
@@ -179,7 +177,6 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_blue (from `.symlinks/plugins/flutter_blue/ios`)
   - HandyJSON
-  - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - IQKeyboardManagerSwift
   - oss_plugin (from `.symlinks/plugins/oss_plugin/ios`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
@@ -228,8 +225,6 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_blue:
     :path: ".symlinks/plugins/flutter_blue/ios"
-  image_picker_ios:
-    :path: ".symlinks/plugins/image_picker_ios/ios"
   oss_plugin:
     :path: ".symlinks/plugins/oss_plugin/ios"
   package_info:
@@ -251,7 +246,6 @@ SPEC CHECKSUMS:
   GoogleUtilitiesComponents: 679b2c881db3b615a2777504623df6122dd20afe
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
   HandyJSON: f6bb9897592b8ceed3ba63908b2da01805f4e44b
-  image_picker_ios: c560581cceedb403a6ff17f2f816d7fea1421fc1
   IQKeyboardManagerSwift: 12d89768845bb77b55cc092ecc2b1f9370f06b76
   JTOSSUploader-iOS: 244f6c268e63741f10cc7c72cbaeb82d73393698
   JTScanKit: 0b497afa3d731a64bcb87b929428cf4860ff4ae4
@@ -277,6 +271,6 @@ SPEC CHECKSUMS:
   url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
   ZXingObjC: 8898711ab495761b2dbbdec76d90164a6d7e14c5
 
-PODFILE CHECKSUM: 7330e102852d25d4e94ac5a5502f846ada52447d
+PODFILE CHECKSUM: 1e39dee10b4f9818ef16df4f16683c9098a88386
 
 COCOAPODS: 1.13.0

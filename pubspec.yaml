@@ -34,7 +34,7 @@ dependencies:
     sdk: flutter
   flutter_blue: ^0.8.0
   charts_painter: ^3.0.0
-  flutter_screenutil: ^5.9.1
+  flutter_screenutil: ^5.0.1
   dio: ^5.1.1
   package_info: ^2.0.0
   # flutter_callkit_incoming: ^2.0.0+1
@@ -62,7 +62,7 @@ dependencies:
       url: http://code.jms.com/mobile/module/jt_flutter_package.git
       path: scanPlugin
       ref: 8083c40f8c6ec6b478f3324065c3f34b61e2a89f
-  image_picker: ^1.1.1
+  # image_picker: ^1.1.1
   
 dev_dependencies:
   flutter_test:

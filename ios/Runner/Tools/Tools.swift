@@ -619,3 +619,34 @@ class UITVTools: NSObject, UITextViewDelegate {
         callBack?(textView.text)
     }
 }
+
+// MARK: 格式化输出
+func JTJsonTrans(_ content: Any?) -> String {
+    var temp = content
+    
+    // 将 Any 转换为 Data
+    do {
+        if let jsonData = temp as? Data, let jsonDictionary = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
+            temp = jsonDictionary
+        }
+        if let jsonObj = temp {
+            var jsonData: Data
+            if #available(iOS 13.0, *) {
+                jsonData = try JSONSerialization.data(withJSONObject: jsonObj, options: [.prettyPrinted, .withoutEscapingSlashes])
+            } else {
+                jsonData = try JSONSerialization.data(withJSONObject: jsonObj, options: [.prettyPrinted])
+            }
+            // 将 Data 转换为字符串
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                return jsonString
+            } else {
+                print("Failed to convert Data to String")
+            }
+        }
+        
+    } catch {
+        print("Error converting Any to JSON: \(error)")
+    }
+    print("❌❌❌ jsonTrans fail \(content.debugDescription))")
+    return content.debugDescription
+}

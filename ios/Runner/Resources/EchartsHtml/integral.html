@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+    <script src="https://unpkg.com/dsbridge/dist/dsbridge.js"> </script>
+</head>
+
+<body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div id="main" style="width: 100vw;height: 100vh;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        dsBridge.register('setupChart', function (arg) {
+
+            var xAxisData = arg.map((obj) => obj.xTitle);
+            var yValue1Data = arg.map((obj) => obj.value1);
+            var yValue2Data = arg.map((obj) => obj.value2);
+
+            // 指定图表的配置项和数据
+            var option = {
+                grid: {
+                    bottom: '15%'
+                },
+                xAxis: {
+                    data: xAxisData,
+                    axisLabel: { fontSize: 30, rotate: xAxisData.length > 4 ? 45:0 }
+                },
+                yAxis: [
+                    {
+                        type: "value",
+                        axisLabel: {
+                            fontSize: 30
+                        },
+                        // max: 50,
+                        // interval: 10
+                    },
+                    {
+                        type: "value",
+                        axisLabel: {
+                            fontSize: 30
+                        },
+                        // max: 500,
+                        // interval: 100
+                    }
+                ],
+                series: [
+                    {
+                        name: "total",
+                        type: 'bar',
+                        data: yValue1Data,
+                        yAxisIndex: 0,
+                        barWidth: 10,
+                        itemStyle: {
+                            barBorderRadius: 5,
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: '#FF7A79' },
+                                { offset: 0.4, color: '#FF7A79' },
+                                { offset: 1, color: '#f5f5f5' }
+                            ])
+                        },
+                        barGap: "80%"
+                    },
+                    {
+                        name: "current",
+                        type: 'bar',
+                        data: yValue2Data,
+                        yAxisIndex: 1,
+                        barWidth: 10,
+                        itemStyle: {
+                            barBorderRadius: 5,
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: '#478BFF' },
+                                { offset: 0.4, color: '#478BFF' },
+                                { offset: 1, color: '#f5f5f5' }])
+                        }
+                    }
+                ]
+
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        })
+
+    </script>
+</body>
+
+</html>

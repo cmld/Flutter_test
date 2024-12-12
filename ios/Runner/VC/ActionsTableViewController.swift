@@ -32,6 +32,7 @@ class ActionsTableViewController: BaseViewController {
                                  "model trans",
                                  "阿里 DNS -data",
                                  "阿里 DNS",
+                                 "获取代理ip端口",
         ]
         
         myTableV.dataList = actions.map { item in
@@ -70,6 +71,16 @@ class ActionsTableViewController: BaseViewController {
                     DNSResolver.share().getIpv4Info(withDomain: "bc.jtexpress.my") { ipList in
                         print("armand p:", ipList)
                     }
+                    break
+                case 9:
+                    getProxyIPAddress { ip, error in
+                        if let error = error {
+                            print("Error: \(error)")
+                        } else if let ip = ip {
+                            print("Proxy IP Address: \(ip)")
+                        }
+                    }
+                    getProxy()
                     break
                 default:
                     showPopupV(idx.row % 3)
@@ -134,6 +145,44 @@ class ActionsTableViewController: BaseViewController {
             UserDefaults.standard.set(popDates, forKey: "BannerPopDates")
             // TODO: Armand 开始请求
         }
+    }
+    
+    func getProxyIPAddress(completion: @escaping (String?, Error?) -> Void) {
+        guard let url = URL(string: "https://api.ipify.org?format=json") else {
+            completion(nil, NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"]))
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+
+            guard let data = data,
+                  let json = try? JSONSerialization.jsonObject(with: data, options: []),
+                  let dictionary = json as? [String: Any],
+                  let ipAddress = dictionary["ip"] as? String else {
+                completion(nil, NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to parse IP address"]))
+                return
+            }
+
+            completion(ipAddress, nil)
+        }.resume()
+    }
+    
+    func getProxy() -> String {
+        var reslut = ""
+        if let proxy = CFNetworkCopySystemProxySettings()?.takeUnretainedValue(), let dic = proxy as? [String: Any] {
+            if let httpsProxy = dic["HTTPSProxy"] as? String {
+                reslut = httpsProxy
+            }
+            if let httpsPort = dic["HTTPSPort"] as? Int64 {
+                reslut = reslut + ":\(httpsPort)"
+            }
+        }
+        print("armand p: Proxy->", reslut)
+        return reslut
     }
 
 }

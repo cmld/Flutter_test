@@ -42,6 +42,7 @@ class HomeListViewController: BaseViewController {
             "ActionsTableViewController, ActionsTableView",
             "DatePickerViewController, DatePickerViewController + TextView加载html",
             "ImageShowViewController, 图片显示",
+            "EchartsViewController, Echarts Web嵌入",
         ]
         
         tableView.dataList = dataSourceList.reversed().enumerated().map({ (index, item) in
@@ -62,7 +63,7 @@ class HomeListViewController: BaseViewController {
             }
         }
         
-        tableView.cellSelected(HomeTableViewCell(), IndexPath(row: 9, section: 0)) // 倒序
+        tableView.cellSelected(HomeTableViewCell(), IndexPath(row: 0, section: 0)) // 倒序
     }
     
 }

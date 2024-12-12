@@ -13,6 +13,8 @@
 		5918638D2AFCDB1900612807 /* OSSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5918638C2AFCDB1900612807 /* OSSViewController.swift */; };
 		591863902AFCDB8F00612807 /* JTTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5918638E2AFCDB8F00612807 /* JTTableViewCell.xib */; };
 		591863912AFCDB8F00612807 /* JTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5918638F2AFCDB8F00612807 /* JTTableViewCell.swift */; };
+		59210A1A2D0A75F100A6224F /* EchartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59210A192D0A75F100A6224F /* EchartsViewController.swift */; };
+		59210A1F2D0A7A7D00A6224F /* integral.html in Resources */ = {isa = PBXBuildFile; fileRef = 59210A1E2D0A7A7D00A6224F /* integral.html */; };
 		592304362BA19B490020CC14 /* CMDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592304352BA19B490020CC14 /* CMDatePickerView.swift */; };
 		592304382BA3F2F90020CC14 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592304372BA3F2F90020CC14 /* DatePickerViewController.swift */; };
 		5925F01C2BF353CF0008A8C2 /* BloomFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925F01B2BF353CF0008A8C2 /* BloomFilter.swift */; };
@@ -91,6 +93,8 @@
 		5918638C2AFCDB1900612807 /* OSSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSSViewController.swift; sourceTree = "<group>"; };
 		5918638E2AFCDB8F00612807 /* JTTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JTTableViewCell.xib; sourceTree = "<group>"; };
 		5918638F2AFCDB8F00612807 /* JTTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTTableViewCell.swift; sourceTree = "<group>"; };
+		59210A192D0A75F100A6224F /* EchartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EchartsViewController.swift; sourceTree = "<group>"; };
+		59210A1E2D0A7A7D00A6224F /* integral.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = integral.html; sourceTree = "<group>"; };
 		592304352BA19B490020CC14 /* CMDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMDatePickerView.swift; sourceTree = "<group>"; };
 		592304372BA3F2F90020CC14 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		5925F01B2BF353CF0008A8C2 /* BloomFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomFilter.swift; sourceTree = "<group>"; };
@@ -188,6 +192,22 @@
 				5900C3162C20549900ABE326 /* TempModel.swift */,
 			);
 			path = Temp;
+			sourceTree = "<group>";
+		};
+		59210A1B2D0A791C00A6224F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				59210A1C2D0A793900A6224F /* EchartsHtml */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		59210A1C2D0A793900A6224F /* EchartsHtml */ = {
+			isa = PBXGroup;
+			children = (
+				59210A1E2D0A7A7D00A6224F /* integral.html */,
+			);
+			path = EchartsHtml;
 			sourceTree = "<group>";
 		};
 		594179E62BBCEFAA00ABBA4A /* otherLibs */ = {
@@ -300,6 +320,7 @@
 				59E14F632B67B33A00F1DF69 /* TableViewController.swift */,
 				59BC11B72B8DD569004841FD /* ActionsTableViewController.swift */,
 				592304372BA3F2F90020CC14 /* DatePickerViewController.swift */,
+				59210A192D0A75F100A6224F /* EchartsViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -367,6 +388,7 @@
 				59C2CD892A89DB4A004B3600 /* JTCallManager.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
 				598C9E152BB51B5E00A9C7AB /* PrivacyInfo.xcprivacy */,
+				59210A1B2D0A791C00A6224F /* Resources */,
 				5900C3152C20546A00ABE326 /* Temp */,
 				59AE35C22AE7C339000C349B /* VC */,
 				59BE37F62AF1FD3B00998E5F /* Tools */,
@@ -450,6 +472,7 @@
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				592BBF532B6A471B00500001 /* RecipientNormalCell.xib in Resources */,
 				591863902AFCDB8F00612807 /* JTTableViewCell.xib in Resources */,
+				59210A1F2D0A7A7D00A6224F /* integral.html in Resources */,
 				59B616F22B8F1A7A0069ACEE /* OrderListNewCell.xib in Resources */,
 				598C5EF32B59139B002EF6C1 /* test_area.txt in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
@@ -616,6 +639,7 @@
 				59C719242B34316800C5928A /* ToolsViewController.swift in Sources */,
 				599A20962ADD2EBC00AD51ED /* MainViewController.swift in Sources */,
 				599A20992ADD30A400AD51ED /* JTReturnModeView.swift in Sources */,
+				59210A1A2D0A75F100A6224F /* EchartsViewController.swift in Sources */,
 				592BBF5E2B6A550500500001 /* GoodsInfoMSCell.swift in Sources */,
 				59AE35CE2AEA60BD000C349B /* ImagePickerViewController.swift in Sources */,
 				59BE37F82AF1FD5A00998E5F /* Tools.swift in Sources */,

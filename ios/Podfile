@@ -44,6 +44,7 @@ target 'Runner' do
   pod 'SwiftSoup', '~> 2.6.1'
   pod 'IQKeyboardManagerSwift'
   pod 'AlicloudPDNS'
+  pod 'dsBridge'
   
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
   

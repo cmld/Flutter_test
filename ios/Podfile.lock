@@ -9,169 +9,18 @@ PODS:
   - flutter_blue/Protos (0.0.1):
     - Flutter
     - Protobuf (~> 3.11.4)
-  - GoogleDataTransport (9.4.1):
-    - GoogleUtilities/Environment (~> 7.7)
-    - nanopb (< 2.30911.0, >= 2.30908.0)
-    - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleMLKit/BarcodeScanning (6.0.0):
-    - GoogleMLKit/MLKitCore
-    - MLKitBarcodeScanning (~> 5.0.0)
-  - GoogleMLKit/ImageLabeling (6.0.0):
-    - GoogleMLKit/MLKitCore
-    - MLKitImageLabeling (~> 5.0.0)
-  - GoogleMLKit/MLKitCore (6.0.0):
-    - MLKitCommon (~> 11.0.0)
-  - GoogleMLKit/ObjectDetection (6.0.0):
-    - GoogleMLKit/MLKitCore
-    - MLKitObjectDetection (~> 5.0.0)
-  - GoogleMLKit/ObjectDetectionCustom (6.0.0):
-    - GoogleMLKit/MLKitCore
-    - MLKitObjectDetectionCustom (~> 5.0.0)
-  - GoogleToolboxForMac/Defines (4.2.1)
-  - GoogleToolboxForMac/Logger (4.2.1):
-    - GoogleToolboxForMac/Defines (= 4.2.1)
-  - "GoogleToolboxForMac/NSData+zlib (4.2.1)":
-    - GoogleToolboxForMac/Defines (= 4.2.1)
-  - GoogleUtilities (7.13.3):
-    - GoogleUtilities/AppDelegateSwizzler (= 7.13.3)
-    - GoogleUtilities/Environment (= 7.13.3)
-    - GoogleUtilities/ISASwizzler (= 7.13.3)
-    - GoogleUtilities/Logger (= 7.13.3)
-    - GoogleUtilities/MethodSwizzler (= 7.13.3)
-    - GoogleUtilities/Network (= 7.13.3)
-    - "GoogleUtilities/NSData+zlib (= 7.13.3)"
-    - GoogleUtilities/Privacy (= 7.13.3)
-    - GoogleUtilities/Reachability (= 7.13.3)
-    - GoogleUtilities/SwizzlerTestHelpers (= 7.13.3)
-    - GoogleUtilities/UserDefaults (= 7.13.3)
-  - GoogleUtilities/AppDelegateSwizzler (7.13.3):
-    - GoogleUtilities/Environment
-    - GoogleUtilities/Logger
-    - GoogleUtilities/Network
-    - GoogleUtilities/Privacy
-  - GoogleUtilities/Environment (7.13.3):
-    - GoogleUtilities/Privacy
-    - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleUtilities/ISASwizzler (7.13.3):
-    - GoogleUtilities/Privacy
-  - GoogleUtilities/Logger (7.13.3):
-    - GoogleUtilities/Environment
-    - GoogleUtilities/Privacy
-  - GoogleUtilities/MethodSwizzler (7.13.3):
-    - GoogleUtilities/Logger
-    - GoogleUtilities/Privacy
-  - GoogleUtilities/Network (7.13.3):
-    - GoogleUtilities/Logger
-    - "GoogleUtilities/NSData+zlib"
-    - GoogleUtilities/Privacy
-    - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.13.3)":
-    - GoogleUtilities/Privacy
-  - GoogleUtilities/Privacy (7.13.3)
-  - GoogleUtilities/Reachability (7.13.3):
-    - GoogleUtilities/Logger
-    - GoogleUtilities/Privacy
-  - GoogleUtilities/SwizzlerTestHelpers (7.13.3):
-    - GoogleUtilities/MethodSwizzler
-  - GoogleUtilities/UserDefaults (7.13.3):
-    - GoogleUtilities/Logger
-    - GoogleUtilities/Privacy
-  - GoogleUtilitiesComponents (1.1.0):
-    - GoogleUtilities/Logger
-  - GTMSessionFetcher/Core (3.5.0)
   - HandyJSON (5.1.3)
   - IQKeyboardManagerSwift (6.5.16)
   - JTOSSUploader-iOS (0.3.2):
     - Alamofire
-  - JTScanKit (0.2.1):
-    - JTScanKit/Core (= 0.2.1)
-    - JTScanKit/Predictor (= 0.2.1)
-  - JTScanKit/Core (0.2.1)
-  - JTScanKit/Predictor (0.2.1):
-    - JTScanKit/Predictor/Apple (= 0.2.1)
-    - JTScanKit/Predictor/Google (= 0.2.1)
-    - JTScanKit/Predictor/ZXing (= 0.2.1)
-  - JTScanKit/Predictor/Apple (0.2.1):
-    - JTScanKit/Core
-  - JTScanKit/Predictor/Google (0.2.1):
-    - GoogleMLKit/BarcodeScanning (= 6.0.0)
-    - JTScanKit/Core
-  - JTScanKit/Predictor/ZXing (0.2.1):
-    - JTScanKit/Core
-    - ZXingObjC (~> 3.6.9)
-  - MLImage (1.0.0-beta5)
-  - MLKitBarcodeScanning (5.0.0):
-    - MLKitCommon (~> 11.0)
-    - MLKitVision (~> 7.0)
-  - MLKitCommon (11.0.0):
-    - GoogleDataTransport (< 10.0, >= 9.4.1)
-    - GoogleToolboxForMac/Logger (< 5.0, >= 4.2.1)
-    - "GoogleToolboxForMac/NSData+zlib (< 5.0, >= 4.2.1)"
-    - GoogleUtilities/UserDefaults (< 8.0, >= 7.13.0)
-    - GoogleUtilitiesComponents (~> 1.0)
-    - GTMSessionFetcher/Core (< 4.0, >= 3.3.2)
-  - MLKitImageLabeling (5.0.0):
-    - MLKitCommon (~> 11.0)
-    - MLKitImageLabelingCommon (~> 7.0)
-    - MLKitVision (~> 7.0)
-    - MLKitVisionKit (~> 8.0)
-  - MLKitImageLabelingCommon (7.0.0):
-    - MLKitCommon (~> 11.0)
-    - MLKitVision (~> 7.0)
-  - MLKitObjectDetection (5.0.0):
-    - MLKitCommon (~> 11.0)
-    - MLKitObjectDetectionCommon (~> 7.0)
-    - MLKitVision (~> 7.0)
-    - MLKitVisionKit (~> 8.0)
-  - MLKitObjectDetectionCommon (7.0.0):
-    - MLKitCommon (~> 11.0)
-    - MLKitVision (~> 7.0)
-  - MLKitObjectDetectionCustom (5.0.0):
-    - MLKitCommon (~> 11.0)
-    - MLKitObjectDetectionCommon (~> 7.0)
-    - MLKitVision (~> 7.0)
-    - MLKitVisionKit (~> 8.0)
-  - MLKitVision (7.0.0):
-    - GoogleToolboxForMac/Logger (< 5.0, >= 4.2.1)
-    - "GoogleToolboxForMac/NSData+zlib (< 5.0, >= 4.2.1)"
-    - GTMSessionFetcher/Core (< 4.0, >= 3.3.2)
-    - MLImage (= 1.0.0-beta5)
-    - MLKitCommon (~> 11.0)
-  - MLKitVisionKit (8.0.0):
-    - MLKitCommon (~> 11.0)
-    - MLKitImageLabelingCommon (~> 7.0)
-    - MLKitObjectDetectionCommon (~> 7.0)
-    - MLKitVision (~> 7.0)
-  - nanopb (2.30910.0):
-    - nanopb/decode (= 2.30910.0)
-    - nanopb/encode (= 2.30910.0)
-  - nanopb/decode (2.30910.0)
-  - nanopb/encode (2.30910.0)
-  - oss_plugin (0.0.2):
-    - Flutter
-    - JTOSSUploader-iOS
   - package_info (0.0.1):
     - Flutter
-  - PromisesObjC (2.4.0)
   - Protobuf (3.11.4)
-  - scan_plugin (0.0.1):
-    - Flutter
-    - GoogleMLKit/BarcodeScanning
-    - GoogleMLKit/ImageLabeling
-    - GoogleMLKit/ObjectDetection
-    - GoogleMLKit/ObjectDetectionCustom
-    - GoogleUtilities
-    - JTScanKit
-    - SnapKit
-    - ZXingObjC
   - SnapKit (5.7.1)
   - SwiftDate (6.3.1)
   - SwiftSoup (2.6.1)
   - url_launcher_ios (0.0.1):
     - Flutter
-  - ZXingObjC (3.6.9):
-    - ZXingObjC/All (= 3.6.9)
-  - ZXingObjC/All (3.6.9)
 
 DEPENDENCIES:
   - AlicloudPDNS
@@ -180,9 +29,8 @@ DEPENDENCIES:
   - flutter_blue (from `.symlinks/plugins/flutter_blue/ios`)
   - HandyJSON
   - IQKeyboardManagerSwift
-  - oss_plugin (from `.symlinks/plugins/oss_plugin/ios`)
+  - JTOSSUploader-iOS
   - package_info (from `.symlinks/plugins/package_info/ios`)
-  - scan_plugin (from `.symlinks/plugins/scan_plugin/ios`)
   - SnapKit
   - SwiftDate
   - SwiftSoup (~> 2.6.1)
@@ -192,48 +40,24 @@ SPEC REPOS:
   http://code.jms.com/mobile/module/ios/jtspec.git:
     - HandyJSON
     - JTOSSUploader-iOS
-    - JTScanKit
   https://github.com/aliyun/aliyun-specs.git:
     - AlicloudPDNS
   trunk:
     - Alamofire
     - dsBridge
-    - GoogleDataTransport
-    - GoogleMLKit
-    - GoogleToolboxForMac
-    - GoogleUtilities
-    - GoogleUtilitiesComponents
-    - GTMSessionFetcher
     - IQKeyboardManagerSwift
-    - MLImage
-    - MLKitBarcodeScanning
-    - MLKitCommon
-    - MLKitImageLabeling
-    - MLKitImageLabelingCommon
-    - MLKitObjectDetection
-    - MLKitObjectDetectionCommon
-    - MLKitObjectDetectionCustom
-    - MLKitVision
-    - MLKitVisionKit
-    - nanopb
-    - PromisesObjC
     - Protobuf
     - SnapKit
     - SwiftDate
     - SwiftSoup
-    - ZXingObjC
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
   flutter_blue:
     :path: ".symlinks/plugins/flutter_blue/ios"
-  oss_plugin:
-    :path: ".symlinks/plugins/oss_plugin/ios"
   package_info:
     :path: ".symlinks/plugins/package_info/ios"
-  scan_plugin:
-    :path: ".symlinks/plugins/scan_plugin/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
@@ -243,38 +67,16 @@ SPEC CHECKSUMS:
   dsBridge: 48b62ee8a411ad601a88d6f6c8cf6cb634b206b7
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_blue: eeb381dc4727a0954dede73515f683865494b370
-  GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
-  GoogleMLKit: 97ac7af399057e99182ee8edfa8249e3226a4065
-  GoogleToolboxForMac: d1a2cbf009c453f4d6ded37c105e2f67a32206d8
-  GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
-  GoogleUtilitiesComponents: 679b2c881db3b615a2777504623df6122dd20afe
-  GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
   HandyJSON: f6bb9897592b8ceed3ba63908b2da01805f4e44b
   IQKeyboardManagerSwift: 12d89768845bb77b55cc092ecc2b1f9370f06b76
   JTOSSUploader-iOS: 244f6c268e63741f10cc7c72cbaeb82d73393698
-  JTScanKit: 0b497afa3d731a64bcb87b929428cf4860ff4ae4
-  MLImage: 1824212150da33ef225fbd3dc49f184cf611046c
-  MLKitBarcodeScanning: 10ca0845a6d15f2f6e911f682a1998b68b973e8b
-  MLKitCommon: afec63980417d29ffbb4790529a1b0a2291699e1
-  MLKitImageLabeling: c13caec3baa684553ec823d5dfbca3e3be8ce9a2
-  MLKitImageLabelingCommon: fa802f14c3a321121409f6cbe1df89ba9cf1a00c
-  MLKitObjectDetection: 9b40359730baceef23322c6d41070da7639ff100
-  MLKitObjectDetectionCommon: f3ca8581a0741be6ce609920367316571a280efa
-  MLKitObjectDetectionCustom: a412a63a743724ae124b07d6c3cc817283da3453
-  MLKitVision: e858c5f125ecc288e4a31127928301eaba9ae0c1
-  MLKitVisionKit: 6d2ea9741b262ec0fed2a5a3de521cfa671c6e83
-  nanopb: 438bc412db1928dac798aa6fd75726007be04262
-  oss_plugin: 69237cb3e06ca3a05777b12d44138f16a47ba978
   package_info: 873975fc26034f0b863a300ad47e7f1ac6c7ec62
-  PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
-  scan_plugin: a35216be93479a20e7f8c69c33a292fd97670fda
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
   SwiftSoup: 5dd2c1b06afc964f30d99894af6ede22ede627aa
   url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
-  ZXingObjC: 8898711ab495761b2dbbdec76d90164a6d7e14c5
 
-PODFILE CHECKSUM: bed75de09717bf92466efbedc5aac66f8e374c47
+PODFILE CHECKSUM: 3d0131178e917e27d7873f7172b0d8797f83e3e2
 
 COCOAPODS: 1.13.0

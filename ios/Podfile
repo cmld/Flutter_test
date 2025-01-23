@@ -45,6 +45,7 @@ target 'Runner' do
   pod 'IQKeyboardManagerSwift'
   pod 'AlicloudPDNS'
   pod 'dsBridge'
+  pod 'JTOSSUploader-iOS'
   
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
   

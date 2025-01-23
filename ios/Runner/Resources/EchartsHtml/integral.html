@@ -5,7 +5,8 @@
     <meta charset="utf-8" />
     <title>ECharts</title>
     <!-- 引入刚刚下载的 ECharts 文件 -->
-    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<!--    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>-->
+    <script src="echarts.min.js"></script>
     <script src="https://unpkg.com/dsbridge/dist/dsbridge.js"> </script>
 </head>
 
@@ -15,6 +16,14 @@
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
+<!--        dsBridge.register('setupChart', function (arg) {-->
+<!--          alert(arg);-->
+<!--        });-->
+<!--        dsBridge.registerAsyn('append',function(arg1,arg2,arg3,responseCallback){-->
+<!--          alert(arg1);-->
+<!--          responseCallback(arg1+" "+arg2+" "+arg3);-->
+<!--        });-->
+        
         dsBridge.register('setupChart', function (arg) {
 
             var xAxisData = arg.map((obj) => obj.xTitle);
@@ -79,12 +88,18 @@
                                 { offset: 1, color: '#f5f5f5' }])
                         }
                     }
-                ]
+                ],
+                animation: false,
 
             };
-
+            
+            myChart.on('finished', function () {
+                dsBridge.call("finishedCall", "arg");
+            });
+            
             // 使用刚指定的配置项和数据显示图表。
             myChart.setOption(option);
+            
         })
 
     </script>

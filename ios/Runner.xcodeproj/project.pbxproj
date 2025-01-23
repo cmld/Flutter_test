@@ -27,7 +27,9 @@
 		592BBF5B2B6A4B8100500001 /* GoodsInfoNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592BBF592B6A4B8100500001 /* GoodsInfoNormalCell.xib */; };
 		592BBF5E2B6A550500500001 /* GoodsInfoMSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BBF5C2B6A550500500001 /* GoodsInfoMSCell.swift */; };
 		592BBF5F2B6A550500500001 /* GoodsInfoMSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592BBF5D2B6A550500500001 /* GoodsInfoMSCell.xib */; };
+		593A37E12D2FD0F60036F4A5 /* JTPrintManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593A37E02D2FD0F60036F4A5 /* JTPrintManager.swift */; };
 		594179EA2BBCEFDD00ABBA4A /* WZZKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 594179E92BBCEFDD00ABBA4A /* WZZKeyboardManager.m */; };
+		595345962D14139A0008A602 /* echarts.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 595345952D14139A0008A602 /* echarts.min.js */; };
 		598C5EEA2B58CC4C002EF6C1 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598C5EE92B58CC4C002EF6C1 /* PDFViewController.swift */; };
 		598C5EED2B58CD8F002EF6C1 /* NDA_test.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 598C5EEC2B58CD8F002EF6C1 /* NDA_test.pdf */; };
 		598C5EEF2B58D6EF002EF6C1 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598C5EEE2B58D6EE002EF6C1 /* Const.swift */; };
@@ -107,8 +109,10 @@
 		592BBF592B6A4B8100500001 /* GoodsInfoNormalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsInfoNormalCell.xib; sourceTree = "<group>"; };
 		592BBF5C2B6A550500500001 /* GoodsInfoMSCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsInfoMSCell.swift; sourceTree = "<group>"; };
 		592BBF5D2B6A550500500001 /* GoodsInfoMSCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsInfoMSCell.xib; sourceTree = "<group>"; };
+		593A37E02D2FD0F60036F4A5 /* JTPrintManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTPrintManager.swift; sourceTree = "<group>"; };
 		594179E82BBCEFDD00ABBA4A /* WZZKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZZKeyboardManager.h; sourceTree = "<group>"; };
 		594179E92BBCEFDD00ABBA4A /* WZZKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZZKeyboardManager.m; sourceTree = "<group>"; };
+		595345952D14139A0008A602 /* echarts.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = echarts.min.js; sourceTree = "<group>"; };
 		598C5EE92B58CC4C002EF6C1 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		598C5EEC2B58CD8F002EF6C1 /* NDA_test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NDA_test.pdf; sourceTree = "<group>"; };
 		598C5EEE2B58D6EE002EF6C1 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				59210A1E2D0A7A7D00A6224F /* integral.html */,
+				595345952D14139A0008A602 /* echarts.min.js */,
 			);
 			path = EchartsHtml;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 		59BE37F62AF1FD3B00998E5F /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				593A37E02D2FD0F60036F4A5 /* JTPrintManager.swift */,
 				59BE37F72AF1FD5A00998E5F /* Tools.swift */,
 				5925F01B2BF353CF0008A8C2 /* BloomFilter.swift */,
 				598C5EEE2B58D6EE002EF6C1 /* Const.swift */,
@@ -472,6 +478,7 @@
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				592BBF532B6A471B00500001 /* RecipientNormalCell.xib in Resources */,
 				591863902AFCDB8F00612807 /* JTTableViewCell.xib in Resources */,
+				595345962D14139A0008A602 /* echarts.min.js in Resources */,
 				59210A1F2D0A7A7D00A6224F /* integral.html in Resources */,
 				59B616F22B8F1A7A0069ACEE /* OrderListNewCell.xib in Resources */,
 				598C5EF32B59139B002EF6C1 /* test_area.txt in Resources */,
@@ -622,6 +629,7 @@
 				59C2CD8A2A89DB4B004B3600 /* JTCallManager.swift in Sources */,
 				59CB98372B9F0E51000584DD /* HomeTableViewCell.swift in Sources */,
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
+				593A37E12D2FD0F60036F4A5 /* JTPrintManager.swift in Sources */,
 				591863912AFCDB8F00612807 /* JTTableViewCell.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 				598C5EEA2B58CC4C002EF6C1 /* PDFViewController.swift in Sources */,

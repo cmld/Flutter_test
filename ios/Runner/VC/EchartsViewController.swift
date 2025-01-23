@@ -14,7 +14,10 @@ class EchartsViewController: BaseViewController {
 
     lazy var webView: DWKWebView = {
         let value = DWKWebView()
-        
+        value.navigationDelegate = self
+        let bridgeApi = BridgeApi()
+        bridgeApi.webV = value
+        value.addJavascriptObject(bridgeApi, namespace: nil)
         return value
     }()
     
@@ -56,7 +59,7 @@ class EchartsViewController: BaseViewController {
         
         webLoad()
 //        webView.loadUrl("http://10.66.103.46:5500/integral.html")
-        jsMethodCall()
+//        jsMethodCall()
         changeBtn.addTap { [weak self]  in
             guard let `self` = self else { return }
             jsMethodCall()
@@ -90,6 +93,38 @@ class EchartsViewController: BaseViewController {
         })
         print("armand p:", JTJsonTrans(arg))
         webView.callHandler("setupChart",arguments: [arg])
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: DispatchWorkItem(block: {
+//            let config = WKSnapshotConfiguration()
+////            config.snapshotWidth = 375
+//            if #available(iOS 13.0, *) {
+//                config.afterScreenUpdates = true
+//            } else {
+//                // Fallback on earlier versions
+//            }
+//            self.webView.takeSnapshot(with: config) { img, error in
+//                print(img?.size)
+//            }
+//        }))
     }
 
+}
+
+extension EchartsViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        
+    }
+}
+
+
+class BridgeApi: NSObject {
+    var webV: DWKWebView!
+    
+    @objc func finishedCall( _ arg:String) -> String {
+        webV.takeSnapshot(with: WKSnapshotConfiguration()) { img, error in
+            print(img?.size)
+        }
+        
+        return ""
+    }
 }

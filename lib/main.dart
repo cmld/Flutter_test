@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:image_picker/image_picker.dart';
-import 'package:oss_plugin/bean/OssRequest.dart';
-import 'package:oss_plugin/oss_plugin.dart';
+// import 'package:oss_plugin/bean/OssRequest.dart';
+// import 'package:oss_plugin/oss_plugin.dart';
 import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -98,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
 
   BLEManager manager = BLEManager();
 
-  final _ossPlugin = OssPlugin();
+  // final _ossPlugin = OssPlugin();
   List<String> _filelist = [];
 
   void _incrementCounter() {
@@ -228,8 +228,8 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
               ),
               TextButton(
                 onPressed: () async {
-                  var sppResult = await Navigator.pushNamed(context, 'spp');
-                  print('spp page' + sppResult.toString());
+                  // var sppResult = await Navigator.pushNamed(context, 'spp');
+                  print('JT内部扫描库需要重新导入');
                 },
                 child: const Text(
                   '内部组件 scanPlugin',
@@ -325,41 +325,41 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
               ),
               TextButton(
                 onPressed: () async {
-                  var model = OssRequest.fromJson({
-                    "requestUrl":
-                        "https://demo-ylapp.jtexpress.my/bc/upload/file/getBatchUploadSignedUrl",
-                    "headers": {
-                      "app-version": "1.0.43",
-                      "app-platform": "iOS_com.jitu.express.malaysia.outfield",
-                      "device-id": "WCI3822FB18-D524-4ED5-9CF1-4014A762BEBF",
-                      "device-name": "iPhone 8 Plus",
-                      "device-version": "iOS-13.7",
-                      "user-agent": "ios/app_out",
-                      "app-channel": "Internal Deliver",
-                      "device": "WCI3822FB18-D524-4ED5-9CF1-4014A762BEBF",
-                      "devicefrom": "ios",
-                      "appid": "g0exxal082vu",
-                      "langType": "CN",
-                      "content-type": "application/json; charset=utf-8",
-                      "timestamp": "1699595284927",
-                      "signature":
-                          "MEM1NkNGQkMxRTQzNkFFODUxOEJGRDE2ODM2MDEwMUM=",
-                      "userCode": "NSN6100008",
-                      "authToken": "25ba35d5fd514ac2b4f1880ef294bf76",
-                      "X-SimplyPost-Id": "1699595284927",
-                      "X-SimplyPost-Signature":
-                          "99c32bf03113bcd39e4df00b5676d064",
-                      "contentType": "application/json; charset=utf-8",
-                      "responseType": "ResponseType.json",
-                      "followRedirects": "true",
-                      "connectTimeout": "10000",
-                      "receiveTimeout": "10000"
-                    },
-                    "fileList": _filelist,
-                    "moduleName": "scan_return_sign"
-                  });
-                  var result = await _ossPlugin.uploadWithOss(model);
-                  print('ossSdk 结果： $result');
+                  // var model = OssRequest.fromJson({
+                  //   "requestUrl":
+                  //       "https://demo-ylapp.jtexpress.my/bc/upload/file/getBatchUploadSignedUrl",
+                  //   "headers": {
+                  //     "app-version": "1.0.43",
+                  //     "app-platform": "iOS_com.jitu.express.malaysia.outfield",
+                  //     "device-id": "WCI3822FB18-D524-4ED5-9CF1-4014A762BEBF",
+                  //     "device-name": "iPhone 8 Plus",
+                  //     "device-version": "iOS-13.7",
+                  //     "user-agent": "ios/app_out",
+                  //     "app-channel": "Internal Deliver",
+                  //     "device": "WCI3822FB18-D524-4ED5-9CF1-4014A762BEBF",
+                  //     "devicefrom": "ios",
+                  //     "appid": "g0exxal082vu",
+                  //     "langType": "CN",
+                  //     "content-type": "application/json; charset=utf-8",
+                  //     "timestamp": "1699595284927",
+                  //     "signature":
+                  //         "MEM1NkNGQkMxRTQzNkFFODUxOEJGRDE2ODM2MDEwMUM=",
+                  //     "userCode": "NSN6100008",
+                  //     "authToken": "25ba35d5fd514ac2b4f1880ef294bf76",
+                  //     "X-SimplyPost-Id": "1699595284927",
+                  //     "X-SimplyPost-Signature":
+                  //         "99c32bf03113bcd39e4df00b5676d064",
+                  //     "contentType": "application/json; charset=utf-8",
+                  //     "responseType": "ResponseType.json",
+                  //     "followRedirects": "true",
+                  //     "connectTimeout": "10000",
+                  //     "receiveTimeout": "10000"
+                  //   },
+                  //   "fileList": _filelist,
+                  //   "moduleName": "scan_return_sign"
+                  // });
+                  // var result = await _ossPlugin.uploadWithOss(model);
+                  print('ossSdk 内部库需要重新导入 Android用不了');
                 },
                 child: const Text(
                   '私有插件-oss 上传图片',
@@ -726,6 +726,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 48,
                 48
               ]);
+            
             },
             child: Text('初始化'),
           ),
@@ -752,6 +753,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 48,
                 48
               ]); // N+20000
+            
             },
             child: Text('获取权限'),
           ),
@@ -778,6 +780,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 48,
                 48
               ]); // N+41000
+            
             },
             child: Text('启动'),
           ),
@@ -804,6 +807,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 51,
                 49
               ]); // N+30031
+            
             },
             child: Text('一档'),
           ),
@@ -830,6 +834,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 53,
                 53
               ]); // N+30155
+            
             },
             child: Text('七档'),
           ),

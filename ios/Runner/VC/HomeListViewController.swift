@@ -63,7 +63,7 @@ class HomeListViewController: BaseViewController {
             }
         }
         
-        tableView.cellSelected(HomeTableViewCell(), IndexPath(row: 0, section: 0)) // 倒序
+        tableView.cellSelected(HomeTableViewCell(), IndexPath(row: 8, section: 0)) // 倒序
     }
     
 }

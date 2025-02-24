@@ -92,19 +92,9 @@ import UIKit
     }
     
     static func showList(_ imgList: [Any]) {
-        var list = imgList
-        if let tempList = imgList as? [String] {
-            list = tempList.map({ item in
-                if let url = URL(string: item), let data = try? Data(contentsOf: url), let img = UIImage(data: data) {
-                    return img
-                } else {
-                    return UIImage()
-                }
-            })
-        }
         
         let vc = ImageShowViewController()
-        vc.myCollectionV.dataList = list
+        vc.myCollectionV.dataList = imgList
         vc.modalPresentationStyle = .fullScreen
         if let currentWin = UIApplication.shared.delegate?.window {
             currentWin?.rootViewController?.present(vc, animated: true)

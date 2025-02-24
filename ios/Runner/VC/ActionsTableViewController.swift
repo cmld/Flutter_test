@@ -33,6 +33,7 @@ class ActionsTableViewController: BaseViewController {
                                  "阿里 DNS -data",
                                  "阿里 DNS",
                                  "获取代理ip端口",
+                                 "ping URL",
         ]
         
         myTableV.dataList = actions.map { item in
@@ -81,6 +82,17 @@ class ActionsTableViewController: BaseViewController {
                         }
                     }
                     getProxy()
+                    break
+                case 10: // ping URL
+                    if let url = URL(string: "http://10.66.103.54:8887/idnStation.html") {
+                        let startTime = Date()
+                        URLSession.shared.dataTask(with: URLRequest(url: url)) { data, resp, err in
+                            if let resultResp = resp as? HTTPURLResponse, resultResp.statusCode == 200, err == nil {
+                                let duration = Date().timeIntervalSince(startTime) * 1000
+                                print("duration:\(duration) ms")
+                            }
+                        }.resume()
+                    }
                     break
                 default:
                     showPopupV(idx.row % 3)

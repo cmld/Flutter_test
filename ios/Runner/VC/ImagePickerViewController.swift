@@ -25,6 +25,14 @@ class ImagePickerViewController: BaseViewController, UINavigationControllerDeleg
         button.addTarget(self, action: #selector(pushToImagePicker), for: .touchUpInside)
         self.view.addSubview(button)
         
+        let button1 = UIButton(frame: CGRect(x: 120, y: UIScreen.main.bounds.maxY - 250, width: 100, height: 100))
+        button1.backgroundColor = .red
+        button1.setTitle("ImageShowVC", for: .normal)
+        self.view.addSubview(button1)
+        button1.addTap {
+            ImageShowViewController.showList(["https://p3-search.byteimg.com/img/labis/9fc78adaef5a1ff082e6d79c50b28d53~480x480.JPEG", "https://p3-search.byteimg.com/img/labis/aa3146b37a5330b6b9058dbaa17302f7~480x480.PNG", "https://p3-search.byteimg.com/img/labis/d1f982ec87658c05f9461a07b656f3b6~480x480.JPEG"])
+        }
+        
         showImage.addTap {
             ImageShowViewController.showList(self.imageList)
         }

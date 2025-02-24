@@ -16,7 +16,7 @@ import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
+  // 初始化屏幕适配
   runApp(ScreenUtilInit(
     designSize: const Size(375, 812),
     minTextAdapt: true,
@@ -25,35 +25,12 @@ void main() {
       return const MyApp();
     },
   ));
-
-  // FlutterError.onError = (d) async {
-  //   Zone.current
-  //       .handleUncaughtError(d.exception, d.stack ?? StackTrace.current);
-  // };
-  // runZonedGuarded(
-  //   () => runApp(
-  //     ScreenUtilInit(
-  //       designSize: const Size(375, 812),
-  //       minTextAdapt: true,
-  //       splitScreenMode: true,
-  //       builder: (context, child) {
-  //         return const MyApp();
-  //       },
-  //     ),
-  //   ),
-  //   (error, stack) {
-  //     print('clmd err:' +
-  //         error.toString() +
-  //         '\nclmd stack info:\n' +
-  //         stack.toString());
-  //   },
-  // );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  // 这是应用程序的根部件
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -66,21 +43,12 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
     );
   }
-
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
+  // 这是应用程序的主页部件。它是有状态的，意味着它有一个状态对象（在下面定义），包含影响其外观的字段。
   final String title;
 
   @override
@@ -101,13 +69,9 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   // final _ossPlugin = OssPlugin();
   List<String> _filelist = [];
 
+  // 增加计数器的方法
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }
@@ -125,39 +89,48 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     WidgetsBinding.instance.removeObserver(this);
   }
 
   @override
   Widget build(BuildContext context) {
+    final ButtonStyle buttonStyle = TextButton.styleFrom(
+      textStyle: const TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
+        // 从 MyHomePage 对象中获取值，并将其用于设置应用栏标题
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+        // Center 是一个布局部件。它接收一个子部件并将其置于父部件的中间。
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              // 检查文件是否存在
               SizedBox(
-                  height: 50,
-                  width: 100,
-                  child: File('/private/var/mobile/Containers/Data/Application/14801AF9-72F5-4F24-9A22-8A31996A0014/tmp/image_picker_9BEAEFD6-E07F-43ED-8D5D-7AE2A11CB4C6-4995-00001F81C7711BA8.jpg').existsSync() ? Text('存在') : Text('不存在')),
-
+                height: 50,
+                width: 100,
+                child: File('/private/var/mobile/Containers/Data/Application/14801AF9-72F5-4F24-9A22-8A31996A0014/tmp/image_picker_9BEAEFD6-E07F-43ED-8D5D-7AE2A11CB4C6-4995-00001F81C7711BA8.jpg').existsSync()
+                    ? Text('存在')
+                    : Text('不存在'),
+              ),
+              // 显示图片
               SizedBox(
                 height: 50,
                 width: 100,
                 child: Column(
                   children: [
                     Expanded(
-                        flex: 1,
-                        child: Row(children: [
+                      flex: 1,
+                      child: Row(
+                        children: [
                           Image.asset(
                             fit: BoxFit.fitHeight,
                             'assets/home_good_man.png',
@@ -167,11 +140,14 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                               fit: BoxFit.fitHeight,
                               'assets/home_good_man.png',
                             ),
-                        ])),
+                        ],
+                      ),
+                    ),
                     if (_counter % 4 > 1)
                       Expanded(
-                          flex: 1,
-                          child: Row(children: [
+                        flex: 1,
+                        child: Row(
+                          children: [
                             Image.asset(
                               fit: BoxFit.fitHeight,
                               'assets/home_good_man.png',
@@ -181,191 +157,223 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                                 fit: BoxFit.fitHeight,
                                 'assets/home_good_man.png',
                               ),
-                          ])),
+                          ],
+                        ),
+                      ),
                   ],
                 ),
               ),
-              TextButton(
-                onPressed: () async {
-                  final result =
-                      await _channel.invokeMethod('getDNS', 'bc.jtexpress.my');
-                  print(result.toString());
-                  Api.post1Data('https://${result}:443/bclogin/out/loginV2', {
-                    "content-type": "application/json; charset=utf-8",
-                    "timestamp": "1723716255312",
-                    "signature": "NjM0QkZFRkYwODJGODg2ODg5Q0RCQjFBNUI4MDcyNTY=",
-                    "userCode": "null",
-                    "authToken": "913ee941fd6a4133bf322d3d03f05ce5",
-                    "X-SimplyPost-Id": "1723716255312",
-                    "X-SimplyPost-Signature":
-                        "2a5068066e62da248e73e0186bbeee75",
-                    "langType": "CN",
-                    "contentType": "application/json; charset=utf-8",
-                    "responseType": "ResponseType.json",
-                    "followRedirects": "true",
-                    "connectTimeout": "20000",
-                    "receiveTimeout": "20000",
-                  }, {
-                    "account": "NSN6100003",
-                    "appDeviceCode": "Android-31",
-                    "appType": "4",
-                    "appVersion": "1.1.13",
-                    "latitudeAndLongitude": "31.220267,121.209177",
-                    "macAddr": "WA-427b2c652b36c0f",
-                    "password": "4e71002969fcd46813b869e931aedf4b",
-                    "platform": "android",
-                    "serialnumber": "WA-427b2c652b36c0f",
-                    "source": "outfield",
-                  });
-                },
-                child: const Text(
-                  '阿里 DNS',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+              // 阿里 DNS 按钮
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        style: buttonStyle,
+                        onPressed: () async {
+                          final result = await _channel.invokeMethod('getDNS', 'bc.jtexpress.my');
+                          print(result.toString());
+                          Api.post1Data('https://${result}:443/bclogin/out/loginV2', {
+                            "content-type": "application/json; charset=utf-8",
+                            "timestamp": "1723716255312",
+                            "signature": "NjM0QkZFRkYwODJGODg2ODg5Q0RCQjFBNUI4MDcyNTY=",
+                            "userCode": "null",
+                            "authToken": "913ee941fd6a4133bf322d3d03f05ce5",
+                            "X-SimplyPost-Id": "1723716255312",
+                            "X-SimplyPost-Signature": "2a5068066e62da248e73e0186bbeee75",
+                            "langType": "CN",
+                            "contentType": "application/json; charset=utf-8",
+                            "responseType": "ResponseType.json",
+                            "followRedirects": "true",
+                            "connectTimeout": "20000",
+                            "receiveTimeout": "20000",
+                          }, {
+                            "account": "NSN6100003",
+                            "appDeviceCode": "Android-31",
+                            "appType": "4",
+                            "appVersion": "1.1.13",
+                            "latitudeAndLongitude": "31.220267,121.209177",
+                            "macAddr": "WA-427b2c652b36c0f",
+                            "password": "4e71002969fcd46813b869e931aedf4b",
+                            "platform": "android",
+                            "serialnumber": "WA-427b2c652b36c0f",
+                            "source": "outfield",
+                          });
+                        },
+                        child: const Text('阿里 DNS'),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              TextButton(
-                onPressed: () async {
-                  // var sppResult = await Navigator.pushNamed(context, 'spp');
-                  print('JT内部扫描库需要重新导入');
-                },
-                child: const Text(
-                  '内部组件 scanPlugin',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+              // 内部组件 scanPlugin 按钮
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        style: buttonStyle,
+                        onPressed: () async {
+                          // var sppResult = await Navigator.pushNamed(context, 'spp');
+                          print('JT内部扫描库需要重新导入');
+                        },
+                        child: const Text('内部组件 scanPlugin'),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              TextButton(
-                onPressed: () {
-                  for (int i = 0; i < 3; i++) {
-                    futuresCall(i);
-                  }
-                },
-                child: const Text(
-                  'future list call',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+              // future list call 按钮
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        style: buttonStyle,
+                        onPressed: () {
+                          for (int i = 0; i < 3; i++) {
+                            futuresCall(i);
+                          }
+                        },
+                        child: const Text('future list call'),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              TextButton(
-                onPressed: () async {
-                  final String reply = await _basecChannel.send('dart 2 na');
-                  print('MessageChannelTest in dart： $reply');
-                },
-                child: const Text(
-                  'basic channl test - dart 2 na',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+              // basic channl test - dart 2 na 按钮
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        style: buttonStyle,
+                        onPressed: () async {
+                          final String reply = await _basecChannel.send('dart 2 na');
+                          print('MessageChannelTest in dart： $reply');
+                        },
+                        child: const Text('basic channl test - dart 2 na'),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              TextButton(
-                onPressed: () async {
-                  _channel.invokeMethod('basicChannlTest');
-                },
-                child: const Text(
-                  'basic channl test - na 2 dart',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+              // basic channl test - na 2 dart 按钮
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        style: buttonStyle,
+                        onPressed: () async {
+                          _channel.invokeMethod('basicChannlTest');
+                        },
+                        child: const Text('basic channl test - na 2 dart'),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              TextButton(
-                onPressed: () async {
-                  _channel.invokeMethod('imgPicker');
-                },
-                child: const Text(
-                  'channel到原生拍摄',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+              // channel到原生拍摄 按钮
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        style: buttonStyle,
+                        onPressed: () async {
+                          _channel.invokeMethod('imgPicker');
+                        },
+                        child: const Text('channel到原生拍摄'),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              TextField(
-                // controller: widget.textController,
-                // style: JTStyle.text3c16SpStyle,
-                textAlign: TextAlign.left,
-                autofocus: false,
-                minLines: 1,
-                maxLines: 5,
-                readOnly: false,
-                maxLength: 50,
-                // inputFormatters: widget.inputFormatters,
-                enableSuggestions: false,
-                onChanged: (String v) {
-                  // widget.onChange?.call(v);
-                },
-                decoration: InputDecoration(
-                  filled: false,
-                  isCollapsed: true,
-                  hintText: '请输入内容',
-                  contentPadding: EdgeInsets.symmetric(horizontal: 13.w),
-                  border: InputBorder.none,
-                  enabledBorder: null,
-                  focusedBorder: null,
-                  counterText: '',
+              // 文本输入框
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      textAlign: TextAlign.left,
+                      autofocus: false,
+                      minLines: 1,
+                      maxLines: 5,
+                      readOnly: false,
+                      maxLength: 50,
+                      enableSuggestions: false,
+                      onChanged: (String v) {
+                        // widget.onChange?.call(v);
+                      },
+                      decoration: InputDecoration(
+                        filled: false,
+                        isCollapsed: true,
+                        hintText: '请输入内容',
+                        contentPadding: EdgeInsets.symmetric(horizontal: 13.w),
+                        border: InputBorder.none,
+                        enabledBorder: null,
+                        focusedBorder: null,
+                        counterText: '',
+                      ),
+                      magnifierConfiguration: TextMagnifierConfiguration(
+                          shouldDisplayHandlesInMagnifier: false),
+                    ),
+                  ),
                 ),
-                magnifierConfiguration: TextMagnifierConfiguration(
-                    shouldDisplayHandlesInMagnifier: false),
-                // focusNode: widget.focusNode,
               ),
               const Divider(
                 height: 10,
                 thickness: 2,
                 color: Colors.black,
               ),
-              TextButton(
-                onPressed: () async {
-                  // var model = OssRequest.fromJson({
-                  //   "requestUrl":
-                  //       "https://demo-ylapp.jtexpress.my/bc/upload/file/getBatchUploadSignedUrl",
-                  //   "headers": {
-                  //     "app-version": "1.0.43",
-                  //     "app-platform": "iOS_com.jitu.express.malaysia.outfield",
-                  //     "device-id": "WCI3822FB18-D524-4ED5-9CF1-4014A762BEBF",
-                  //     "device-name": "iPhone 8 Plus",
-                  //     "device-version": "iOS-13.7",
-                  //     "user-agent": "ios/app_out",
-                  //     "app-channel": "Internal Deliver",
-                  //     "device": "WCI3822FB18-D524-4ED5-9CF1-4014A762BEBF",
-                  //     "devicefrom": "ios",
-                  //     "appid": "g0exxal082vu",
-                  //     "langType": "CN",
-                  //     "content-type": "application/json; charset=utf-8",
-                  //     "timestamp": "1699595284927",
-                  //     "signature":
-                  //         "MEM1NkNGQkMxRTQzNkFFODUxOEJGRDE2ODM2MDEwMUM=",
-                  //     "userCode": "NSN6100008",
-                  //     "authToken": "25ba35d5fd514ac2b4f1880ef294bf76",
-                  //     "X-SimplyPost-Id": "1699595284927",
-                  //     "X-SimplyPost-Signature":
-                  //         "99c32bf03113bcd39e4df00b5676d064",
-                  //     "contentType": "application/json; charset=utf-8",
-                  //     "responseType": "ResponseType.json",
-                  //     "followRedirects": "true",
-                  //     "connectTimeout": "10000",
-                  //     "receiveTimeout": "10000"
-                  //   },
-                  //   "fileList": _filelist,
-                  //   "moduleName": "scan_return_sign"
-                  // });
-                  // var result = await _ossPlugin.uploadWithOss(model);
-                  print('ossSdk 内部库需要重新导入 Android用不了');
-                },
-                child: const Text(
-                  '私有插件-oss 上传图片',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+              // 私有插件-oss 上传图片 按钮
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        style: buttonStyle,
+                        onPressed: () async {
+                          // var model = OssRequest.fromJson({
+                          // ...existing code...
+                          print('ossSdk 内部库需要重新导入 Android用不了');
+                        },
+                        child: const Text('私有插件-oss 上传图片'),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -374,43 +382,30 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 thickness: 2,
                 color: Colors.black,
               ),
-              // TextButton(
-              //   onPressed: () async {
-              //     var rsp =
-              //         await ImagePicker().pickImage(source: ImageSource.camera);
-              //     _filelist = [rsp?.path ?? ''];
-              //     var bd = await File(_filelist.first).readAsBytes();
-              //     final result =
-              //         await _channel.invokeMethod('imgComp', bd.toList());
-              //     print('ossSdk fileList: $_filelist');
-              //   },
-              //   child: const Text(
-              //     '私有插件-oss 选择图片',
-              //     style: TextStyle(
-              //       fontSize: 18,
-              //       fontWeight: FontWeight.bold,
-              //     ),
-              //   ),
-              // ),
-              const Divider(
-                height: 10,
-                thickness: 2,
-                color: Colors.black,
-              ),
+              // 私有插件-covertAddress 按钮
               ValueListenableBuilder(
-                  valueListenable: addressNf, builder: (c, v, p) => Text('$v')),
-              TextButton(
-                onPressed: () async {
-                  // var result = await LocationHelper()
-                  //     .covertAddress(locationNf.value ?? LocationInfo());
-                  // print(result.toString());
-                  // addressNf.value = result;
-                },
-                child: const Text(
-                  '私有插件-covertAddress',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                valueListenable: addressNf,
+                builder: (c, v, p) => Text('$v'),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        style: buttonStyle,
+                        onPressed: () async {
+                          // var result = await LocationHelper()
+                          //     .covertAddress(locationNf.value ?? LocationInfo());
+                          // print(result.toString());
+                          // addressNf.value = result;
+                        },
+                        child: const Text('私有插件-covertAddress'),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -419,50 +414,29 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 thickness: 2,
                 color: Colors.black,
               ),
-              // ValueListenableBuilder(
-              //     valueListenable: locationNf,
-              //     builder: (c, v, p) =>
-              //         Text('${v?.latitude} , ${v?.longitude}')),
-              // TextButton(
-              //   onPressed: () async {
-              //     var auth = await LocationHelper().hasLocationPermission();
-              //     if (auth) {
-              //       var result = await LocationHelper().getLocation();
-              //       print(result.toString());
-              //       locationNf.value = result;
-              //     } else {
-              //       LocationHelper().openLocationSettings();
-              //     }
-              //   },
-              //   child: const Text(
-              //     '私有插件-location',
-              //     style: TextStyle(
-              //       fontSize: 18,
-              //       fontWeight: FontWeight.bold,
-              //     ),
-              //   ),
-              // ),
-              const Divider(
-                height: 10,
-                thickness: 2,
-                color: Colors.black,
-              ),
-              TextButton(
-                onPressed: () async {
-                  String url = 'tel:17621761283';
-                  if (await canLaunchUrlString(url)) {
-                    await launchUrlString(url);
-                  }
+              // 拨打电话 CallKit监听 按钮
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        style: buttonStyle,
+                        onPressed: () async {
+                          String url = 'tel:17621761283';
+                          if (await canLaunchUrlString(url)) {
+                            await launchUrlString(url);
+                          }
 
-                  final result =
-                      await _channel.invokeMethod('callObs', '17621761283');
-                  print(result.toString());
-                },
-                child: const Text(
-                  '拨打电话 CallKit监听',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                          final result = await _channel.invokeMethod('callObs', '17621761283');
+                          print(result.toString());
+                        },
+                        child: const Text('拨打电话 CallKit监听'),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -471,19 +445,27 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 thickness: 2,
                 color: Colors.black,
               ),
-              TextButton(
-                onPressed: () {
-                  SyncUtil.syncCall(() {
-                    print(DateTime.now().toString());
+              // 串行异步队列 按钮
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        style: buttonStyle,
+                        onPressed: () {
+                          SyncUtil.syncCall(() {
+                            print(DateTime.now().toString());
 
-                    return null;
-                  }, space: const Duration(seconds: 1));
-                },
-                child: const Text(
-                  '串行异步队列',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                            return null;
+                          }, space: const Duration(seconds: 1));
+                        },
+                        child: const Text('串行异步队列'),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -492,23 +474,32 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 thickness: 2,
                 color: Colors.black,
               ),
+              // 显示身体得分
               buildBodyScore(77, true),
               const Divider(
                 height: 10,
                 thickness: 2,
                 color: Colors.black,
               ),
-              TextButton(
-                onPressed: () async {
-                  var info = await PackageInfo.fromPlatform();
-                  print(
-                      'APP info: \n -name:${info.appName} \n -packageName:${info.packageName} \n -version:${info.version} \n -buildNumber:${info.buildNumber} \n ');
-                },
-                child: const Text(
-                  'APP Info',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+              // APP Info 按钮
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        style: buttonStyle,
+                        onPressed: () async {
+                          var info = await PackageInfo.fromPlatform();
+                          print(
+                              'APP info: \n -name:${info.appName} \n -packageName:${info.packageName} \n -version:${info.version} \n -buildNumber:${info.buildNumber} \n ');
+                        },
+                        child: const Text('APP Info'),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -517,21 +508,30 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 thickness: 2,
                 color: Colors.black,
               ),
+              // 显示日期
               Text(DateTime.utc(2023, 1, 1).toIso8601String()),
               const Divider(
                 height: 10,
                 thickness: 2,
                 color: Colors.black,
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, 'lrs');
-                },
-                child: const Text(
-                  '制图',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+              // 制图 按钮
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        style: buttonStyle,
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'lrs');
+                        },
+                        child: const Text('制图'),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -540,15 +540,23 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 thickness: 2,
                 color: Colors.black,
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, 'fds');
-                },
-                child: const Text(
-                  '三方蓝牙搜索页',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+              // 三方蓝牙搜索页 按钮
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        style: buttonStyle,
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'fds');
+                        },
+                        child: const Text('三方蓝牙搜索页'),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -557,26 +565,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 thickness: 2,
                 color: Colors.black,
               ),
-              // DecoratedBox(
-              //   decoration: BoxDecoration(
-              //     border: Border.all(color: Colors.blue),
-              //   ),
-              //   child: SizedBox(
-              //     width: 200,
-              //     child: MarqueeWidget(
-              //         text:
-              //             "Hello World! How are you today? This is a demo of a MarqueeWidget in Flutter.",
-              //         width: 300.0,
-              //         height: 30.0,
-              //         style: TextStyle(fontSize: 18.0, color: Colors.blue),
-              //         speed: 3000),
-              //   ),
-              // ),
-              const Divider(
-                height: 10,
-                thickness: 2,
-                color: Colors.black,
-              ),
+              // 蓝牙管理部件
               buildBlueWidget(),
             ],
           ),
@@ -586,113 +575,118 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ), // 这个逗号使得自动格式化更好看
     );
   }
 
+  // 显示身体得分的方法
   Widget buildBodyScore(int score, bool isMan) {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
-        width: 150.5.w,
-        height: 150.h,
-        decoration: BoxDecoration(
-            color: Colors.lightBlue, borderRadius: BorderRadius.circular(10.5)),
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            Positioned(
-              top: 5.h,
-              left: 5.w,
+      padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
+      width: 150.5.w,
+      height: 150.h,
+      decoration: BoxDecoration(
+        color: Colors.lightBlue,
+        borderRadius: BorderRadius.circular(10.5),
+      ),
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Positioned(
+            top: 5.h,
+            left: 5.w,
+            child: Text(
+              '身体得分',
+              style: TextStyle(
+                fontSize: 14.sp,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: -5.h,
+            left: -5.w,
+            child: Image.asset(
+              'assets/home_good_man.png',
+              width: 110.w,
+            ),
+          ),
+          Positioned(
+            top: 10.h,
+            right: 35.w,
+            child: Text(
+              score.toString(),
+              style: TextStyle(
+                fontSize: 30.sp,
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 40.h,
+            right: 35.w,
+            child: Text(
+              '分',
+              style: TextStyle(
+                fontSize: 12.sp,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          Positioned(
+            right: 0,
+            top: 5.h,
+            child: SizedBox(
+              width: 21.w,
               child: Text(
-                '身体得分',
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  color: Colors.white,
-                ),
+                '100',
+                style: TextStyle(fontSize: 12.sp, color: Colors.white),
               ),
             ),
-            Positioned(
-                bottom: -5.h,
-                left: -5.w,
-                child: Image.asset(
-                  'assets/home_good_man.png',
-                  width: 110.w,
-                )),
-            Positioned(
-              top: 10.h,
-              right: 35.w,
+          ),
+          Positioned(
+            right: 0,
+            bottom: 5.h,
+            child: SizedBox(
+              width: 21.w,
               child: Text(
-                score.toString(),
-                style: TextStyle(
-                  fontSize: 30.sp,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                ),
+                '0',
+                style: TextStyle(fontSize: 12.sp, color: Colors.white),
               ),
             ),
-            Positioned(
-              top: 40.h,
-              right: 35.w,
-              child: Text(
-                '分',
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  color: Colors.white,
-                ),
+          ),
+          Positioned(
+            top: 5.h,
+            right: 23.w,
+            child: Container(
+              height: 130.h,
+              width: 7.5.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                gradient: const LinearGradient(colors: [
+                  Color.fromRGBO(255, 255, 255, 0.2),
+                  Color.fromRGBO(255, 255, 255, 1),
+                ], begin: Alignment.bottomLeft, end: Alignment.topRight),
+                color: Colors.white,
               ),
             ),
-            Positioned(
-              right: 0,
-              top: 5.h,
-              child: SizedBox(
-                width: 21.w,
-                child: Text(
-                  '100',
-                  style: TextStyle(fontSize: 12.sp, color: Colors.white),
-                ),
+          ),
+          Positioned(
+            bottom: 130.h * score / 100 - 2.5.h,
+            right: 19.25.w,
+            child: Container(
+              height: 15.h,
+              width: 15.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(200),
+                color: Colors.white,
               ),
             ),
-            Positioned(
-              right: 0,
-              bottom: 5.h,
-              child: SizedBox(
-                width: 21.w,
-                child: Text(
-                  '0',
-                  style: TextStyle(fontSize: 12.sp, color: Colors.white),
-                ),
-              ),
-            ),
-            Positioned(
-              top: 5.h,
-              right: 23.w,
-              child: Container(
-                height: 130.h,
-                width: 7.5.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  gradient: const LinearGradient(colors: [
-                    Color.fromRGBO(255, 255, 255, 0.2),
-                    Color.fromRGBO(255, 255, 255, 1),
-                  ], begin: Alignment.bottomLeft, end: Alignment.topRight),
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 130.h * score / 100 - 2.5.h,
-              right: 19.25.w,
-              child: Container(
-                height: 15.h,
-                width: 15.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(200),
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 
   Widget buildBlueWidget() {

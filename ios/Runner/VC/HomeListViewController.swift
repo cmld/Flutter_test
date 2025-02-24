@@ -41,11 +41,10 @@ class HomeListViewController: BaseViewController {
             "TableViewController, tableView",
             "ActionsTableViewController, ActionsTableView",
             "DatePickerViewController, DatePickerViewController + TextView加载html",
-            "ImageShowViewController, 图片显示",
             "EchartsViewController, Echarts Web嵌入",
         ]
         
-        tableView.dataList = dataSourceList.reversed().enumerated().map({ (index, item) in
+        tableView.dataList = dataSourceList.enumerated().map({ (index, item) in
             let model = JTBalanceModel()
             model.title = "\(index)、" + item
             return model
@@ -54,16 +53,22 @@ class HomeListViewController: BaseViewController {
         tableView.cellSelected = {[weak self] cell, idx in
             guard let `self` = self else { return }
             
-            if let classStr = dataSourceList.reversed()[idx.row].components(separatedBy: ",").first {
+            if let classStr = dataSourceList[idx.row].components(separatedBy: ",").first {
                 guard let vclass = NSClassFromString("Runner."+classStr) as? UIViewController.Type else {
                     return
                 }
                 let vc = vclass.init()
                 navigationController?.pushViewController(vc, animated: true)
+                UserDefaults.standard.set(idx.row, forKey: "lastIndex")
             }
         }
-        
-        tableView.cellSelected(HomeTableViewCell(), IndexPath(row: 8, section: 0)) // 倒序
+        let lastIdx = UserDefaults.standard.integer(forKey: "lastIndex")
+        tableView.cellSelected(HomeTableViewCell(), IndexPath(row: lastIdx, section: 0))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.scrollToRow(at: IndexPath(row: tableView.dataList.count - 1, section: 0), at: .bottom, animated: false)
     }
     
 }

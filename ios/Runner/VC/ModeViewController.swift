@@ -34,18 +34,24 @@ class ModeViewController: BaseViewController {
         
         creatUI()
         
-        webView.loadUrl("http://10.66.103.46:8887/idnStation.html")
+//        webView.loadUrl("http://10.66.103.54:8887/modeView76100.html")
+        if let url = Bundle.main.url(forResource: "modeView76100", withExtension: "html"), let data = try? Data(contentsOf: url) {
+            
+//            webView.loadFileURL(url, allowingReadAccessTo: url.deletingLastPathComponent())
+            webView.load(data, mimeType: "text/html", characterEncodingName: "UTF-8", baseURL: url.deletingLastPathComponent())
+        }
         
     }
     
     func creatUI() {
         scrollV.addSubview(webView)
         let width = 300
+        let height = 428.6
         webView.snp.makeConstraints { make in
             make.top.equalTo(50)
             make.left.equalToSuperview().offset(10)
             make.width.equalTo(width)
-            make.height.equalTo(width * 2)
+            make.height.equalTo(height)
         }
         
         let imgV = UIImageView()
@@ -54,7 +60,7 @@ class ModeViewController: BaseViewController {
             make.top.equalTo(webView.snp.bottom).offset(10)
             make.left.equalToSuperview().offset(10)
             make.width.equalTo(width)
-            make.height.equalTo(width * 2)
+            make.height.equalTo(height)
         }
         
         let reloadBtn = UIButton()
@@ -85,46 +91,54 @@ class ModeViewController: BaseViewController {
         reloadBtn1.addTap { [weak self] in
             guard let `self` = self else { return }
             let test = [
-                "totalCharge": 1111,
-                "companyAddress": "JALANJALANANANNANANANANANNANAN",
-                "remark": "",
-                "waybillCode": "JD9000490567",
-                "id": 8431,
-                "sixCode": "",
-                "companyName": "MANGGIS ALPUKAT PISANG SIRSAK MANGGIS ALPUKAT PISANG SIRSAK MANGGIS ALPUKAT PISANG SIRSAK MANGGIS ALPUKAT PISANG SIRSAK MANGGIS ALPUKAT PISANG SIRSAK MANGGIS ALPUKAT PISANG SIRSAK MANGGIS ALPUKAT PISANG SIRSAK MANGGIS ALPUKAT PISANG SIRSAK MANGGIS ALPUKAT PISANG SIRSAK MANGGIS ALPUKAT PISANG SIRSAK0",
-                "signatureTime": "",
-                "recipientArea": "KALIDERES",
-                "recipientCity": "JAKARTA",
-                "serviceTypeCode": "EZ",
-                "recipient": "testshoujian",
-                "senderCity": "KUTACANE",
-                "printTimeStr": "10-01-2025",
-                "customerWaybillNo": "",
-                "recipientDetailAddr": "yehhdbxbb",
-                "goodsType": "BARANG",
-                "recipientProvince": "DKI JAKARTA",
-                "goodsName": "硬件",
-                "senderDetailAddr": "斑斑驳驳呢",
-                "payTypeStr": "TUNAI",
-                "payType": ["code": "0",
-                            "name": "寄付",
-                            "id": "PP_CASH"],
-                "recipientPhone": "628946646465",
-                "weight": "1.00",
-                "senderPhone": "6280656599595",
-                "printTime": "2025-01-10 12:55:56",
-                "signatureTimeStr": "",
-                "numberPieces": 1,
-                "senderProvince": "NANGGROE ACEH DARUSSALAM",
-                "threeCode": "JKT-JKT02A",
-                "isCod": ["code": "1",
-                          "id": "NO",
-                          "name": "否"],
-                "codMoney": 0,
-                "serviceTypeName": "EZ",
-                "orderNo": "1745536704967054346",
-                "companyDutyParagraph": "12345678587458",
-                "sender": "testjj"
+                "recipientDetailAddr": "testt",
+                "senderDetailAddr": "test",
+                "senderCity": "เขตบางนา",
+                "goodsType": "0",
+                "billingWeight": "1",
+                "recipientTown": "พรหมณี",
+                "senderPostalCode": "10260",
+                "tiktokLogo": "true",
+                "goodsLength": "24",
+                "codMoney": "0",
+                "goodsHeight": "0",
+                "orderNo": "25030509296482",
+                "expressCompanyName": "J&T Express",
+                "website": "www.jtexpress.co.th",
+                "recipientCity": "เมืองนครนายก",
+                "recipientRedion": "พรหมณี เมืองนครนายก นครนายก 26000",
+                "volumeWeight": "0",
+                "ref1": "EZ",
+                "senderRedion": "บางนา เขตบางนา กรุงเทพมหานคร 10260",
+                "weight": "1",
+                "printTime": "2025-03-05 09:29:20",
+                "companyType": "0",
+                "printTypeText": "已打印",
+                "senderTown": "บางนา",
+                "remoteFee": "0.00",
+                "expressCompanyIcon": "https:\\/\\/uat-jmsth-file-public-1304629426.cos.ap-bangkok.myqcloud.com\\/tmp\\/jmsth-home-uat\\/eade29c2-50e7-4d82-ad40-3eb42ce41b47jtlogo.png?q-sign-algorithm=sha1&q-ak=IKIDMdmoeGrJadVEl493mIPL7kPs7AVebLtF&q-sign-time=1722397696%3B2037678617&q-key-time=1722397696%3B2037678617&q-header-list=host&q-url-param-list=&q-signature=74db84b1178a45c0de68caed81efdfd10d6b4bf1",
+                "printType": "0",
+                "totalCharge": "5.50",
+                "sender": "TH手机10260",
+                "wayBillCode": "160006255544",
+                "hotLine": "021-789655544",
+                "senderProvince": "กรุงเทพมหานคร",
+                "signingStatement": "ผู้รับได้ตรวจสอบใบเสร็จและความถูกต้องของพัสดุโดยเข้าใจและยอมรับเงื่อนไขการจัดส่ง ของ J&T Express",
+                "recipientPostalCode": "26000",
+                "sortingCode": "P1 G81-89 004B",
+                "printLogo": "https:\\/\\/uat-jmsth-file-public-1304629426.cos.ap-bangkok.myqcloud.com\\/tmp\\/jmsth-home-uat\\/2023%20JT%20logo.png?q-sign-algorithm=sha1&q-ak=IKIDMdmoeGrJadVEl493mIPL7kPs7AVebLtF&q-sign-time=1701326473%3B2015994139&q-key-time=1701326473%3B2015994139&q-header-list=host&q-url-param-list=&q-signature=42a88e85d75731bd82c17a2865b9d544888eb9ad",
+                "ref2": "Order No.:25030509296482",
+                "recipient": "Th手机收",
+                "goodsWidth": "30",
+                "transportCharge": "5.50",
+                "recipientProvince": "นครนายก",
+                "recipientMobile": "0806122616",
+                "qrCode": "https:\\/\\/lin.ee\\/PnyTJyI",
+                "senderMobile": "0807065440",
+                "stationName": "JT HOME Stitch",
+                "printNumber": "1",
+                "codNeed": "0",
+                "createDate": "2025-03-05 09:29:19"
             ]
             
             

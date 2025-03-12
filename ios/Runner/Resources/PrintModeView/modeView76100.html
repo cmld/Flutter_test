@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    @font-face {
+      font-family: 'MyFont';
+      src: url('fonts/DBAdmanX.ttf') format('truetype');
+      font-weight: bold;
+    }
+      
+   .rotated-text-translate {
+      transform: rotate(90deg) translate(20px, 0);
+      display: inline-block;
+      color: black;
+      width: 4vw;
+      font-size: 3vw;
+      text-align: center;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      width: 100vw;
+      height: 100vh;
+      margin: 0px;
+    }
+
+    .column-edge {
+      display:flex;
+      flex-direction: column;
+      justify-content: space-between;
+      max-width: 4vw;
+      padding-bottom: 25vh;
+    }
+
+
+    #barcode {
+      transform: rotate(-90deg);
+      height: 12vw;
+      width: 80vw;
+      align-self: center;
+    }
+
+    #maincode {
+      height: 12vw;
+      width: 73vw;
+      align-self: center;
+      overflow: hidden;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- first part -->
+  <div style="display:flex;flex-direction:column;width:100vw; align-self: center;">
+    <!-- tag -->
+    <div style="display:flex; flex-direction: row; justify-content: flex-end; height: 8vh;align-items: center;">
+      
+      <div style="flex-grow: 1;display:flex;flex-direction:column;padding-left: 4vw;">
+        <!-- LOGO -->
+        <div style="display:flex;flex-direction:row; align-items: center; min-height: 6vh;">
+          <img id="logo" src="../jt_ExpressLogo.png" style="height: 4.5vh;padding-top: 0.5vh;" />
+          <img id="sourceLogo" src="../ttLogo.jpeg"  style="height: 3.5vh; margin-left: 1vw;" />
+        </div>
+        <!-- 日期 -->
+        <div id="printDate" style="font-size: 2vw;height: 2vh;line-height:2vh;overflow-wrap: break-word;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
+            000-00000-000000
+          </div>
+      </div>
+
+      <div id="codTag" style="background-color: black; color:white;font-size: 6vw;font-weight: bold; height: 7vh;line-height: 7vh;margin-top: 1vh;margin-right: 2vw;padding-left: 1vw;padding-right: 1vw;">
+        COD
+      </div>
+      <div id="productType" style="font-size: 6vw;font-weight: bold;height: 7vh;line-height: 7vh;margin-top: 1vh;margin-right: 4vw;">
+        BUK
+      </div>
+
+    </div>
+
+    <!-- content total -->
+    <div style="display:flex; flex-direction: row;max-width:100vw" >
+      <div class="column-edge">
+        <div class="rotated-text-translate">
+          000000000000000
+        </div>
+        <div class="rotated-text-translate">
+          000000000000000
+        </div>
+        <div class="rotated-text-translate">
+          000000000000000
+        </div>
+      </div>
+
+      <!-- content -->
+      <div style="flex-grow: 1; max-width:91.5vw; display: flex; flex-direction:column;">
+        <div style="height: 64vh;border: 2px solid black; display: flex; flex-direction:column;">
+          <!-- 三段码 -->
+          <div id="threeCode" style="font-size: 8vh;font-weight:bold;text-align: center;height: 9vh;line-height:9vh;overflow-wrap: break-word; border-bottom: 2px solid black;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
+            00000-000000-000-0000000000000000000
+          </div>
+
+          <!-- info -->
+            <div style="flex-grow: 1;display: flex;flex-direction: column;border; ">
+              <!-- 条码 -->
+              <div style="border-bottom: 2px solid black;height: 20vh;display: flex; flex-direction:column;justify-content: center;align-items: center;">
+                <img id="maincode" style="height: 15vh;min-width:90vw" />
+                <div id="waybillCode" style="font-size: 5vw; font-weight: bold; white-space: nowrap;">
+                  000000000000000
+                </div>
+              </div>
+
+              <!-- 四段码、门牌号 -->
+              <div style="display: flex;flex-direction: row;border-bottom: 2px solid black;min-height: 6vh;">
+                  <div id="fourCode" style="font-size: 5vw;font-weight:bold; width: 70vw;line-height:6vh;border-right: 2px solid black;word-break: break-all; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
+                    1Pengirim: testnametestnametestnamestnametestname
+                  </div>
+
+                  <div id="houseNum" style="font-size: 5vw;font-weight:bold; margin-left: 1vw;line-height:6vh;word-break: break-all; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
+                    0000000000000
+                  </div>
+                </div>
+              
+              
+              <div style="flex-grow: 1;display: flex;flex-direction:row;">
+                <!-- 寄件信息、收件信息 -->
+                <div style="display: flex;flex-direction:column;width: 70vw;border-right: 2px solid black;">
+                  <!-- 收件 -->
+                  <div style="height: 17vh;flex-grow: 1;border-bottom: 2px solid black;">
+                    <div style="padding-top: 1vw;padding-left: 1vw;display: flex;flex-direction: row;">
+                      <div id="recipientTag" style="height: 4vh;min-width: 4vh;font-size: 3vw;line-height:4vh; text-align:center; font-weight:bold; border-radius: 2vh;border: 2px solid black;font-family:MyFont">
+                        รับ
+                      </div>
+                      <div id="recipient" style="margin-left: 1vw;font-size: 4vw; line-height:4vh; font-weight:bold; word-break: break-all; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
+                        NameNameNameNameNameNameNameNameNameNameNameNameNameNameNameNameNameNameNameName
+                      </div>
+                    </div>
+
+                    <div id="recipientDetailAddr" style="font-size: 4vw;  font-weight:bold; padding-left: 1vw;word-break: break-all;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;"> address testaddresstestaddresstestaddresstestaddresstestaddresstestaddresstestaddresstestaddresstestaddresstestaddresstestaddresstestaddresstestaddresstestaddresstestaddresstestaddresstestaddress
+                    </div>
+                  </div>
+
+                  <!-- 寄件 -->
+                  <div style="height: 8vh;">
+                    
+                    <div style="display: flex;flex-direction:row; padding-top: 1vw;padding-left: 1vw;">
+                      <div style="height: 3vh;min-width: 3vh;font-size: 3vw;line-height:3vh; text-align:center; font-weight:bold; border-radius: 2vh;border: 2px solid black;"> 
+                        ส่ง
+                      </div>
+                      <div id="sender" style="font-size: 3vw; white-space: nowrap;height: 3vh;line-height:3vh;margin-left: 1vw;word-break: break-all;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
+                        NameNameNameNameNameNameNameameNameNameNameNameNameName
+                      </div>
+                      
+                    </div>
+
+                    <div id="senderDetailAddr" style="flex-grow: 1; font-size: 3vw; padding-left: 1vw; word-break: break-all; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
+                      Notes: testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
+                    </div>
+                  </div>
+                  
+                </div>
+
+                <!-- 驿站码、二维码 -->
+                <div style="flex-grow: 1;display: flex;flex-direction: column; justify-content: space-between;align-items: center;max-width: 21vw;">
+
+                  <div id="stationCode" style="font-size: 5vw;font-weight:bold;min-height: 6vh;width: 21vw;line-height:6vh;text-align: center;border-bottom: 2px solid black;word-break: break-all; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
+                    00000000000000000
+                  </div>
+
+                  <div id="qrcode" style="min-width: 14vw;min-height: 14vw;background-color: white;margin-bottom: 2vh;"></div>
+                  <!-- Qr -->
+                </div>
+
+              </div>
+
+              <div style="border-top: 2px solid black;height: 4vh;display: flex;flex-direction:row;justify-content: flex-end;">
+                <!-- 订单号 -->
+                <div id="orderNo" style="min-width: 51vw;flex-grow: 1;border-right: 2px solid black;font-size: 3vw; text-align: center;line-height:4vh;word-break: break-all; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
+                  IDR 000.000IDR 00
+                </div>
+                
+                <!-- 重量 -->
+                <div id="weight" style="border-right: 2px solid black;width: 21vw;font-size: 3vw;text-align: center;line-height:4vh;word-break: break-all; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
+                   0.00000000 KG
+                </div>
+
+                <!-- 寄件方式 -->
+                <div id="sendType" style="width: 21vw;font-size: 3vw;font-weight:bold; text-align: center;padding-left: 1vw;padding-right: 1vw;line-height:4vh;word-break: break-all; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
+                  ShipShipShipShipShipShip
+                </div>
+
+              </div>
+            </div>
+        </div>
+
+        <div style="min-height: 28vh; display: flex; flex-direction:column;justify-content: space-between;">
+          <div id="goodsType" style="font-size: 3vw; text-align: left;line-height:3vw;margin-top: 2vh;word-break: break-all; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+            TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
+          </div>
+          <div id="remarks" style="font-size: 3vw; text-align: left;line-height:3vw;word-break: break-all; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+            remarksremarksremarksremarksremarksremarksremarksremarksremarksremarksremarksremarksremarksremarksremarksremarksremarksremarksremarksremarksremarksremarksremarksremarksremarksremarksr
+          </div>
+          <div style="flex-grow: 1;"></div>
+
+          <div id="msCount" style="font-size: 7vw; color:gray; text-align: right;line-height:7vw;margin-bottom: 5vh; margin-right: 8vw;overflow: hidden; text-overflow: ellipsis;">
+            TESTTSTTESTTESTTESTTESTTESTTESTTESTTSTTESTTESTTESTTESTTESTTESTTESTTSTTESTTESTTESTTESTTESTTESTTESTT
+          </div>
+        </div>
+
+      </div>
+
+      
+
+      <div class="column-edge">
+        <div class="rotated-text-translate">
+          000000000000000
+        </div>
+        <div class="rotated-text-translate">
+          000000000000000
+        </div>
+        <div class="rotated-text-translate">
+          000000000000000
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  
+  </div>
+
+  <script src="JsBarcode.all.min.js"></script>
+  <script src="jquery.min.js"></script>
+  <script src="jquery.qrcode.min.js"></script>
+  <script src="https://unpkg.com/dsbridge/dist/dsbridge.js"> </script>
+  <script>
+
+    var callback = (arg)=>{};
+    var img1 = document.getElementById('maincode');
+      img1.addEventListener('load', function() {
+        callback(true);
+      });
+
+    function vwToPixels(vwValue) {
+      var vw = vwValue || 100; // 默认为 100vw
+      var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+      var pixels = (vw * viewportWidth) / 100;
+      return pixels;
+    }
+
+    dsBridge.registerAsyn('setContent',function(arg1,responseCallback){
+        
+        
+        document.getElementById('recipientTag').textContent = "รับ";
+        
+      // document.getElementById('logo').src = arg1["tiktokLogo"] == "1" ? '../jt_ExpressLogo.png' : '../jt_SuperLogo.jpeg';
+
+      document.getElementById('sourceLogo').style.visibility = arg1["tiktokLogo"] == "true" ? 'visible' : 'hidden';
+
+      document.getElementById('printDate').textContent = arg1["printTime"];
+      
+      document.getElementById('codTag').style.visibility = arg1["codNeed"] == "1" ? 'visible' : 'hidden';
+      document.getElementById('productType').textContent = arg1["ref1"];
+     
+      document.querySelectorAll('.rotated-text-translate').forEach(function(div) {
+        div.textContent = arg1["wayBillCode"];
+      });
+
+      document.getElementById('waybillCode').textContent = arg1["wayBillCode"];
+      document.getElementById('threeCode').textContent = arg1["sortingCode"];
+      document.getElementById('fourCode').textContent = "";
+      
+      document.getElementById('houseNum').textContent = "";
+
+      document.getElementById('recipient').textContent =  arg1["recipient"];
+      document.getElementById('recipientDetailAddr').textContent = [arg1['recipientProvince'], arg1['recipientCity'], arg1['recipientTown'], arg1['recipientDetailAddr']].filter(item => item.length > 0).join(', ');
+
+      document.getElementById('sender').textContent = arg1["sender"];
+      // arg1["senderProvince"],
+      document.getElementById('senderDetailAddr').textContent = [ arg1['senderProvince'], arg1['senderCity'], arg1['senderTown'], arg1['senderDetailAddr']].filter(item => item.length > 0).join(', ');
+
+      document.getElementById('stationCode').textContent = "";
+
+      document.getElementById('orderNo').textContent = "No." + arg1["orderNo"];
+      document.getElementById('weight').textContent = "W:" + arg1["billingWeight"] + "KG";
+      document.getElementById('sendType').textContent = "";
+      
+      document.getElementById('goodsType').textContent = "ชื่อพัสดุ:" + (arg1["goodsName"] ?? "");
+      document.getElementById('remarks').textContent = "หมายเหตุ:" + "";
+      document.getElementById('msCount').textContent = "";
+
+
+
+      callback = responseCallback;
+      img1.src = "";
+      JsBarcode("#maincode", arg1["wayBillCode"], {
+          format: "CODE128",
+          lineColor: "black",
+          width: 4,
+          height: 90,
+          element: "img",
+          displayValue: false,
+          });
+
+
+      var qrcodeStr = arg1["qrCode"];
+      $("#qrcode").html(""); // 清空内容
+      $("#qrcode").qrcode({
+        render: 'table',
+        height: vwToPixels(17),
+        width: vwToPixels(17),
+        text: qrcodeStr,
+        typeNumber:-1,
+        correctLevel: 2,
+        background: "#ffffff",
+        foreground: "#000000",
+      });
+      
+      
+    });
+
+    
+  </script>
+</body>
+
+</html>

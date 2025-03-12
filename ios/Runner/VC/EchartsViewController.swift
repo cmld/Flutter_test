@@ -57,20 +57,20 @@ class EchartsViewController: BaseViewController {
             make.centerX.equalTo(webView)
         }
         
-        webLoad()
+//        webLoad()
 //        webView.loadUrl("http://10.66.103.46:5500/integral.html")
 //        jsMethodCall()
         changeBtn.addTap { [weak self]  in
             guard let `self` = self else { return }
-            jsMethodCall()
-            
+//            jsMethodCall()
+            printHander()
         }
         reloadBtn.addTap { [weak self]  in
             guard let `self` = self else { return }
-            webView.loadUrl("http://10.66.103.46:5500/integral.html")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                self.jsMethodCall()
-            })
+            webView.loadUrl("http://10.66.103.54:8887/idnStation.html")
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+//                self.jsMethodCall()
+//            })
         }
         
     }
@@ -81,6 +81,7 @@ class EchartsViewController: BaseViewController {
             jsMethodCall()
         }
     }
+    
     var itemcount = 4
     func jsMethodCall() {
         itemcount = itemcount == 4 ? 12 : 4
@@ -106,6 +107,67 @@ class EchartsViewController: BaseViewController {
 //                print(img?.size)
 //            }
 //        }))
+    }
+    
+    func printHander() {
+        let mock = [
+  "waybillCode" : "JD9000433968",
+  "cod" : "",
+  "recipientProvince" : "DKI JAKARTA",
+  "ez" : "EZ",
+  "sender" : "Sender",
+  "payTypeStr" : "TUNAI",
+  "recipient" : "MACDONALD",
+  "orderNo" : "ID25022500176443",
+  "senderDetailAddr" : "XXXXXXXXXXXXXXXXXXX",
+  "signatureTime" : "",
+  "payType" : [
+    "name" : "寄付",
+    "id" : "PP_CASH",
+    "code" : "0"
+  ],
+  "customerWaybillNo" : "",
+  "totalCharge" : 750,
+  "serviceTypeCode" : "EZ",
+  "recipientArea" : "KALIDERES",
+  "goodsType" : "BARANG",
+  "senderProvince" : "DKI JAKARTA",
+  "recipientDetailAddr" : "ZZZZZZZZZZZZZZZZZZZZZZ NO.8888",
+  "id" : 9240,
+  "weight" : "1.00",
+  "np" : "NP",
+  "isCod" : [
+    "name" : "是",
+    "id" : "YES",
+    "code" : "0"
+  ],
+  "senderPhone" : "16666666666",
+  "signatureTimeStr" : "",
+  "goodsName" : "",
+  "codMoney" : 0,
+  "printTime" : "2025-02-25 15:41:38",
+  "companyDutyParagraph" : "",
+  "threeCode" : "JK5-23243",
+  "fm" : "",
+  "sixCode" : "23243",
+  "recipientCity" : "JAKARTA",
+  "printTimeStr" : "25-02-2025",
+  "fourCode" : "NO . 8888",
+  "recipientPhone" : "19999999999",
+  "companyName" : "测试021300reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeweewewezxXVXCVXVXVXCVXVXVXVXCVXVXVXVXVXCVXVXVVXCVXVXVXVXVXCVXVXVXCVXCVCXVXVCVXVXVCVXVXCXVXVCVXCVXVXVXVXCVXCVCXVXVXCVXVXVXCVXCVXCVNHJHKSDHKJSHDKJSHFKJSHDFJKHSJDKFHJAHFDASJHDFK",
+  "remark" : "",
+  "numberPieces" : 1,
+  "companyAddress" : "4554454545455455SDSFSSDFSFSFSFSFSFSDFHJKFDHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHBCNBXCZMBNXCBZCZNCZXNCZNCZNCZnxc,znxC,nIOW4EUIOWQERUIJFKSNJDFJKNFMZN CMzCBNJKZHCJKHFJHFJSHFSNFFNHJMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHBCNBXCZMBNXCBZCZNCZXNCZNCZNCZnxc,znxC,nIOW4EUIOWQERUIJFKSNJDFJKNFMZN CMzCBNJKZHCJKHFJHFJSHFSNFFNHJMBNXCBZCZNCZXNCZNCZNCZnxc,znxC,nIOW4EUIOWQERUIJFKSNJDFJKNFMZN CMzCBNJKZHCJKHFJHFJSHFSNFFNHJMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHBCNBXCZMBNXCBZCZNCZXNCZNCZNCZnxc,znxC,nIOW4EUIOBNXCBZ",
+  "senderCity" : "JAKARTA",
+  "serviceTypeName" : "EZ"
+] as [String : Any]
+        
+        webView.callHandler("setContent",arguments: [mock]) { code in
+            print("armand p:", code)
+        }
+        
+//        webView.callHandler("setupChart", arguments: ["daf"])
+        
     }
 
 }

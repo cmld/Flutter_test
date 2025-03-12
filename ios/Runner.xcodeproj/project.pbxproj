@@ -65,6 +65,21 @@
 		59E75FAE2B2ACD3D0008E807 /* ModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E75FAD2B2ACD3D0008E807 /* ModeViewController.swift */; };
 		59E75FB42B2AE65E0008E807 /* JTSendSecondModeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59E75FB32B2AE65E0008E807 /* JTSendSecondModeView.xib */; };
 		59E75FB62B2AE66F0008E807 /* JTSendSecondModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E75FB52B2AE66F0008E807 /* JTSendSecondModeView.swift */; };
+		59E97B132D8010C100F7D033 /* JsBarcode.all.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 59E97B0D2D8010C100F7D033 /* JsBarcode.all.min.js */; };
+		59E97B142D8010C100F7D033 /* jquery.qrcode.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 59E97B0C2D8010C100F7D033 /* jquery.qrcode.min.js */; };
+		59E97B152D8010C100F7D033 /* ttLogo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 59E97B112D8010C100F7D033 /* ttLogo.jpeg */; };
+		59E97B162D8010C100F7D033 /* modeView76100.html in Resources */ = {isa = PBXBuildFile; fileRef = 59E97B102D8010C100F7D033 /* modeView76100.html */; };
+		59E97B172D8010C100F7D033 /* jt_ExpressLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 59E97B0E2D8010C100F7D033 /* jt_ExpressLogo.png */; };
+		59E97B182D8010C100F7D033 /* jquery.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 59E97B0B2D8010C100F7D033 /* jquery.min.js */; };
+		59E97B192D8010C100F7D033 /* jt_SuperLogo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 59E97B0F2D8010C100F7D033 /* jt_SuperLogo.jpeg */; };
+		59E97B252D801C4500F7D033 /* DB Adman X Bd v3.2.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59E97B1D2D801C4500F7D033 /* DB Adman X Bd v3.2.1.ttf */; };
+		59E97B262D801C4500F7D033 /* DB Adman X Li It v3.2.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59E97B1F2D801C4500F7D033 /* DB Adman X Li It v3.2.1.ttf */; };
+		59E97B272D801C4500F7D033 /* DB Adman X UlLi v3.2.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59E97B222D801C4500F7D033 /* DB Adman X UlLi v3.2.1.ttf */; };
+		59E97B282D801C4500F7D033 /* DB Adman X UlLi It v3.2.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59E97B212D801C4500F7D033 /* DB Adman X UlLi It v3.2.1.ttf */; };
+		59E97B292D801C4500F7D033 /* DBAdmanX.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59E97B232D801C4500F7D033 /* DBAdmanX.ttf */; };
+		59E97B2A2D801C4500F7D033 /* DB Adman X Li v3.2.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59E97B202D801C4500F7D033 /* DB Adman X Li v3.2.1.ttf */; };
+		59E97B2B2D801C4500F7D033 /* DB Adman X Bd It v3.2.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59E97B1C2D801C4500F7D033 /* DB Adman X Bd It v3.2.1.ttf */; };
+		59E97B2C2D801C4500F7D033 /* DB Adman X It v3.2.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59E97B1E2D801C4500F7D033 /* DB Adman X It v3.2.1.ttf */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
@@ -151,6 +166,21 @@
 		59E75FAD2B2ACD3D0008E807 /* ModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeViewController.swift; sourceTree = "<group>"; };
 		59E75FB32B2AE65E0008E807 /* JTSendSecondModeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JTSendSecondModeView.xib; sourceTree = "<group>"; };
 		59E75FB52B2AE66F0008E807 /* JTSendSecondModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTSendSecondModeView.swift; sourceTree = "<group>"; };
+		59E97B0B2D8010C100F7D033 /* jquery.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
+		59E97B0C2D8010C100F7D033 /* jquery.qrcode.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.qrcode.min.js; sourceTree = "<group>"; };
+		59E97B0D2D8010C100F7D033 /* JsBarcode.all.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = JsBarcode.all.min.js; sourceTree = "<group>"; };
+		59E97B0E2D8010C100F7D033 /* jt_ExpressLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jt_ExpressLogo.png; sourceTree = "<group>"; };
+		59E97B0F2D8010C100F7D033 /* jt_SuperLogo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jt_SuperLogo.jpeg; sourceTree = "<group>"; };
+		59E97B102D8010C100F7D033 /* modeView76100.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = modeView76100.html; sourceTree = "<group>"; };
+		59E97B112D8010C100F7D033 /* ttLogo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ttLogo.jpeg; sourceTree = "<group>"; };
+		59E97B1C2D801C4500F7D033 /* DB Adman X Bd It v3.2.1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DB Adman X Bd It v3.2.1.ttf"; sourceTree = "<group>"; };
+		59E97B1D2D801C4500F7D033 /* DB Adman X Bd v3.2.1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DB Adman X Bd v3.2.1.ttf"; sourceTree = "<group>"; };
+		59E97B1E2D801C4500F7D033 /* DB Adman X It v3.2.1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DB Adman X It v3.2.1.ttf"; sourceTree = "<group>"; };
+		59E97B1F2D801C4500F7D033 /* DB Adman X Li It v3.2.1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DB Adman X Li It v3.2.1.ttf"; sourceTree = "<group>"; };
+		59E97B202D801C4500F7D033 /* DB Adman X Li v3.2.1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DB Adman X Li v3.2.1.ttf"; sourceTree = "<group>"; };
+		59E97B212D801C4500F7D033 /* DB Adman X UlLi It v3.2.1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DB Adman X UlLi It v3.2.1.ttf"; sourceTree = "<group>"; };
+		59E97B222D801C4500F7D033 /* DB Adman X UlLi v3.2.1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DB Adman X UlLi v3.2.1.ttf"; sourceTree = "<group>"; };
+		59E97B232D801C4500F7D033 /* DBAdmanX.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DBAdmanX.ttf; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79E4AB4D9E4D4C9A30615E4D /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
@@ -201,6 +231,7 @@
 		59210A1B2D0A791C00A6224F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				59E97B122D8010C100F7D033 /* PrintModeView */,
 				59210A1C2D0A793900A6224F /* EchartsHtml */,
 			);
 			path = Resources;
@@ -341,6 +372,36 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		59E97B122D8010C100F7D033 /* PrintModeView */ = {
+			isa = PBXGroup;
+			children = (
+				59E97B0B2D8010C100F7D033 /* jquery.min.js */,
+				59E97B0C2D8010C100F7D033 /* jquery.qrcode.min.js */,
+				59E97B0D2D8010C100F7D033 /* JsBarcode.all.min.js */,
+				59E97B0E2D8010C100F7D033 /* jt_ExpressLogo.png */,
+				59E97B0F2D8010C100F7D033 /* jt_SuperLogo.jpeg */,
+				59E97B102D8010C100F7D033 /* modeView76100.html */,
+				59E97B242D801C4500F7D033 /* fonts */,
+				59E97B112D8010C100F7D033 /* ttLogo.jpeg */,
+			);
+			path = PrintModeView;
+			sourceTree = "<group>";
+		};
+		59E97B242D801C4500F7D033 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				59E97B1C2D801C4500F7D033 /* DB Adman X Bd It v3.2.1.ttf */,
+				59E97B1D2D801C4500F7D033 /* DB Adman X Bd v3.2.1.ttf */,
+				59E97B1E2D801C4500F7D033 /* DB Adman X It v3.2.1.ttf */,
+				59E97B1F2D801C4500F7D033 /* DB Adman X Li It v3.2.1.ttf */,
+				59E97B202D801C4500F7D033 /* DB Adman X Li v3.2.1.ttf */,
+				59E97B212D801C4500F7D033 /* DB Adman X UlLi It v3.2.1.ttf */,
+				59E97B222D801C4500F7D033 /* DB Adman X UlLi v3.2.1.ttf */,
+				59E97B232D801C4500F7D033 /* DBAdmanX.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		61E7F7F6DAEC71DE43B0185F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +532,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59E97B132D8010C100F7D033 /* JsBarcode.all.min.js in Resources */,
+				59E97B142D8010C100F7D033 /* jquery.qrcode.min.js in Resources */,
+				59E97B152D8010C100F7D033 /* ttLogo.jpeg in Resources */,
+				59E97B162D8010C100F7D033 /* modeView76100.html in Resources */,
+				59E97B172D8010C100F7D033 /* jt_ExpressLogo.png in Resources */,
+				59E97B182D8010C100F7D033 /* jquery.min.js in Resources */,
+				59E97B192D8010C100F7D033 /* jt_SuperLogo.jpeg in Resources */,
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				598C5EED2B58CD8F002EF6C1 /* NDA_test.pdf in Resources */,
@@ -487,6 +555,14 @@
 				5929787D2B2AA88D00011DDC /* JTHandoverModeView.xib in Resources */,
 				599A209B2ADD30B900AD51ED /* JTReturnModeView.xib in Resources */,
 				592BBF5F2B6A550500500001 /* GoodsInfoMSCell.xib in Resources */,
+				59E97B252D801C4500F7D033 /* DB Adman X Bd v3.2.1.ttf in Resources */,
+				59E97B262D801C4500F7D033 /* DB Adman X Li It v3.2.1.ttf in Resources */,
+				59E97B272D801C4500F7D033 /* DB Adman X UlLi v3.2.1.ttf in Resources */,
+				59E97B282D801C4500F7D033 /* DB Adman X UlLi It v3.2.1.ttf in Resources */,
+				59E97B292D801C4500F7D033 /* DBAdmanX.ttf in Resources */,
+				59E97B2A2D801C4500F7D033 /* DB Adman X Li v3.2.1.ttf in Resources */,
+				59E97B2B2D801C4500F7D033 /* DB Adman X Bd It v3.2.1.ttf in Resources */,
+				59E97B2C2D801C4500F7D033 /* DB Adman X It v3.2.1.ttf in Resources */,
 				59E14F622B67B17900F1DF69 /* RecipientInternCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
